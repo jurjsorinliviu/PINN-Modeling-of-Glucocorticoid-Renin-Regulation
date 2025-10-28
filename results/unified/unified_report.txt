@@ -1,0 +1,50 @@
+Unified PINN Calibration & Ensemble Report
+============================================================
+
+Selected calibration weights:
+  Constraint weight: 0.005
+  Synthetic weight:  0.5
+
+Constraint Weight Sweep:
+  weight   r2      rmse    gap_IC50  gap_Hill
+  0.0050   0.722   0.029      0.046      0.031
+  0.0100  -0.076   0.056      0.045      0.031
+  0.0200   0.702   0.030      0.035      0.023
+  0.0400   0.686   0.030      0.064      0.043
+  0.0050  -0.338   0.063      0.048      0.033
+  0.0100   0.722   0.029      0.044      0.030
+  0.0200   0.542   0.037      0.057      0.038
+  0.0400   0.688   0.030      0.049      0.033
+  0.0050   0.319   0.045      0.060      0.040
+  0.0100  -0.022   0.055      0.068      0.046
+  0.0200   0.352   0.044      0.060      0.040
+  0.0400  -0.055   0.056      0.057      0.038
+  -> Selected constraint weight: 0.005
+
+Synthetic Weight Sweep:
+  weight   r2      rmse    plausibility
+    0.00   0.052   0.053  PASS
+    0.10   0.635   0.033  FAIL
+    0.20   0.691   0.030  PASS
+    0.50   0.706   0.029  PASS
+  -> Selected synthetic weight: 0.5
+
+Pretraining Length Sweep (parameter drift):
+  epochs   pre_gap_IC50  pre_gap_Hill  final r2  final rmse
+       0            n/a           n/a     0.744       0.027
+     250          0.053         0.035     0.609       0.034
+     500          0.049         0.032     0.950       0.012
+
+Unified Ensemble Summary:
+  Members: 4
+  R2=0.759  RMSE=0.027  gap(IC50)=0.050+/-0.008  gap(Hill)=0.034+/-0.005
+  Residual diagnostics:
+    Shapiro-Wilk p=0.405
+    Jarque-Bera p=0.780
+    Breusch-Pagan p=n/a
+    Durbin-Watson=1.770
+  Pareto knee at member 8 (gap=0.092, r2=0.798)
+  Figures:
+    pareto: results/unified/figures/pareto_frontier.png
+    dose_response: results/unified/figures/dose_response.png
+    time_courses: results/unified/figures/time_courses.png

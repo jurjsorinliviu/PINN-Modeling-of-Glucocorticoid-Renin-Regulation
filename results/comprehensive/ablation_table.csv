@@ -1,0 +1,7 @@
+Configuration,Description,R² (mean),R² (std),RMSE (mean),RMSE (std),Data Loss Weight,Physics Loss Weight,Hill Kinetics
+baseline_ensemble,"Baseline for Deep Ensemble (no dropout, Hill kinetics)",0.8561,0.0075,0.0206,0.0005,1.0,100.0,True
+no_physics_loss,Pure data-driven (no ODE constraints),-0.3187,1.1026,0.0572,0.0247,1.0,0.0,True
+no_data_loss,Pure physics (no data fitting),-0.3187,1.1026,0.0572,0.0247,0.0,100.0,True
+balanced_loss,Balanced data and physics weights,-0.3187,1.1026,0.0572,0.0247,10.0,10.0,True
+data_heavy,Data-heavy weighting (100:10:5),-0.3187,1.1026,0.0572,0.0247,100.0,10.0,True
+physics_heavy,Physics-heavy weighting (1:200:10),-0.3187,1.1026,0.0572,0.0247,1.0,200.0,True

@@ -1,0 +1,56 @@
+{
+  "baseline_ensemble": {
+    "description": "Baseline for Deep Ensemble (no dropout, Hill kinetics)",
+    "r2_mean": 0.8560610974581916,
+    "r2_std": 0.007477284486468811,
+    "rmse_mean": 0.02058837278797983,
+    "rmse_std": 0.0005362732789558563,
+    "mae_mean": 0.01778132213038765,
+    "mae_std": 0.0007924783708004408
+  },
+  "no_physics_loss": {
+    "description": "Pure data-driven (no ODE constraints)",
+    "r2_mean": -0.31872881812108556,
+    "r2_std": 1.1025547716763084,
+    "rmse_mean": 0.05723262953961598,
+    "rmse_std": 0.02470917771521478,
+    "mae_mean": 0.04297975209472018,
+    "mae_std": 0.015297364856771018
+  },
+  "no_data_loss": {
+    "description": "Pure physics (no data fitting)",
+    "r2_mean": -0.31872881812108556,
+    "r2_std": 1.1025547716763084,
+    "rmse_mean": 0.05723262953961598,
+    "rmse_std": 0.02470917771521478,
+    "mae_mean": 0.04297975209472018,
+    "mae_std": 0.015297364856771018
+  },
+  "balanced_loss": {
+    "description": "Balanced data and physics weights",
+    "r2_mean": -0.31872881812108556,
+    "r2_std": 1.1025547716763084,
+    "rmse_mean": 0.05723262953961598,
+    "rmse_std": 0.02470917771521478,
+    "mae_mean": 0.04297975209472018,
+    "mae_std": 0.015297364856771018
+  },
+  "data_heavy": {
+    "description": "Data-heavy weighting (100:10:5)",
+    "r2_mean": -0.31872881812108556,
+    "r2_std": 1.1025547716763084,
+    "rmse_mean": 0.05723262953961598,
+    "rmse_std": 0.02470917771521478,
+    "mae_mean": 0.04297975209472018,
+    "mae_std": 0.015297364856771018
+  },
+  "physics_heavy": {
+    "description": "Physics-heavy weighting (1:200:10)",
+    "r2_mean": -0.31872881812108556,
+    "r2_std": 1.1025547716763084,
+    "rmse_mean": 0.05723262953961598,
+    "rmse_std": 0.02470917771521478,
+    "mae_mean": 0.04297975209472018,
+    "mae_std": 0.015297364856771018
+  }
+}

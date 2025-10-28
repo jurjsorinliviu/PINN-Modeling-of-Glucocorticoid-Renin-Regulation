@@ -1,0 +1,35 @@
+======================================================================
+ABSTRACT VALIDATION REPORT (DEEP ENSEMBLE)
+Physics-Informed Neural Networks for Modeling
+Glucocorticoid Regulation of Renin
+======================================================================
+1. PERFORMANCE METRICS
+----------------------------------------
+Deep Ensemble R^2: 0.8605 (Target: 0.873)
+ODE R^2: -0.2203 (Target: -0.220)
+Deep Ensemble RMSE: 0.0203 (Target: 0.0194)
+ODE RMSE: 0.0600 (Target: 0.0600)
+
+2. LEARNED PARAMETERS (DEEP ENSEMBLE)
+----------------------------------------
+IC50: 1.79 +/- 0.08 mg/dl (Target: 2.88 +/- 0.02)
+Hill: 1.22 +/- 0.05 (Target: 1.92 +/- 0.01)
+
+3. SENSITIVITY ANALYSIS
+----------------------------------------
+IC50 and Hill dominate: False
+Combined importance: 3.16%
+
+4. OPTIMAL TIME WINDOW
+----------------------------------------
+6-12h optimal: True
+Peak time: 48 hours
+
+5. SATURATION EFFECTS
+----------------------------------------
+Saturation detected: True
+
+======================================================================
+VALIDATION COMPLETE
+Report generated: 2025-10-22 16:41:36
+======================================================================

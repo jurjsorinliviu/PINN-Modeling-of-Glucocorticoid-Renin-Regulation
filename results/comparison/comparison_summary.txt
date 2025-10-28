@@ -1,0 +1,71 @@
+
+================================================================================
+ENSEMBLE CONFIGURATION COMPARISON
+================================================================================
+
+Configuration Details:
+---------------------
+Main Ensemble (SW=0.5):
+  - Members: 4 ✓ Sufficient for statistics
+  - Success rate: ~40%
+  - Focus: Robust accuracy with moderate parameter alignment
+
+Middle Ensemble (SW=0.3):
+  - Members: 5 ✓ Sufficient for statistics
+  - Success rate: ~50% (trained with 10 seeds)
+  - Focus: Balance between accuracy and parameter alignment
+
+Alternative Ensemble (SW=0.2):
+  - Members: 1 ⚠ INSUFFICIENT - single model could be outlier
+  - Success rate: ~20%
+  - Focus: Tightest parameter alignment (if representative)
+
+Model Accuracy Comparison:
+-------------------------
+                    Main         Middle       Alternative
+R² Score:          0.759        0.803        0.789
+RMSE:              0.027        0.024        0.025
+MAE:               0.025        0.022        0.023
+
+Parameter Alignment Comparison:
+-------------------------------
+                    Main                Middle              Alternative
+IC50 Gap:          0.050±0.008        0.045±0.012        0.041±0.000
+Hill Gap:          0.034±0.005        0.030±0.009        0.029±0.000
+Total Distance:    0.060            0.054            0.050
+
+Estimated Parameters:
+--------------------
+                    Main                Middle              Alternative           Target
+IC50 (nM):         2.9±0.0          2.9±0.0          2.9±0.0            17.8
+Hill Coefficient:  1.95±0.01          1.95±0.01          1.95±0.00            6.82
+
+Statistical Validity Assessment:
+-------------------------------
+Main Ensemble (n=4):    [VALID] - sufficient members for reliable statistics
+Middle Ensemble (n=5):   [VALID] - sufficient members for reliable statistics
+Alternative (n=1):        [INVALID] - single model insufficient for inference
+
+Key Findings:
+------------
+1. Success Rate vs Parameter Alignment Trade-off:
+   - SW=0.5: 40% success rate (4/10) → robust ensemble with moderate gaps
+   - SW=0.3: ~50% success rate (5/10) → balanced compromise
+   - SW=0.2: 20% success rate (1/5) → tightest gaps but insufficient sampling
+
+2. Statistical Confidence:
+   - Main ensemble: Mean/std reflect true sampling variability
+   - Middle ensemble: Can assess if gains are representative
+   - Alternative: SINGLE MODEL - could be lucky draw or outlier
+
+3. Recommendation:
+   [OK] Main ensemble (SW=0.5) - Use as baseline for paper
+   [OK] Middle ensemble (SW=0.3) - Promising if mean/std hold
+   [WARN] Alternative (SW=0.2) - Promising signal but needs >=20 seeds for 4+ passing models
+   
+   RATIONALE: Lower synthetic weights show better parameter alignment but lower
+   plausibility success rates. Need sufficient ensemble members to distinguish
+   signal from noise. Middle ground (SW=0.3) offers best compromise if success
+   rate reaches ~30-40%.
+
+================================================================================

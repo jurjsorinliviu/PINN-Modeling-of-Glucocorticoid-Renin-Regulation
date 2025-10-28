@@ -1,0 +1,26 @@
+\begin{table}[h]
+\centering
+\caption{Ensemble Configuration Comparison}
+\label{tab:ensemble_comparison}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Metric} & \textbf{Main} & \textbf{Middle} & \textbf{Alternative} \\
+ & (SW=0.5) & (SW=0.3) & (SW=0.2) \\
+ & (n=4) & (n=5) & (n=1) \\
+\midrule
+\textbf{Model Accuracy} & & \\
+R² Score & 0.759 & 0.803 & 0.789 \\
+RMSE & 0.027 & 0.024 & 0.025 \\
+MAE & 0.025 & 0.022 & 0.023 \\
+\midrule
+\textbf{Parameter Alignment} & & \\
+IC50 Gap (log) & 0.050±0.008 & 0.045±0.012 & 0.041±0.000 \\
+Hill Gap (log) & 0.034±0.005 & 0.030±0.009 & 0.029±0.000 \\
+Total Distance & 0.060 & 0.054 & 0.050 \\
+\midrule
+\textbf{Estimated Parameters} & & \\
+IC50 (nM) & 2.9±0.0 & 2.9±0.0 & 2.9±0.0 \\
+Hill Coefficient & 1.95±0.01 & 1.95±0.01 & 1.95±0.00 \\
+\bottomrule
+\end{tabular}
+\end{table}

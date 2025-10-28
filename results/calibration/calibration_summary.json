@@ -1,0 +1,1983 @@
+{
+  "constraint_sweep": [
+    {
+      "constraint_weight": 0.005,
+      "variant": 1,
+      "variant_params": {
+        "id": 1,
+        "loss_biological": 22.0,
+        "monotonic_gradient_weight": 8.0,
+        "synthetic_noise_std": 0.03,
+        "biological_ramp_fraction": 0.4,
+        "high_dose_weight": 18.0
+      },
+      "metrics": {
+        "r2": 0.7215107525463827,
+        "rmse": 0.02864734792727712,
+        "ic50": 2.9263758659362793,
+        "ic50_gap": 0.0463758659362794,
+        "hill": 1.9506728649139404,
+        "hill_gap": 0.0306728649139405
+      },
+      "parameters": {
+        "ic50": 2.9263758659362793,
+        "hill": 1.9506728649139404,
+        "ic50_gap": 0.0463758659362794,
+        "hill_gap": 0.0306728649139405
+      },
+      "plausibility": {
+        "all_passed": true,
+        "doses": {
+          "0.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "0.30000001192092896": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "3.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "30.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          }
+        }
+      },
+      "best_epoch": 475,
+      "final_loss": {
+        "total": 0.5119947195053101,
+        "data": 0.2821328639984131,
+        "physics": 4.658070974983275e-05,
+        "ic": 0.13232949376106262,
+        "params": 0.0030979791190475225,
+        "synthetic": 0.0,
+        "biological": 0.007429487071931362,
+        "biological_monotonic": 0.006225891411304474,
+        "biological_gradient": 4.4759718775821966e-07,
+        "biological_suppression": 1.276245075132465e-05,
+        "biological_temporal": 1.6711574346572888e-09,
+        "biological_highdose": 5.257385055301711e-05,
+        "physics_weight": 5.0
+      }
+    },
+    {
+      "constraint_weight": 0.01,
+      "variant": 1,
+      "variant_params": {
+        "id": 1,
+        "loss_biological": 22.0,
+        "monotonic_gradient_weight": 8.0,
+        "synthetic_noise_std": 0.03,
+        "biological_ramp_fraction": 0.4,
+        "high_dose_weight": 18.0
+      },
+      "metrics": {
+        "r2": -0.075669672374445,
+        "rmse": 0.056301461547563755,
+        "ic50": 2.925140380859375,
+        "ic50_gap": 0.04514038085937511,
+        "hill": 1.9510936737060547,
+        "hill_gap": 0.03109367370605476
+      },
+      "parameters": {
+        "ic50": 2.925140380859375,
+        "hill": 1.9510936737060547,
+        "ic50_gap": 0.04514038085937511,
+        "hill_gap": 0.03109367370605476
+      },
+      "plausibility": {
+        "all_passed": true,
+        "doses": {
+          "0.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "0.30000001192092896": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "3.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "30.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          }
+        }
+      },
+      "best_epoch": 359,
+      "final_loss": {
+        "total": 1.143873691558838,
+        "data": 0.7234979867935181,
+        "physics": 5.804832835565321e-05,
+        "ic": 0.1345379650592804,
+        "params": 0.003009726293385029,
+        "synthetic": 0.0,
+        "biological": 0.016035744920372963,
+        "biological_monotonic": 1.55232864926802e-05,
+        "biological_gradient": 1.523364545619188e-08,
+        "biological_suppression": 0.0,
+        "biological_temporal": 3.19876382326445e-11,
+        "biological_highdose": 0.0009143891511484981,
+        "physics_weight": 5.0
+      }
+    },
+    {
+      "constraint_weight": 0.02,
+      "variant": 1,
+      "variant_params": {
+        "id": 1,
+        "loss_biological": 22.0,
+        "monotonic_gradient_weight": 8.0,
+        "synthetic_noise_std": 0.03,
+        "biological_ramp_fraction": 0.4,
+        "high_dose_weight": 18.0
+      },
+      "metrics": {
+        "r2": 0.7023652332547645,
+        "rmse": 0.029615702363088355,
+        "ic50": 2.9146742820739746,
+        "ic50_gap": 0.034674282073974716,
+        "hill": 1.943497657775879,
+        "hill_gap": 0.023497657775878977
+      },
+      "parameters": {
+        "ic50": 2.9146742820739746,
+        "hill": 1.943497657775879,
+        "ic50_gap": 0.034674282073974716,
+        "hill_gap": 0.023497657775878977
+      },
+      "plausibility": {
+        "all_passed": false,
+        "doses": {
+          "0.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "0.30000001192092896": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "3.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "30.0": {
+            "passed": false,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": false
+            }
+          }
+        }
+      },
+      "best_epoch": 385,
+      "final_loss": {
+        "total": 0.5641518831253052,
+        "data": 0.2184244990348816,
+        "physics": 4.2742038203869015e-05,
+        "ic": 0.13224264979362488,
+        "params": 0.0017612157389521599,
+        "synthetic": 0.0,
+        "biological": 0.012698049657046795,
+        "biological_monotonic": 0.012088680639863014,
+        "biological_gradient": 5.119258617014566e-07,
+        "biological_suppression": 2.298419985891087e-06,
+        "biological_temporal": 7.69893815366629e-10,
+        "biological_highdose": 3.112405102001503e-05,
+        "physics_weight": 5.0
+      }
+    },
+    {
+      "constraint_weight": 0.04,
+      "variant": 1,
+      "variant_params": {
+        "id": 1,
+        "loss_biological": 22.0,
+        "monotonic_gradient_weight": 8.0,
+        "synthetic_noise_std": 0.03,
+        "biological_ramp_fraction": 0.4,
+        "high_dose_weight": 18.0
+      },
+      "metrics": {
+        "r2": 0.6859118780717064,
+        "rmse": 0.030423275009506246,
+        "ic50": 2.944317102432251,
+        "ic50_gap": 0.06431710243225108,
+        "hill": 1.9629404544830322,
+        "hill_gap": 0.0429404544830323
+      },
+      "parameters": {
+        "ic50": 2.944317102432251,
+        "hill": 1.9629404544830322,
+        "ic50_gap": 0.06431710243225108,
+        "hill_gap": 0.0429404544830323
+      },
+      "plausibility": {
+        "all_passed": false,
+        "doses": {
+          "0.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "0.30000001192092896": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "3.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "30.0": {
+            "passed": false,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": false
+            }
+          }
+        }
+      },
+      "best_epoch": 401,
+      "final_loss": {
+        "total": 0.5806155800819397,
+        "data": 0.2287515103816986,
+        "physics": 4.241424176143482e-05,
+        "ic": 0.13191479444503784,
+        "params": 0.0059845298528671265,
+        "synthetic": 0.0,
+        "biological": 0.012975238263607025,
+        "biological_monotonic": 0.004746649879962206,
+        "biological_gradient": 5.70129429888766e-07,
+        "biological_suppression": 7.710043973929714e-06,
+        "biological_temporal": 1.7881608416203676e-09,
+        "biological_highdose": 0.00044907134724780917,
+        "physics_weight": 5.0
+      }
+    },
+    {
+      "constraint_weight": 0.005,
+      "variant": 0,
+      "variant_params": {
+        "id": 0,
+        "loss_biological": 18.0,
+        "monotonic_gradient_weight": 6.0,
+        "synthetic_noise_std": 0.02,
+        "biological_ramp_fraction": 0.35,
+        "high_dose_weight": 15.0
+      },
+      "metrics": {
+        "r2": -0.3381945470755805,
+        "rmse": 0.06279713564803589,
+        "ic50": 2.928288698196411,
+        "ic50_gap": 0.04828869819641124,
+        "hill": 1.9532735347747803,
+        "hill_gap": 0.033273534774780344
+      },
+      "parameters": {
+        "ic50": 2.928288698196411,
+        "hill": 1.9532735347747803,
+        "ic50_gap": 0.04828869819641124,
+        "hill_gap": 0.033273534774780344
+      },
+      "plausibility": {
+        "all_passed": true,
+        "doses": {
+          "0.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "0.30000001192092896": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "3.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "30.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          }
+        }
+      },
+      "best_epoch": 400,
+      "final_loss": {
+        "total": 1.5893800258636475,
+        "data": 0.5528779625892639,
+        "physics": 5.484337089001201e-05,
+        "ic": 0.12735794484615326,
+        "params": 0.0034455512650310993,
+        "synthetic": 0.0,
+        "biological": 0.05402953922748566,
+        "biological_monotonic": 4.930799377689254e-07,
+        "biological_gradient": 6.043505607067345e-08,
+        "biological_suppression": 0.0,
+        "biological_temporal": 2.7889590636931416e-10,
+        "biological_highdose": 0.003607925260439515,
+        "physics_weight": 5.0
+      }
+    },
+    {
+      "constraint_weight": 0.01,
+      "variant": 0,
+      "variant_params": {
+        "id": 0,
+        "loss_biological": 18.0,
+        "monotonic_gradient_weight": 6.0,
+        "synthetic_noise_std": 0.02,
+        "biological_ramp_fraction": 0.35,
+        "high_dose_weight": 15.0
+      },
+      "metrics": {
+        "r2": 0.7221286374508871,
+        "rmse": 0.028615550302967918,
+        "ic50": 2.924438714981079,
+        "ic50_gap": 0.04443871498107921,
+        "hill": 1.9497977495193481,
+        "hill_gap": 0.029797749519348216
+      },
+      "parameters": {
+        "ic50": 2.924438714981079,
+        "hill": 1.9497977495193481,
+        "ic50_gap": 0.04443871498107921,
+        "hill_gap": 0.029797749519348216
+      },
+      "plausibility": {
+        "all_passed": false,
+        "doses": {
+          "0.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "0.30000001192092896": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "3.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "30.0": {
+            "passed": false,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": false
+            }
+          }
+        }
+      },
+      "best_epoch": 295,
+      "final_loss": {
+        "total": 0.5996055603027344,
+        "data": 0.31026631593704224,
+        "physics": 6.11908471910283e-05,
+        "ic": 0.13387128710746765,
+        "params": 0.002869947347790003,
+        "synthetic": 0.0,
+        "biological": 0.01233716495335102,
+        "biological_monotonic": 0.010935737751424313,
+        "biological_gradient": 5.664336981681117e-07,
+        "biological_suppression": 1.9374369003344327e-05,
+        "biological_temporal": 2.3361164114277244e-09,
+        "biological_highdose": 6.748070882167667e-05,
+        "physics_weight": 5.0
+      }
+    },
+    {
+      "constraint_weight": 0.02,
+      "variant": 0,
+      "variant_params": {
+        "id": 0,
+        "loss_biological": 18.0,
+        "monotonic_gradient_weight": 6.0,
+        "synthetic_noise_std": 0.02,
+        "biological_ramp_fraction": 0.35,
+        "high_dose_weight": 15.0
+      },
+      "metrics": {
+        "r2": 0.5424693138423805,
+        "rmse": 0.036718955633384565,
+        "ic50": 2.936555862426758,
+        "ic50_gap": 0.05655586242675792,
+        "hill": 1.9581395387649536,
+        "hill_gap": 0.038139538764953684
+      },
+      "parameters": {
+        "ic50": 2.936555862426758,
+        "hill": 1.9581395387649536,
+        "ic50_gap": 0.05655586242675792,
+        "hill_gap": 0.038139538764953684
+      },
+      "plausibility": {
+        "all_passed": false,
+        "doses": {
+          "0.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "0.30000001192092896": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "3.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "30.0": {
+            "passed": false,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": false
+            }
+          }
+        }
+      },
+      "best_epoch": 351,
+      "final_loss": {
+        "total": 0.5590582489967346,
+        "data": 0.30633610486984253,
+        "physics": 4.880872802459635e-05,
+        "ic": 0.13471688330173492,
+        "params": 0.004668618552386761,
+        "synthetic": 0.0,
+        "biological": 0.010279237292706966,
+        "biological_monotonic": 0.0028726335149258375,
+        "biological_gradient": 4.7543585424136836e-07,
+        "biological_suppression": 0.0,
+        "biological_temporal": 0.0,
+        "biological_highdose": 0.000514149374794215,
+        "physics_weight": 5.0
+      }
+    },
+    {
+      "constraint_weight": 0.04,
+      "variant": 0,
+      "variant_params": {
+        "id": 0,
+        "loss_biological": 18.0,
+        "monotonic_gradient_weight": 6.0,
+        "synthetic_noise_std": 0.02,
+        "biological_ramp_fraction": 0.35,
+        "high_dose_weight": 15.0
+      },
+      "metrics": {
+        "r2": 0.6882362945135698,
+        "rmse": 0.03031049188179246,
+        "ic50": 2.929112672805786,
+        "ic50_gap": 0.04911267280578624,
+        "hill": 1.9531091451644897,
+        "hill_gap": 0.03310914516448982
+      },
+      "parameters": {
+        "ic50": 2.929112672805786,
+        "hill": 1.9531091451644897,
+        "ic50_gap": 0.04911267280578624,
+        "hill_gap": 0.03310914516448982
+      },
+      "plausibility": {
+        "all_passed": false,
+        "doses": {
+          "0.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "0.30000001192092896": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "3.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "30.0": {
+            "passed": false,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": false
+            }
+          }
+        }
+      },
+      "best_epoch": 476,
+      "final_loss": {
+        "total": 0.7137265205383301,
+        "data": 0.3638584613800049,
+        "physics": 5.278860407997854e-05,
+        "ic": 0.13527774810791016,
+        "params": 0.003516530618071556,
+        "synthetic": 0.0,
+        "biological": 0.01565692387521267,
+        "biological_monotonic": 0.01056367065757513,
+        "biological_gradient": 5.768181949861173e-07,
+        "biological_suppression": 5.8552897826302797e-05,
+        "biological_temporal": 6.747062908374346e-09,
+        "biological_highdose": 0.0002616815036162734,
+        "physics_weight": 5.0
+      }
+    },
+    {
+      "constraint_weight": 0.005,
+      "variant": 2,
+      "variant_params": {
+        "id": 2,
+        "loss_biological": 32.0,
+        "monotonic_gradient_weight": 14.0,
+        "synthetic_noise_std": 0.05,
+        "biological_ramp_fraction": 0.45,
+        "high_dose_weight": 20.0
+      },
+      "metrics": {
+        "r2": 0.3185474908360918,
+        "rmse": 0.04481237941398292,
+        "ic50": 2.94018292427063,
+        "ic50_gap": 0.06018292427062999,
+        "hill": 1.9595115184783936,
+        "hill_gap": 0.039511518478393626
+      },
+      "parameters": {
+        "ic50": 2.94018292427063,
+        "hill": 1.9595115184783936,
+        "ic50_gap": 0.06018292427062999,
+        "hill_gap": 0.039511518478393626
+      },
+      "plausibility": {
+        "all_passed": false,
+        "doses": {
+          "0.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "0.30000001192092896": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "3.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "30.0": {
+            "passed": false,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": false
+            }
+          }
+        }
+      },
+      "best_epoch": 381,
+      "final_loss": {
+        "total": 1.4593403339385986,
+        "data": 0.3025285005569458,
+        "physics": 0.00016286165919154882,
+        "ic": 0.12853476405143738,
+        "params": 0.005192650482058525,
+        "synthetic": 0.0,
+        "biological": 0.0341157540678978,
+        "biological_monotonic": 0.005768822971731424,
+        "biological_gradient": 4.117262903946539e-07,
+        "biological_suppression": 0.0,
+        "biological_temporal": 1.4347092307590015e-12,
+        "biological_highdose": 0.0014194240793585777,
+        "physics_weight": 5.0
+      }
+    },
+    {
+      "constraint_weight": 0.01,
+      "variant": 2,
+      "variant_params": {
+        "id": 2,
+        "loss_biological": 32.0,
+        "monotonic_gradient_weight": 14.0,
+        "synthetic_noise_std": 0.05,
+        "biological_ramp_fraction": 0.45,
+        "high_dose_weight": 20.0
+      },
+      "metrics": {
+        "r2": -0.022294631135057807,
+        "rmse": 0.05488684240147251,
+        "ic50": 2.9481232166290283,
+        "ic50_gap": 0.06812321662902843,
+        "hill": 1.9656693935394287,
+        "hill_gap": 0.04566939353942878
+      },
+      "parameters": {
+        "ic50": 2.9481232166290283,
+        "hill": 1.9656693935394287,
+        "ic50_gap": 0.06812321662902843,
+        "hill_gap": 0.04566939353942878
+      },
+      "plausibility": {
+        "all_passed": true,
+        "doses": {
+          "0.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "0.30000001192092896": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "3.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "30.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          }
+        }
+      },
+      "best_epoch": 183,
+      "final_loss": {
+        "total": 1.0496711730957031,
+        "data": 0.95932936668396,
+        "physics": 4.601171531248838e-05,
+        "ic": 0.13866890966892242,
+        "params": 0.006734873633831739,
+        "synthetic": 0.0,
+        "biological": 0.0006471844390034676,
+        "biological_monotonic": 0.00014222014578990638,
+        "biological_gradient": 1.8633829768077703e-07,
+        "biological_suppression": 5.270124347589444e-06,
+        "biological_temporal": 2.832256429385893e-09,
+        "biological_highdose": 2.512217906769365e-05,
+        "physics_weight": 5.0
+      }
+    },
+    {
+      "constraint_weight": 0.02,
+      "variant": 2,
+      "variant_params": {
+        "id": 2,
+        "loss_biological": 32.0,
+        "monotonic_gradient_weight": 14.0,
+        "synthetic_noise_std": 0.05,
+        "biological_ramp_fraction": 0.45,
+        "high_dose_weight": 20.0
+      },
+      "metrics": {
+        "r2": 0.35239627899060555,
+        "rmse": 0.04368525494814491,
+        "ic50": 2.940453052520752,
+        "ic50_gap": 0.06045305252075206,
+        "hill": 1.9602645635604858,
+        "hill_gap": 0.04026456356048591
+      },
+      "parameters": {
+        "ic50": 2.940453052520752,
+        "hill": 1.9602645635604858,
+        "ic50_gap": 0.06045305252075206,
+        "hill_gap": 0.04026456356048591
+      },
+      "plausibility": {
+        "all_passed": true,
+        "doses": {
+          "0.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "0.30000001192092896": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "3.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "30.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          }
+        }
+      },
+      "best_epoch": 449,
+      "final_loss": {
+        "total": 0.8029540777206421,
+        "data": 0.6107104420661926,
+        "physics": 4.8792120651341975e-05,
+        "ic": 0.13689714670181274,
+        "params": 0.005279081873595715,
+        "synthetic": 0.0,
+        "biological": 0.003857674775645137,
+        "biological_monotonic": 0.0021554536651819944,
+        "biological_gradient": 3.0475763423964963e-07,
+        "biological_suppression": 2.0663665054598823e-05,
+        "biological_temporal": 3.316755980975472e-09,
+        "biological_highdose": 6.433996895793825e-05,
+        "physics_weight": 5.0
+      }
+    },
+    {
+      "constraint_weight": 0.04,
+      "variant": 2,
+      "variant_params": {
+        "id": 2,
+        "loss_biological": 32.0,
+        "monotonic_gradient_weight": 14.0,
+        "synthetic_noise_std": 0.05,
+        "biological_ramp_fraction": 0.45,
+        "high_dose_weight": 20.0
+      },
+      "metrics": {
+        "r2": -0.05521329918547235,
+        "rmse": 0.055763539864229245,
+        "ic50": 2.9370782375335693,
+        "ic50_gap": 0.05707823753356944,
+        "hill": 1.9581671953201294,
+        "hill_gap": 0.038167195320129466
+      },
+      "parameters": {
+        "ic50": 2.9370782375335693,
+        "hill": 1.9581671953201294,
+        "ic50_gap": 0.05707823753356944,
+        "hill_gap": 0.038167195320129466
+      },
+      "plausibility": {
+        "all_passed": true,
+        "doses": {
+          "0.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "0.30000001192092896": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "3.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "30.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          }
+        }
+      },
+      "best_epoch": 67,
+      "final_loss": {
+        "total": 1.0714423656463623,
+        "data": 0.827178418636322,
+        "physics": 2.6552788767730817e-05,
+        "ic": 0.13508936762809753,
+        "params": 0.0047208270989358425,
+        "synthetic": 0.0,
+        "biological": 0.005512428004294634,
+        "biological_monotonic": 8.606884875916876e-06,
+        "biological_gradient": 2.5474700127148253e-09,
+        "biological_suppression": 8.468261398775212e-07,
+        "biological_temporal": 2.986416391959068e-10,
+        "biological_highdose": 0.0003472687676548958,
+        "physics_weight": 5.0
+      }
+    }
+  ],
+  "best_constraint": {
+    "constraint_weight": 0.005,
+    "variant": 1,
+    "variant_params": {
+      "id": 1,
+      "loss_biological": 22.0,
+      "monotonic_gradient_weight": 8.0,
+      "synthetic_noise_std": 0.03,
+      "biological_ramp_fraction": 0.4,
+      "high_dose_weight": 18.0
+    },
+    "metrics": {
+      "r2": 0.7215107525463827,
+      "rmse": 0.02864734792727712,
+      "ic50": 2.9263758659362793,
+      "ic50_gap": 0.0463758659362794,
+      "hill": 1.9506728649139404,
+      "hill_gap": 0.0306728649139405
+    },
+    "parameters": {
+      "ic50": 2.9263758659362793,
+      "hill": 1.9506728649139404,
+      "ic50_gap": 0.0463758659362794,
+      "hill_gap": 0.0306728649139405
+    },
+    "plausibility": {
+      "all_passed": true,
+      "doses": {
+        "0.0": {
+          "passed": true,
+          "checks": {
+            "non_negative": true,
+            "bounded": true,
+            "smooth": true,
+            "steady_state": true,
+            "suppression": true,
+            "dose_suppression": true
+          }
+        },
+        "0.30000001192092896": {
+          "passed": true,
+          "checks": {
+            "non_negative": true,
+            "bounded": true,
+            "smooth": true,
+            "steady_state": true,
+            "suppression": true,
+            "dose_suppression": true
+          }
+        },
+        "3.0": {
+          "passed": true,
+          "checks": {
+            "non_negative": true,
+            "bounded": true,
+            "smooth": true,
+            "steady_state": true,
+            "suppression": true,
+            "dose_suppression": true
+          }
+        },
+        "30.0": {
+          "passed": true,
+          "checks": {
+            "non_negative": true,
+            "bounded": true,
+            "smooth": true,
+            "steady_state": true,
+            "suppression": true,
+            "dose_suppression": true
+          }
+        }
+      }
+    },
+    "best_epoch": 475,
+    "final_loss": {
+      "total": 0.5119947195053101,
+      "data": 0.2821328639984131,
+      "physics": 4.658070974983275e-05,
+      "ic": 0.13232949376106262,
+      "params": 0.0030979791190475225,
+      "synthetic": 0.0,
+      "biological": 0.007429487071931362,
+      "biological_monotonic": 0.006225891411304474,
+      "biological_gradient": 4.4759718775821966e-07,
+      "biological_suppression": 1.276245075132465e-05,
+      "biological_temporal": 1.6711574346572888e-09,
+      "biological_highdose": 5.257385055301711e-05,
+      "physics_weight": 5.0
+    }
+  },
+  "synthetic_sweep": [
+    {
+      "synthetic_weight": 0.0,
+      "variant": 1,
+      "variant_params": {
+        "id": 1,
+        "loss_biological": 22.0,
+        "monotonic_gradient_weight": 8.0,
+        "synthetic_noise_std": 0.03,
+        "biological_ramp_fraction": 0.4,
+        "high_dose_weight": 18.0
+      },
+      "metrics": {
+        "r2": 0.05218101838241951,
+        "rmse": 0.05284974641776001,
+        "ic50": 2.9356236457824707,
+        "ic50_gap": 0.05562364578247081,
+        "hill": 1.9585378170013428,
+        "hill_gap": 0.038537817001342844
+      },
+      "plausibility": {
+        "all_passed": true,
+        "doses": {
+          "0.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "0.30000001192092896": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "3.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "30.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          }
+        }
+      },
+      "best_epoch": 268,
+      "final_loss": {
+        "total": 1.3047897815704346,
+        "data": 0.4870032072067261,
+        "physics": 0.00023339031031355262,
+        "ic": 0.12990203499794006,
+        "params": 0.004592284560203552,
+        "synthetic": 0.0,
+        "biological": 0.03416571021080017,
+        "biological_monotonic": 5.070284896646626e-05,
+        "biological_gradient": 1.043058475147518e-07,
+        "biological_suppression": 3.503449613750931e-11,
+        "biological_temporal": 6.857892587142089e-10,
+        "biological_highdose": 0.0023065698333084583,
+        "physics_weight": 5.0
+      }
+    },
+    {
+      "synthetic_weight": 0.1,
+      "variant": 1,
+      "variant_params": {
+        "id": 1,
+        "loss_biological": 22.0,
+        "monotonic_gradient_weight": 8.0,
+        "synthetic_noise_std": 0.03,
+        "biological_ramp_fraction": 0.4,
+        "high_dose_weight": 18.0
+      },
+      "metrics": {
+        "r2": 0.6354493374702032,
+        "rmse": 0.032776241643589187,
+        "ic50": 2.9360876083374023,
+        "ic50_gap": 0.05608760833740245,
+        "hill": 1.9579752683639526,
+        "hill_gap": 0.03797526836395271
+      },
+      "plausibility": {
+        "all_passed": false,
+        "doses": {
+          "0.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "0.30000001192092896": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "3.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "30.0": {
+            "passed": false,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": false
+            }
+          }
+        }
+      },
+      "best_epoch": 316,
+      "final_loss": {
+        "total": 0.7474790811538696,
+        "data": 0.189364492893219,
+        "physics": 6.723924889229238e-05,
+        "ic": 0.13175559043884277,
+        "params": 0.004598596598953009,
+        "synthetic": 0.2200678586959839,
+        "biological": 0.021357765421271324,
+        "biological_monotonic": 0.007232338655740023,
+        "biological_gradient": 6.620888370889588e-07,
+        "biological_suppression": 7.538300792475638e-07,
+        "biological_temporal": 3.562614370178352e-10,
+        "biological_highdose": 0.0008690727991051972,
+        "physics_weight": 5.0
+      }
+    },
+    {
+      "synthetic_weight": 0.2,
+      "variant": 1,
+      "variant_params": {
+        "id": 1,
+        "loss_biological": 22.0,
+        "monotonic_gradient_weight": 8.0,
+        "synthetic_noise_std": 0.03,
+        "biological_ramp_fraction": 0.4,
+        "high_dose_weight": 18.0
+      },
+      "metrics": {
+        "r2": 0.69078881649196,
+        "rmse": 0.030186155393467588,
+        "ic50": 2.9329869747161865,
+        "ic50_gap": 0.05298697471618663,
+        "hill": 1.9552843570709229,
+        "hill_gap": 0.03528435707092292
+      },
+      "plausibility": {
+        "all_passed": true,
+        "doses": {
+          "0.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "0.30000001192092896": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "3.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "30.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          }
+        }
+      },
+      "best_epoch": 486,
+      "final_loss": {
+        "total": 0.7705966830253601,
+        "data": 0.19941535592079163,
+        "physics": 2.915237200795673e-05,
+        "ic": 0.1268567591905594,
+        "params": 0.004064484499394894,
+        "synthetic": 0.16300004720687866,
+        "biological": 0.02159031108021736,
+        "biological_monotonic": 0.003457744373008609,
+        "biological_gradient": 4.0914233068178874e-07,
+        "biological_suppression": 1.12946063381969e-05,
+        "biological_temporal": 3.7151688392356164e-09,
+        "biological_highdose": 0.0009962923359125853,
+        "physics_weight": 5.0
+      }
+    },
+    {
+      "synthetic_weight": 0.5,
+      "variant": 1,
+      "variant_params": {
+        "id": 1,
+        "loss_biological": 22.0,
+        "monotonic_gradient_weight": 8.0,
+        "synthetic_noise_std": 0.03,
+        "biological_ramp_fraction": 0.4,
+        "high_dose_weight": 18.0
+      },
+      "metrics": {
+        "r2": 0.7063919278200841,
+        "rmse": 0.029414685047603237,
+        "ic50": 2.9458632469177246,
+        "ic50_gap": 0.06586324691772472,
+        "hill": 1.9656774997711182,
+        "hill_gap": 0.045677499771118235
+      },
+      "plausibility": {
+        "all_passed": true,
+        "doses": {
+          "0.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "0.30000001192092896": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "3.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "30.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          }
+        }
+      },
+      "best_epoch": 467,
+      "final_loss": {
+        "total": 0.7182551622390747,
+        "data": 0.23446522653102875,
+        "physics": 0.00010656558879418299,
+        "ic": 0.12873080372810364,
+        "params": 0.006432618945837021,
+        "synthetic": 0.18125921487808228,
+        "biological": 0.014919545501470566,
+        "biological_monotonic": 0.003804445033892989,
+        "biological_gradient": 5.3222919405016e-07,
+        "biological_suppression": 6.699762707285117e-06,
+        "biological_temporal": 1.2062761900466512e-09,
+        "biological_highdose": 0.0006108423694968224,
+        "physics_weight": 5.0
+      }
+    }
+  ],
+  "best_synthetic": {
+    "synthetic_weight": 0.5,
+    "variant": 1,
+    "variant_params": {
+      "id": 1,
+      "loss_biological": 22.0,
+      "monotonic_gradient_weight": 8.0,
+      "synthetic_noise_std": 0.03,
+      "biological_ramp_fraction": 0.4,
+      "high_dose_weight": 18.0
+    },
+    "metrics": {
+      "r2": 0.7063919278200841,
+      "rmse": 0.029414685047603237,
+      "ic50": 2.9458632469177246,
+      "ic50_gap": 0.06586324691772472,
+      "hill": 1.9656774997711182,
+      "hill_gap": 0.045677499771118235
+    },
+    "plausibility": {
+      "all_passed": true,
+      "doses": {
+        "0.0": {
+          "passed": true,
+          "checks": {
+            "non_negative": true,
+            "bounded": true,
+            "smooth": true,
+            "steady_state": true,
+            "suppression": true,
+            "dose_suppression": true
+          }
+        },
+        "0.30000001192092896": {
+          "passed": true,
+          "checks": {
+            "non_negative": true,
+            "bounded": true,
+            "smooth": true,
+            "steady_state": true,
+            "suppression": true,
+            "dose_suppression": true
+          }
+        },
+        "3.0": {
+          "passed": true,
+          "checks": {
+            "non_negative": true,
+            "bounded": true,
+            "smooth": true,
+            "steady_state": true,
+            "suppression": true,
+            "dose_suppression": true
+          }
+        },
+        "30.0": {
+          "passed": true,
+          "checks": {
+            "non_negative": true,
+            "bounded": true,
+            "smooth": true,
+            "steady_state": true,
+            "suppression": true,
+            "dose_suppression": true
+          }
+        }
+      }
+    },
+    "best_epoch": 467,
+    "final_loss": {
+      "total": 0.7182551622390747,
+      "data": 0.23446522653102875,
+      "physics": 0.00010656558879418299,
+      "ic": 0.12873080372810364,
+      "params": 0.006432618945837021,
+      "synthetic": 0.18125921487808228,
+      "biological": 0.014919545501470566,
+      "biological_monotonic": 0.003804445033892989,
+      "biological_gradient": 5.3222919405016e-07,
+      "biological_suppression": 6.699762707285117e-06,
+      "biological_temporal": 1.2062761900466512e-09,
+      "biological_highdose": 0.0006108423694968224,
+      "physics_weight": 5.0
+    }
+  },
+  "pretraining_sweep": [
+    {
+      "pretraining_epochs": 0,
+      "variant": 1,
+      "variant_params": {
+        "id": 1,
+        "loss_biological": 22.0,
+        "monotonic_gradient_weight": 8.0,
+        "synthetic_noise_std": 0.03,
+        "biological_ramp_fraction": 0.4,
+        "high_dose_weight": 18.0
+      },
+      "parameters_after_pretraining": null,
+      "final_metrics": {
+        "r2": 0.743570109816035,
+        "rmse": 0.027489353748290105,
+        "ic50": 2.9268479347229004,
+        "ic50_gap": 0.0468479347229005,
+        "hill": 1.9505947828292847,
+        "hill_gap": 0.03059478282928474
+      },
+      "final_parameters": {
+        "ic50": 2.9268479347229004,
+        "hill": 1.9505947828292847,
+        "ic50_gap": 0.0468479347229005,
+        "hill_gap": 0.03059478282928474
+      },
+      "plausibility": {
+        "all_passed": true,
+        "doses": {
+          "0.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "0.30000001192092896": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "3.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "30.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          }
+        }
+      },
+      "best_epoch": 897,
+      "stop_reason": null
+    },
+    {
+      "pretraining_epochs": 250,
+      "variant": 1,
+      "variant_params": {
+        "id": 1,
+        "loss_biological": 22.0,
+        "monotonic_gradient_weight": 8.0,
+        "synthetic_noise_std": 0.03,
+        "biological_ramp_fraction": 0.4,
+        "high_dose_weight": 18.0
+      },
+      "parameters_after_pretraining": {
+        "ic50": 2.9327056407928467,
+        "hill": 1.955149531364441,
+        "ic50_gap": 0.052705640792846786,
+        "hill_gap": 0.03514953136444099
+      },
+      "final_metrics": {
+        "r2": 0.6087313029429875,
+        "rmse": 0.03395609648464818,
+        "ic50": 2.9028971195220947,
+        "ic50_gap": 0.022897119522094833,
+        "hill": 1.9352736473083496,
+        "hill_gap": 0.01527364730834968
+      },
+      "final_parameters": {
+        "ic50": 2.9028971195220947,
+        "hill": 1.9352736473083496,
+        "ic50_gap": 0.022897119522094833,
+        "hill_gap": 0.01527364730834968
+      },
+      "plausibility": {
+        "all_passed": true,
+        "doses": {
+          "0.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "0.30000001192092896": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "3.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "30.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          }
+        }
+      },
+      "best_epoch": 249,
+      "stop_reason": null
+    },
+    {
+      "pretraining_epochs": 500,
+      "variant": 1,
+      "variant_params": {
+        "id": 1,
+        "loss_biological": 22.0,
+        "monotonic_gradient_weight": 8.0,
+        "synthetic_noise_std": 0.03,
+        "biological_ramp_fraction": 0.4,
+        "high_dose_weight": 18.0
+      },
+      "parameters_after_pretraining": {
+        "ic50": 2.928622245788574,
+        "hill": 1.952422022819519,
+        "ic50_gap": 0.048622245788574325,
+        "hill_gap": 0.032422022819519114
+      },
+      "final_metrics": {
+        "r2": 0.9497204075099093,
+        "rmse": 0.012172396246167125,
+        "ic50": 2.9116055965423584,
+        "ic50_gap": 0.031605596542358505,
+        "hill": 1.9410783052444458,
+        "hill_gap": 0.021078305244445872
+      },
+      "final_parameters": {
+        "ic50": 2.9116055965423584,
+        "hill": 1.9410783052444458,
+        "ic50_gap": 0.031605596542358505,
+        "hill_gap": 0.021078305244445872
+      },
+      "plausibility": {
+        "all_passed": false,
+        "doses": {
+          "0.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "0.30000001192092896": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "3.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "30.0": {
+            "passed": false,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": false
+            }
+          }
+        }
+      },
+      "best_epoch": 437,
+      "stop_reason": "plausibility checks failed repeatedly"
+    }
+  ],
+  "best_pretraining": {
+    "pretraining_epochs": 0,
+    "variant": 1,
+    "variant_params": {
+      "id": 1,
+      "loss_biological": 22.0,
+      "monotonic_gradient_weight": 8.0,
+      "synthetic_noise_std": 0.03,
+      "biological_ramp_fraction": 0.4,
+      "high_dose_weight": 18.0
+    },
+    "parameters_after_pretraining": null,
+    "final_metrics": {
+      "r2": 0.743570109816035,
+      "rmse": 0.027489353748290105,
+      "ic50": 2.9268479347229004,
+      "ic50_gap": 0.0468479347229005,
+      "hill": 1.9505947828292847,
+      "hill_gap": 0.03059478282928474
+    },
+    "final_parameters": {
+      "ic50": 2.9268479347229004,
+      "hill": 1.9505947828292847,
+      "ic50_gap": 0.0468479347229005,
+      "hill_gap": 0.03059478282928474
+    },
+    "plausibility": {
+      "all_passed": true,
+      "doses": {
+        "0.0": {
+          "passed": true,
+          "checks": {
+            "non_negative": true,
+            "bounded": true,
+            "smooth": true,
+            "steady_state": true,
+            "suppression": true,
+            "dose_suppression": true
+          }
+        },
+        "0.30000001192092896": {
+          "passed": true,
+          "checks": {
+            "non_negative": true,
+            "bounded": true,
+            "smooth": true,
+            "steady_state": true,
+            "suppression": true,
+            "dose_suppression": true
+          }
+        },
+        "3.0": {
+          "passed": true,
+          "checks": {
+            "non_negative": true,
+            "bounded": true,
+            "smooth": true,
+            "steady_state": true,
+            "suppression": true,
+            "dose_suppression": true
+          }
+        },
+        "30.0": {
+          "passed": true,
+          "checks": {
+            "non_negative": true,
+            "bounded": true,
+            "smooth": true,
+            "steady_state": true,
+            "suppression": true,
+            "dose_suppression": true
+          }
+        }
+      }
+    },
+    "best_epoch": 897,
+    "stop_reason": null
+  },
+  "variants": [
+    {
+      "id": 1,
+      "loss_biological": 22.0,
+      "monotonic_gradient_weight": 8.0,
+      "synthetic_noise_std": 0.03,
+      "biological_ramp_fraction": 0.4,
+      "high_dose_weight": 18.0
+    },
+    {
+      "id": 0,
+      "loss_biological": 18.0,
+      "monotonic_gradient_weight": 6.0,
+      "synthetic_noise_std": 0.02,
+      "biological_ramp_fraction": 0.35,
+      "high_dose_weight": 15.0
+    },
+    {
+      "id": 2,
+      "loss_biological": 32.0,
+      "monotonic_gradient_weight": 14.0,
+      "synthetic_noise_std": 0.05,
+      "biological_ramp_fraction": 0.45,
+      "high_dose_weight": 20.0
+    }
+  ],
+  "selected_weights": {
+    "constraint": 0.005,
+    "synthetic": 0.5,
+    "variant": 1
+  },
+  "selected_configuration": {
+    "constraint_weight": 0.005,
+    "synthetic_weight": 0.5,
+    "pretraining_epochs": 0,
+    "variant": 1,
+    "variant_params": {
+      "id": 1,
+      "loss_biological": 22.0,
+      "monotonic_gradient_weight": 8.0,
+      "synthetic_noise_std": 0.03,
+      "biological_ramp_fraction": 0.4,
+      "high_dose_weight": 18.0
+    }
+  }
+}

@@ -1,0 +1,4295 @@
+{
+  "n_members": 4,
+  "hyperparameters": {
+    "constraint_weight": 0.005,
+    "synthetic_weight": 0.5,
+    "epochs": 1400,
+    "variant": 1,
+    "variant_params": {
+      "id": 1,
+      "loss_biological": 22.0,
+      "monotonic_gradient_weight": 8.0,
+      "synthetic_noise_std": 0.03,
+      "biological_ramp_fraction": 0.4,
+      "high_dose_weight": 18.0
+    }
+  },
+  "calibration_summary": {
+    "constraint_sweep": [
+      {
+        "constraint_weight": 0.005,
+        "variant": 1,
+        "variant_params": {
+          "id": 1,
+          "loss_biological": 22.0,
+          "monotonic_gradient_weight": 8.0,
+          "synthetic_noise_std": 0.03,
+          "biological_ramp_fraction": 0.4,
+          "high_dose_weight": 18.0
+        },
+        "metrics": {
+          "r2": 0.7215107525463827,
+          "rmse": 0.02864734792727712,
+          "ic50": 2.9263758659362793,
+          "ic50_gap": 0.0463758659362794,
+          "hill": 1.9506728649139404,
+          "hill_gap": 0.0306728649139405
+        },
+        "parameters": {
+          "ic50": 2.9263758659362793,
+          "hill": 1.9506728649139404,
+          "ic50_gap": 0.0463758659362794,
+          "hill_gap": 0.0306728649139405
+        },
+        "plausibility": {
+          "all_passed": true,
+          "doses": {
+            "0.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "0.30000001192092896": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "3.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "30.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            }
+          }
+        },
+        "best_epoch": 475,
+        "final_loss": {
+          "total": 0.5119947195053101,
+          "data": 0.2821328639984131,
+          "physics": 4.658070974983275e-05,
+          "ic": 0.13232949376106262,
+          "params": 0.0030979791190475225,
+          "synthetic": 0.0,
+          "biological": 0.007429487071931362,
+          "biological_monotonic": 0.006225891411304474,
+          "biological_gradient": 4.4759718775821966e-07,
+          "biological_suppression": 1.276245075132465e-05,
+          "biological_temporal": 1.6711574346572888e-09,
+          "biological_highdose": 5.257385055301711e-05,
+          "physics_weight": 5.0
+        }
+      },
+      {
+        "constraint_weight": 0.01,
+        "variant": 1,
+        "variant_params": {
+          "id": 1,
+          "loss_biological": 22.0,
+          "monotonic_gradient_weight": 8.0,
+          "synthetic_noise_std": 0.03,
+          "biological_ramp_fraction": 0.4,
+          "high_dose_weight": 18.0
+        },
+        "metrics": {
+          "r2": -0.075669672374445,
+          "rmse": 0.056301461547563755,
+          "ic50": 2.925140380859375,
+          "ic50_gap": 0.04514038085937511,
+          "hill": 1.9510936737060547,
+          "hill_gap": 0.03109367370605476
+        },
+        "parameters": {
+          "ic50": 2.925140380859375,
+          "hill": 1.9510936737060547,
+          "ic50_gap": 0.04514038085937511,
+          "hill_gap": 0.03109367370605476
+        },
+        "plausibility": {
+          "all_passed": true,
+          "doses": {
+            "0.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "0.30000001192092896": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "3.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "30.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            }
+          }
+        },
+        "best_epoch": 359,
+        "final_loss": {
+          "total": 1.143873691558838,
+          "data": 0.7234979867935181,
+          "physics": 5.804832835565321e-05,
+          "ic": 0.1345379650592804,
+          "params": 0.003009726293385029,
+          "synthetic": 0.0,
+          "biological": 0.016035744920372963,
+          "biological_monotonic": 1.55232864926802e-05,
+          "biological_gradient": 1.523364545619188e-08,
+          "biological_suppression": 0.0,
+          "biological_temporal": 3.19876382326445e-11,
+          "biological_highdose": 0.0009143891511484981,
+          "physics_weight": 5.0
+        }
+      },
+      {
+        "constraint_weight": 0.02,
+        "variant": 1,
+        "variant_params": {
+          "id": 1,
+          "loss_biological": 22.0,
+          "monotonic_gradient_weight": 8.0,
+          "synthetic_noise_std": 0.03,
+          "biological_ramp_fraction": 0.4,
+          "high_dose_weight": 18.0
+        },
+        "metrics": {
+          "r2": 0.7023652332547645,
+          "rmse": 0.029615702363088355,
+          "ic50": 2.9146742820739746,
+          "ic50_gap": 0.034674282073974716,
+          "hill": 1.943497657775879,
+          "hill_gap": 0.023497657775878977
+        },
+        "parameters": {
+          "ic50": 2.9146742820739746,
+          "hill": 1.943497657775879,
+          "ic50_gap": 0.034674282073974716,
+          "hill_gap": 0.023497657775878977
+        },
+        "plausibility": {
+          "all_passed": false,
+          "doses": {
+            "0.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "0.30000001192092896": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "3.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "30.0": {
+              "passed": false,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": false
+              }
+            }
+          }
+        },
+        "best_epoch": 385,
+        "final_loss": {
+          "total": 0.5641518831253052,
+          "data": 0.2184244990348816,
+          "physics": 4.2742038203869015e-05,
+          "ic": 0.13224264979362488,
+          "params": 0.0017612157389521599,
+          "synthetic": 0.0,
+          "biological": 0.012698049657046795,
+          "biological_monotonic": 0.012088680639863014,
+          "biological_gradient": 5.119258617014566e-07,
+          "biological_suppression": 2.298419985891087e-06,
+          "biological_temporal": 7.69893815366629e-10,
+          "biological_highdose": 3.112405102001503e-05,
+          "physics_weight": 5.0
+        }
+      },
+      {
+        "constraint_weight": 0.04,
+        "variant": 1,
+        "variant_params": {
+          "id": 1,
+          "loss_biological": 22.0,
+          "monotonic_gradient_weight": 8.0,
+          "synthetic_noise_std": 0.03,
+          "biological_ramp_fraction": 0.4,
+          "high_dose_weight": 18.0
+        },
+        "metrics": {
+          "r2": 0.6859118780717064,
+          "rmse": 0.030423275009506246,
+          "ic50": 2.944317102432251,
+          "ic50_gap": 0.06431710243225108,
+          "hill": 1.9629404544830322,
+          "hill_gap": 0.0429404544830323
+        },
+        "parameters": {
+          "ic50": 2.944317102432251,
+          "hill": 1.9629404544830322,
+          "ic50_gap": 0.06431710243225108,
+          "hill_gap": 0.0429404544830323
+        },
+        "plausibility": {
+          "all_passed": false,
+          "doses": {
+            "0.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "0.30000001192092896": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "3.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "30.0": {
+              "passed": false,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": false
+              }
+            }
+          }
+        },
+        "best_epoch": 401,
+        "final_loss": {
+          "total": 0.5806155800819397,
+          "data": 0.2287515103816986,
+          "physics": 4.241424176143482e-05,
+          "ic": 0.13191479444503784,
+          "params": 0.0059845298528671265,
+          "synthetic": 0.0,
+          "biological": 0.012975238263607025,
+          "biological_monotonic": 0.004746649879962206,
+          "biological_gradient": 5.70129429888766e-07,
+          "biological_suppression": 7.710043973929714e-06,
+          "biological_temporal": 1.7881608416203676e-09,
+          "biological_highdose": 0.00044907134724780917,
+          "physics_weight": 5.0
+        }
+      },
+      {
+        "constraint_weight": 0.005,
+        "variant": 0,
+        "variant_params": {
+          "id": 0,
+          "loss_biological": 18.0,
+          "monotonic_gradient_weight": 6.0,
+          "synthetic_noise_std": 0.02,
+          "biological_ramp_fraction": 0.35,
+          "high_dose_weight": 15.0
+        },
+        "metrics": {
+          "r2": -0.3381945470755805,
+          "rmse": 0.06279713564803589,
+          "ic50": 2.928288698196411,
+          "ic50_gap": 0.04828869819641124,
+          "hill": 1.9532735347747803,
+          "hill_gap": 0.033273534774780344
+        },
+        "parameters": {
+          "ic50": 2.928288698196411,
+          "hill": 1.9532735347747803,
+          "ic50_gap": 0.04828869819641124,
+          "hill_gap": 0.033273534774780344
+        },
+        "plausibility": {
+          "all_passed": true,
+          "doses": {
+            "0.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "0.30000001192092896": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "3.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "30.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            }
+          }
+        },
+        "best_epoch": 400,
+        "final_loss": {
+          "total": 1.5893800258636475,
+          "data": 0.5528779625892639,
+          "physics": 5.484337089001201e-05,
+          "ic": 0.12735794484615326,
+          "params": 0.0034455512650310993,
+          "synthetic": 0.0,
+          "biological": 0.05402953922748566,
+          "biological_monotonic": 4.930799377689254e-07,
+          "biological_gradient": 6.043505607067345e-08,
+          "biological_suppression": 0.0,
+          "biological_temporal": 2.7889590636931416e-10,
+          "biological_highdose": 0.003607925260439515,
+          "physics_weight": 5.0
+        }
+      },
+      {
+        "constraint_weight": 0.01,
+        "variant": 0,
+        "variant_params": {
+          "id": 0,
+          "loss_biological": 18.0,
+          "monotonic_gradient_weight": 6.0,
+          "synthetic_noise_std": 0.02,
+          "biological_ramp_fraction": 0.35,
+          "high_dose_weight": 15.0
+        },
+        "metrics": {
+          "r2": 0.7221286374508871,
+          "rmse": 0.028615550302967918,
+          "ic50": 2.924438714981079,
+          "ic50_gap": 0.04443871498107921,
+          "hill": 1.9497977495193481,
+          "hill_gap": 0.029797749519348216
+        },
+        "parameters": {
+          "ic50": 2.924438714981079,
+          "hill": 1.9497977495193481,
+          "ic50_gap": 0.04443871498107921,
+          "hill_gap": 0.029797749519348216
+        },
+        "plausibility": {
+          "all_passed": false,
+          "doses": {
+            "0.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "0.30000001192092896": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "3.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "30.0": {
+              "passed": false,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": false
+              }
+            }
+          }
+        },
+        "best_epoch": 295,
+        "final_loss": {
+          "total": 0.5996055603027344,
+          "data": 0.31026631593704224,
+          "physics": 6.11908471910283e-05,
+          "ic": 0.13387128710746765,
+          "params": 0.002869947347790003,
+          "synthetic": 0.0,
+          "biological": 0.01233716495335102,
+          "biological_monotonic": 0.010935737751424313,
+          "biological_gradient": 5.664336981681117e-07,
+          "biological_suppression": 1.9374369003344327e-05,
+          "biological_temporal": 2.3361164114277244e-09,
+          "biological_highdose": 6.748070882167667e-05,
+          "physics_weight": 5.0
+        }
+      },
+      {
+        "constraint_weight": 0.02,
+        "variant": 0,
+        "variant_params": {
+          "id": 0,
+          "loss_biological": 18.0,
+          "monotonic_gradient_weight": 6.0,
+          "synthetic_noise_std": 0.02,
+          "biological_ramp_fraction": 0.35,
+          "high_dose_weight": 15.0
+        },
+        "metrics": {
+          "r2": 0.5424693138423805,
+          "rmse": 0.036718955633384565,
+          "ic50": 2.936555862426758,
+          "ic50_gap": 0.05655586242675792,
+          "hill": 1.9581395387649536,
+          "hill_gap": 0.038139538764953684
+        },
+        "parameters": {
+          "ic50": 2.936555862426758,
+          "hill": 1.9581395387649536,
+          "ic50_gap": 0.05655586242675792,
+          "hill_gap": 0.038139538764953684
+        },
+        "plausibility": {
+          "all_passed": false,
+          "doses": {
+            "0.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "0.30000001192092896": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "3.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "30.0": {
+              "passed": false,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": false
+              }
+            }
+          }
+        },
+        "best_epoch": 351,
+        "final_loss": {
+          "total": 0.5590582489967346,
+          "data": 0.30633610486984253,
+          "physics": 4.880872802459635e-05,
+          "ic": 0.13471688330173492,
+          "params": 0.004668618552386761,
+          "synthetic": 0.0,
+          "biological": 0.010279237292706966,
+          "biological_monotonic": 0.0028726335149258375,
+          "biological_gradient": 4.7543585424136836e-07,
+          "biological_suppression": 0.0,
+          "biological_temporal": 0.0,
+          "biological_highdose": 0.000514149374794215,
+          "physics_weight": 5.0
+        }
+      },
+      {
+        "constraint_weight": 0.04,
+        "variant": 0,
+        "variant_params": {
+          "id": 0,
+          "loss_biological": 18.0,
+          "monotonic_gradient_weight": 6.0,
+          "synthetic_noise_std": 0.02,
+          "biological_ramp_fraction": 0.35,
+          "high_dose_weight": 15.0
+        },
+        "metrics": {
+          "r2": 0.6882362945135698,
+          "rmse": 0.03031049188179246,
+          "ic50": 2.929112672805786,
+          "ic50_gap": 0.04911267280578624,
+          "hill": 1.9531091451644897,
+          "hill_gap": 0.03310914516448982
+        },
+        "parameters": {
+          "ic50": 2.929112672805786,
+          "hill": 1.9531091451644897,
+          "ic50_gap": 0.04911267280578624,
+          "hill_gap": 0.03310914516448982
+        },
+        "plausibility": {
+          "all_passed": false,
+          "doses": {
+            "0.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "0.30000001192092896": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "3.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "30.0": {
+              "passed": false,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": false
+              }
+            }
+          }
+        },
+        "best_epoch": 476,
+        "final_loss": {
+          "total": 0.7137265205383301,
+          "data": 0.3638584613800049,
+          "physics": 5.278860407997854e-05,
+          "ic": 0.13527774810791016,
+          "params": 0.003516530618071556,
+          "synthetic": 0.0,
+          "biological": 0.01565692387521267,
+          "biological_monotonic": 0.01056367065757513,
+          "biological_gradient": 5.768181949861173e-07,
+          "biological_suppression": 5.8552897826302797e-05,
+          "biological_temporal": 6.747062908374346e-09,
+          "biological_highdose": 0.0002616815036162734,
+          "physics_weight": 5.0
+        }
+      },
+      {
+        "constraint_weight": 0.005,
+        "variant": 2,
+        "variant_params": {
+          "id": 2,
+          "loss_biological": 32.0,
+          "monotonic_gradient_weight": 14.0,
+          "synthetic_noise_std": 0.05,
+          "biological_ramp_fraction": 0.45,
+          "high_dose_weight": 20.0
+        },
+        "metrics": {
+          "r2": 0.3185474908360918,
+          "rmse": 0.04481237941398292,
+          "ic50": 2.94018292427063,
+          "ic50_gap": 0.06018292427062999,
+          "hill": 1.9595115184783936,
+          "hill_gap": 0.039511518478393626
+        },
+        "parameters": {
+          "ic50": 2.94018292427063,
+          "hill": 1.9595115184783936,
+          "ic50_gap": 0.06018292427062999,
+          "hill_gap": 0.039511518478393626
+        },
+        "plausibility": {
+          "all_passed": false,
+          "doses": {
+            "0.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "0.30000001192092896": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "3.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "30.0": {
+              "passed": false,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": false
+              }
+            }
+          }
+        },
+        "best_epoch": 381,
+        "final_loss": {
+          "total": 1.4593403339385986,
+          "data": 0.3025285005569458,
+          "physics": 0.00016286165919154882,
+          "ic": 0.12853476405143738,
+          "params": 0.005192650482058525,
+          "synthetic": 0.0,
+          "biological": 0.0341157540678978,
+          "biological_monotonic": 0.005768822971731424,
+          "biological_gradient": 4.117262903946539e-07,
+          "biological_suppression": 0.0,
+          "biological_temporal": 1.4347092307590015e-12,
+          "biological_highdose": 0.0014194240793585777,
+          "physics_weight": 5.0
+        }
+      },
+      {
+        "constraint_weight": 0.01,
+        "variant": 2,
+        "variant_params": {
+          "id": 2,
+          "loss_biological": 32.0,
+          "monotonic_gradient_weight": 14.0,
+          "synthetic_noise_std": 0.05,
+          "biological_ramp_fraction": 0.45,
+          "high_dose_weight": 20.0
+        },
+        "metrics": {
+          "r2": -0.022294631135057807,
+          "rmse": 0.05488684240147251,
+          "ic50": 2.9481232166290283,
+          "ic50_gap": 0.06812321662902843,
+          "hill": 1.9656693935394287,
+          "hill_gap": 0.04566939353942878
+        },
+        "parameters": {
+          "ic50": 2.9481232166290283,
+          "hill": 1.9656693935394287,
+          "ic50_gap": 0.06812321662902843,
+          "hill_gap": 0.04566939353942878
+        },
+        "plausibility": {
+          "all_passed": true,
+          "doses": {
+            "0.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "0.30000001192092896": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "3.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "30.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            }
+          }
+        },
+        "best_epoch": 183,
+        "final_loss": {
+          "total": 1.0496711730957031,
+          "data": 0.95932936668396,
+          "physics": 4.601171531248838e-05,
+          "ic": 0.13866890966892242,
+          "params": 0.006734873633831739,
+          "synthetic": 0.0,
+          "biological": 0.0006471844390034676,
+          "biological_monotonic": 0.00014222014578990638,
+          "biological_gradient": 1.8633829768077703e-07,
+          "biological_suppression": 5.270124347589444e-06,
+          "biological_temporal": 2.832256429385893e-09,
+          "biological_highdose": 2.512217906769365e-05,
+          "physics_weight": 5.0
+        }
+      },
+      {
+        "constraint_weight": 0.02,
+        "variant": 2,
+        "variant_params": {
+          "id": 2,
+          "loss_biological": 32.0,
+          "monotonic_gradient_weight": 14.0,
+          "synthetic_noise_std": 0.05,
+          "biological_ramp_fraction": 0.45,
+          "high_dose_weight": 20.0
+        },
+        "metrics": {
+          "r2": 0.35239627899060555,
+          "rmse": 0.04368525494814491,
+          "ic50": 2.940453052520752,
+          "ic50_gap": 0.06045305252075206,
+          "hill": 1.9602645635604858,
+          "hill_gap": 0.04026456356048591
+        },
+        "parameters": {
+          "ic50": 2.940453052520752,
+          "hill": 1.9602645635604858,
+          "ic50_gap": 0.06045305252075206,
+          "hill_gap": 0.04026456356048591
+        },
+        "plausibility": {
+          "all_passed": true,
+          "doses": {
+            "0.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "0.30000001192092896": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "3.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "30.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            }
+          }
+        },
+        "best_epoch": 449,
+        "final_loss": {
+          "total": 0.8029540777206421,
+          "data": 0.6107104420661926,
+          "physics": 4.8792120651341975e-05,
+          "ic": 0.13689714670181274,
+          "params": 0.005279081873595715,
+          "synthetic": 0.0,
+          "biological": 0.003857674775645137,
+          "biological_monotonic": 0.0021554536651819944,
+          "biological_gradient": 3.0475763423964963e-07,
+          "biological_suppression": 2.0663665054598823e-05,
+          "biological_temporal": 3.316755980975472e-09,
+          "biological_highdose": 6.433996895793825e-05,
+          "physics_weight": 5.0
+        }
+      },
+      {
+        "constraint_weight": 0.04,
+        "variant": 2,
+        "variant_params": {
+          "id": 2,
+          "loss_biological": 32.0,
+          "monotonic_gradient_weight": 14.0,
+          "synthetic_noise_std": 0.05,
+          "biological_ramp_fraction": 0.45,
+          "high_dose_weight": 20.0
+        },
+        "metrics": {
+          "r2": -0.05521329918547235,
+          "rmse": 0.055763539864229245,
+          "ic50": 2.9370782375335693,
+          "ic50_gap": 0.05707823753356944,
+          "hill": 1.9581671953201294,
+          "hill_gap": 0.038167195320129466
+        },
+        "parameters": {
+          "ic50": 2.9370782375335693,
+          "hill": 1.9581671953201294,
+          "ic50_gap": 0.05707823753356944,
+          "hill_gap": 0.038167195320129466
+        },
+        "plausibility": {
+          "all_passed": true,
+          "doses": {
+            "0.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "0.30000001192092896": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "3.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "30.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            }
+          }
+        },
+        "best_epoch": 67,
+        "final_loss": {
+          "total": 1.0714423656463623,
+          "data": 0.827178418636322,
+          "physics": 2.6552788767730817e-05,
+          "ic": 0.13508936762809753,
+          "params": 0.0047208270989358425,
+          "synthetic": 0.0,
+          "biological": 0.005512428004294634,
+          "biological_monotonic": 8.606884875916876e-06,
+          "biological_gradient": 2.5474700127148253e-09,
+          "biological_suppression": 8.468261398775212e-07,
+          "biological_temporal": 2.986416391959068e-10,
+          "biological_highdose": 0.0003472687676548958,
+          "physics_weight": 5.0
+        }
+      }
+    ],
+    "best_constraint": {
+      "constraint_weight": 0.005,
+      "variant": 1,
+      "variant_params": {
+        "id": 1,
+        "loss_biological": 22.0,
+        "monotonic_gradient_weight": 8.0,
+        "synthetic_noise_std": 0.03,
+        "biological_ramp_fraction": 0.4,
+        "high_dose_weight": 18.0
+      },
+      "metrics": {
+        "r2": 0.7215107525463827,
+        "rmse": 0.02864734792727712,
+        "ic50": 2.9263758659362793,
+        "ic50_gap": 0.0463758659362794,
+        "hill": 1.9506728649139404,
+        "hill_gap": 0.0306728649139405
+      },
+      "parameters": {
+        "ic50": 2.9263758659362793,
+        "hill": 1.9506728649139404,
+        "ic50_gap": 0.0463758659362794,
+        "hill_gap": 0.0306728649139405
+      },
+      "plausibility": {
+        "all_passed": true,
+        "doses": {
+          "0.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "0.30000001192092896": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "3.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "30.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          }
+        }
+      },
+      "best_epoch": 475,
+      "final_loss": {
+        "total": 0.5119947195053101,
+        "data": 0.2821328639984131,
+        "physics": 4.658070974983275e-05,
+        "ic": 0.13232949376106262,
+        "params": 0.0030979791190475225,
+        "synthetic": 0.0,
+        "biological": 0.007429487071931362,
+        "biological_monotonic": 0.006225891411304474,
+        "biological_gradient": 4.4759718775821966e-07,
+        "biological_suppression": 1.276245075132465e-05,
+        "biological_temporal": 1.6711574346572888e-09,
+        "biological_highdose": 5.257385055301711e-05,
+        "physics_weight": 5.0
+      }
+    },
+    "synthetic_sweep": [
+      {
+        "synthetic_weight": 0.0,
+        "variant": 1,
+        "variant_params": {
+          "id": 1,
+          "loss_biological": 22.0,
+          "monotonic_gradient_weight": 8.0,
+          "synthetic_noise_std": 0.03,
+          "biological_ramp_fraction": 0.4,
+          "high_dose_weight": 18.0
+        },
+        "metrics": {
+          "r2": 0.05218101838241951,
+          "rmse": 0.05284974641776001,
+          "ic50": 2.9356236457824707,
+          "ic50_gap": 0.05562364578247081,
+          "hill": 1.9585378170013428,
+          "hill_gap": 0.038537817001342844
+        },
+        "plausibility": {
+          "all_passed": true,
+          "doses": {
+            "0.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "0.30000001192092896": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "3.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "30.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            }
+          }
+        },
+        "best_epoch": 268,
+        "final_loss": {
+          "total": 1.3047897815704346,
+          "data": 0.4870032072067261,
+          "physics": 0.00023339031031355262,
+          "ic": 0.12990203499794006,
+          "params": 0.004592284560203552,
+          "synthetic": 0.0,
+          "biological": 0.03416571021080017,
+          "biological_monotonic": 5.070284896646626e-05,
+          "biological_gradient": 1.043058475147518e-07,
+          "biological_suppression": 3.503449613750931e-11,
+          "biological_temporal": 6.857892587142089e-10,
+          "biological_highdose": 0.0023065698333084583,
+          "physics_weight": 5.0
+        }
+      },
+      {
+        "synthetic_weight": 0.1,
+        "variant": 1,
+        "variant_params": {
+          "id": 1,
+          "loss_biological": 22.0,
+          "monotonic_gradient_weight": 8.0,
+          "synthetic_noise_std": 0.03,
+          "biological_ramp_fraction": 0.4,
+          "high_dose_weight": 18.0
+        },
+        "metrics": {
+          "r2": 0.6354493374702032,
+          "rmse": 0.032776241643589187,
+          "ic50": 2.9360876083374023,
+          "ic50_gap": 0.05608760833740245,
+          "hill": 1.9579752683639526,
+          "hill_gap": 0.03797526836395271
+        },
+        "plausibility": {
+          "all_passed": false,
+          "doses": {
+            "0.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "0.30000001192092896": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "3.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "30.0": {
+              "passed": false,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": false
+              }
+            }
+          }
+        },
+        "best_epoch": 316,
+        "final_loss": {
+          "total": 0.7474790811538696,
+          "data": 0.189364492893219,
+          "physics": 6.723924889229238e-05,
+          "ic": 0.13175559043884277,
+          "params": 0.004598596598953009,
+          "synthetic": 0.2200678586959839,
+          "biological": 0.021357765421271324,
+          "biological_monotonic": 0.007232338655740023,
+          "biological_gradient": 6.620888370889588e-07,
+          "biological_suppression": 7.538300792475638e-07,
+          "biological_temporal": 3.562614370178352e-10,
+          "biological_highdose": 0.0008690727991051972,
+          "physics_weight": 5.0
+        }
+      },
+      {
+        "synthetic_weight": 0.2,
+        "variant": 1,
+        "variant_params": {
+          "id": 1,
+          "loss_biological": 22.0,
+          "monotonic_gradient_weight": 8.0,
+          "synthetic_noise_std": 0.03,
+          "biological_ramp_fraction": 0.4,
+          "high_dose_weight": 18.0
+        },
+        "metrics": {
+          "r2": 0.69078881649196,
+          "rmse": 0.030186155393467588,
+          "ic50": 2.9329869747161865,
+          "ic50_gap": 0.05298697471618663,
+          "hill": 1.9552843570709229,
+          "hill_gap": 0.03528435707092292
+        },
+        "plausibility": {
+          "all_passed": true,
+          "doses": {
+            "0.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "0.30000001192092896": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "3.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "30.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            }
+          }
+        },
+        "best_epoch": 486,
+        "final_loss": {
+          "total": 0.7705966830253601,
+          "data": 0.19941535592079163,
+          "physics": 2.915237200795673e-05,
+          "ic": 0.1268567591905594,
+          "params": 0.004064484499394894,
+          "synthetic": 0.16300004720687866,
+          "biological": 0.02159031108021736,
+          "biological_monotonic": 0.003457744373008609,
+          "biological_gradient": 4.0914233068178874e-07,
+          "biological_suppression": 1.12946063381969e-05,
+          "biological_temporal": 3.7151688392356164e-09,
+          "biological_highdose": 0.0009962923359125853,
+          "physics_weight": 5.0
+        }
+      },
+      {
+        "synthetic_weight": 0.5,
+        "variant": 1,
+        "variant_params": {
+          "id": 1,
+          "loss_biological": 22.0,
+          "monotonic_gradient_weight": 8.0,
+          "synthetic_noise_std": 0.03,
+          "biological_ramp_fraction": 0.4,
+          "high_dose_weight": 18.0
+        },
+        "metrics": {
+          "r2": 0.7063919278200841,
+          "rmse": 0.029414685047603237,
+          "ic50": 2.9458632469177246,
+          "ic50_gap": 0.06586324691772472,
+          "hill": 1.9656774997711182,
+          "hill_gap": 0.045677499771118235
+        },
+        "plausibility": {
+          "all_passed": true,
+          "doses": {
+            "0.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "0.30000001192092896": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "3.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "30.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            }
+          }
+        },
+        "best_epoch": 467,
+        "final_loss": {
+          "total": 0.7182551622390747,
+          "data": 0.23446522653102875,
+          "physics": 0.00010656558879418299,
+          "ic": 0.12873080372810364,
+          "params": 0.006432618945837021,
+          "synthetic": 0.18125921487808228,
+          "biological": 0.014919545501470566,
+          "biological_monotonic": 0.003804445033892989,
+          "biological_gradient": 5.3222919405016e-07,
+          "biological_suppression": 6.699762707285117e-06,
+          "biological_temporal": 1.2062761900466512e-09,
+          "biological_highdose": 0.0006108423694968224,
+          "physics_weight": 5.0
+        }
+      }
+    ],
+    "best_synthetic": {
+      "synthetic_weight": 0.5,
+      "variant": 1,
+      "variant_params": {
+        "id": 1,
+        "loss_biological": 22.0,
+        "monotonic_gradient_weight": 8.0,
+        "synthetic_noise_std": 0.03,
+        "biological_ramp_fraction": 0.4,
+        "high_dose_weight": 18.0
+      },
+      "metrics": {
+        "r2": 0.7063919278200841,
+        "rmse": 0.029414685047603237,
+        "ic50": 2.9458632469177246,
+        "ic50_gap": 0.06586324691772472,
+        "hill": 1.9656774997711182,
+        "hill_gap": 0.045677499771118235
+      },
+      "plausibility": {
+        "all_passed": true,
+        "doses": {
+          "0.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "0.30000001192092896": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "3.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "30.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          }
+        }
+      },
+      "best_epoch": 467,
+      "final_loss": {
+        "total": 0.7182551622390747,
+        "data": 0.23446522653102875,
+        "physics": 0.00010656558879418299,
+        "ic": 0.12873080372810364,
+        "params": 0.006432618945837021,
+        "synthetic": 0.18125921487808228,
+        "biological": 0.014919545501470566,
+        "biological_monotonic": 0.003804445033892989,
+        "biological_gradient": 5.3222919405016e-07,
+        "biological_suppression": 6.699762707285117e-06,
+        "biological_temporal": 1.2062761900466512e-09,
+        "biological_highdose": 0.0006108423694968224,
+        "physics_weight": 5.0
+      }
+    },
+    "pretraining_sweep": [
+      {
+        "pretraining_epochs": 0,
+        "variant": 1,
+        "variant_params": {
+          "id": 1,
+          "loss_biological": 22.0,
+          "monotonic_gradient_weight": 8.0,
+          "synthetic_noise_std": 0.03,
+          "biological_ramp_fraction": 0.4,
+          "high_dose_weight": 18.0
+        },
+        "parameters_after_pretraining": null,
+        "final_metrics": {
+          "r2": 0.743570109816035,
+          "rmse": 0.027489353748290105,
+          "ic50": 2.9268479347229004,
+          "ic50_gap": 0.0468479347229005,
+          "hill": 1.9505947828292847,
+          "hill_gap": 0.03059478282928474
+        },
+        "final_parameters": {
+          "ic50": 2.9268479347229004,
+          "hill": 1.9505947828292847,
+          "ic50_gap": 0.0468479347229005,
+          "hill_gap": 0.03059478282928474
+        },
+        "plausibility": {
+          "all_passed": true,
+          "doses": {
+            "0.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "0.30000001192092896": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "3.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "30.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            }
+          }
+        },
+        "best_epoch": 897,
+        "stop_reason": null
+      },
+      {
+        "pretraining_epochs": 250,
+        "variant": 1,
+        "variant_params": {
+          "id": 1,
+          "loss_biological": 22.0,
+          "monotonic_gradient_weight": 8.0,
+          "synthetic_noise_std": 0.03,
+          "biological_ramp_fraction": 0.4,
+          "high_dose_weight": 18.0
+        },
+        "parameters_after_pretraining": {
+          "ic50": 2.9327056407928467,
+          "hill": 1.955149531364441,
+          "ic50_gap": 0.052705640792846786,
+          "hill_gap": 0.03514953136444099
+        },
+        "final_metrics": {
+          "r2": 0.6087313029429875,
+          "rmse": 0.03395609648464818,
+          "ic50": 2.9028971195220947,
+          "ic50_gap": 0.022897119522094833,
+          "hill": 1.9352736473083496,
+          "hill_gap": 0.01527364730834968
+        },
+        "final_parameters": {
+          "ic50": 2.9028971195220947,
+          "hill": 1.9352736473083496,
+          "ic50_gap": 0.022897119522094833,
+          "hill_gap": 0.01527364730834968
+        },
+        "plausibility": {
+          "all_passed": true,
+          "doses": {
+            "0.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "0.30000001192092896": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "3.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "30.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            }
+          }
+        },
+        "best_epoch": 249,
+        "stop_reason": null
+      },
+      {
+        "pretraining_epochs": 500,
+        "variant": 1,
+        "variant_params": {
+          "id": 1,
+          "loss_biological": 22.0,
+          "monotonic_gradient_weight": 8.0,
+          "synthetic_noise_std": 0.03,
+          "biological_ramp_fraction": 0.4,
+          "high_dose_weight": 18.0
+        },
+        "parameters_after_pretraining": {
+          "ic50": 2.928622245788574,
+          "hill": 1.952422022819519,
+          "ic50_gap": 0.048622245788574325,
+          "hill_gap": 0.032422022819519114
+        },
+        "final_metrics": {
+          "r2": 0.9497204075099093,
+          "rmse": 0.012172396246167125,
+          "ic50": 2.9116055965423584,
+          "ic50_gap": 0.031605596542358505,
+          "hill": 1.9410783052444458,
+          "hill_gap": 0.021078305244445872
+        },
+        "final_parameters": {
+          "ic50": 2.9116055965423584,
+          "hill": 1.9410783052444458,
+          "ic50_gap": 0.031605596542358505,
+          "hill_gap": 0.021078305244445872
+        },
+        "plausibility": {
+          "all_passed": false,
+          "doses": {
+            "0.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "0.30000001192092896": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "3.0": {
+              "passed": true,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": true
+              }
+            },
+            "30.0": {
+              "passed": false,
+              "checks": {
+                "non_negative": true,
+                "bounded": true,
+                "smooth": true,
+                "steady_state": true,
+                "suppression": true,
+                "dose_suppression": false
+              }
+            }
+          }
+        },
+        "best_epoch": 437,
+        "stop_reason": "plausibility checks failed repeatedly"
+      }
+    ],
+    "best_pretraining": {
+      "pretraining_epochs": 0,
+      "variant": 1,
+      "variant_params": {
+        "id": 1,
+        "loss_biological": 22.0,
+        "monotonic_gradient_weight": 8.0,
+        "synthetic_noise_std": 0.03,
+        "biological_ramp_fraction": 0.4,
+        "high_dose_weight": 18.0
+      },
+      "parameters_after_pretraining": null,
+      "final_metrics": {
+        "r2": 0.743570109816035,
+        "rmse": 0.027489353748290105,
+        "ic50": 2.9268479347229004,
+        "ic50_gap": 0.0468479347229005,
+        "hill": 1.9505947828292847,
+        "hill_gap": 0.03059478282928474
+      },
+      "final_parameters": {
+        "ic50": 2.9268479347229004,
+        "hill": 1.9505947828292847,
+        "ic50_gap": 0.0468479347229005,
+        "hill_gap": 0.03059478282928474
+      },
+      "plausibility": {
+        "all_passed": true,
+        "doses": {
+          "0.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "0.30000001192092896": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "3.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "30.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          }
+        }
+      },
+      "best_epoch": 897,
+      "stop_reason": null
+    },
+    "variants": [
+      {
+        "id": 1,
+        "loss_biological": 22.0,
+        "monotonic_gradient_weight": 8.0,
+        "synthetic_noise_std": 0.03,
+        "biological_ramp_fraction": 0.4,
+        "high_dose_weight": 18.0
+      },
+      {
+        "id": 0,
+        "loss_biological": 18.0,
+        "monotonic_gradient_weight": 6.0,
+        "synthetic_noise_std": 0.02,
+        "biological_ramp_fraction": 0.35,
+        "high_dose_weight": 15.0
+      },
+      {
+        "id": 2,
+        "loss_biological": 32.0,
+        "monotonic_gradient_weight": 14.0,
+        "synthetic_noise_std": 0.05,
+        "biological_ramp_fraction": 0.45,
+        "high_dose_weight": 20.0
+      }
+    ],
+    "selected_weights": {
+      "constraint": 0.005,
+      "synthetic": 0.5,
+      "variant": 1
+    },
+    "selected_configuration": {
+      "constraint_weight": 0.005,
+      "synthetic_weight": 0.5,
+      "pretraining_epochs": 0,
+      "variant": 1,
+      "variant_params": {
+        "id": 1,
+        "loss_biological": 22.0,
+        "monotonic_gradient_weight": 8.0,
+        "synthetic_noise_std": 0.03,
+        "biological_ramp_fraction": 0.4,
+        "high_dose_weight": 18.0
+      }
+    }
+  },
+  "member_results": [
+    {
+      "member": 1,
+      "metrics": {
+        "r2": 0.7541052784308946,
+        "rmse": 0.02691874509455212,
+        "mae": 0.024819597389774406,
+        "ic50": 2.9159743785858154,
+        "ic50_gap": 0.035974378585815536,
+        "hill": 1.9457592964172363,
+        "hill_gap": 0.0257592964172364
+      },
+      "parameters": {
+        "ic50": 2.9159743785858154,
+        "hill": 1.9457592964172363,
+        "ic50_gap": 0.035974378585815536,
+        "hill_gap": 0.0257592964172364
+      },
+      "plausibility": {
+        "all_passed": true,
+        "doses": {
+          "0.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "0.30000001192092896": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "3.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "30.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          }
+        }
+      },
+      "best_epoch": 1396,
+      "stop_reason": null,
+      "predictions": [
+        0.9701149463653564,
+        0.9435762763023376,
+        0.8803851008415222,
+        0.9075929522514343
+      ],
+      "variant": 1,
+      "variant_params": {
+        "id": 1,
+        "loss_biological": 22.0,
+        "monotonic_gradient_weight": 8.0,
+        "synthetic_noise_std": 0.03,
+        "biological_ramp_fraction": 0.4,
+        "high_dose_weight": 18.0
+      }
+    },
+    {
+      "member": 3,
+      "metrics": {
+        "r2": 0.7488229772145958,
+        "rmse": 0.027206342500288253,
+        "mae": 0.025292545344905937,
+        "ic50": 2.9313158988952637,
+        "ic50_gap": 0.05131589889526378,
+        "hill": 1.953745722770691,
+        "hill_gap": 0.03374572277069099
+      },
+      "parameters": {
+        "ic50": 2.9313158988952637,
+        "hill": 1.953745722770691,
+        "ic50_gap": 0.05131589889526378,
+        "hill_gap": 0.03374572277069099
+      },
+      "plausibility": {
+        "all_passed": true,
+        "doses": {
+          "0.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "0.30000001192092896": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "3.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "30.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          }
+        }
+      },
+      "best_epoch": 135,
+      "stop_reason": "r2 degraded for 350 epochs",
+      "predictions": [
+        0.9695014357566833,
+        0.9444330334663391,
+        0.8797691464424133,
+        0.9065554738044739
+      ],
+      "variant": 1,
+      "variant_params": {
+        "id": 1,
+        "loss_biological": 22.0,
+        "monotonic_gradient_weight": 8.0,
+        "synthetic_noise_std": 0.03,
+        "biological_ramp_fraction": 0.4,
+        "high_dose_weight": 18.0
+      }
+    },
+    {
+      "member": 5,
+      "metrics": {
+        "r2": 0.7322166451224699,
+        "rmse": 0.028091310232290757,
+        "mae": 0.025907844092922294,
+        "ic50": 2.9375274181365967,
+        "ic50_gap": 0.057527418136596786,
+        "hill": 1.9593671560287476,
+        "hill_gap": 0.03936715602874763
+      },
+      "parameters": {
+        "ic50": 2.9375274181365967,
+        "hill": 1.9593671560287476,
+        "ic50_gap": 0.057527418136596786,
+        "hill_gap": 0.03936715602874763
+      },
+      "plausibility": {
+        "all_passed": true,
+        "doses": {
+          "0.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "0.30000001192092896": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "3.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "30.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          }
+        }
+      },
+      "best_epoch": 453,
+      "stop_reason": "r2 degraded for 350 epochs",
+      "predictions": [
+        0.9686033725738525,
+        0.9461374878883362,
+        0.8805059194564819,
+        0.9074335694313049
+      ],
+      "variant": 1,
+      "variant_params": {
+        "id": 1,
+        "loss_biological": 22.0,
+        "monotonic_gradient_weight": 8.0,
+        "synthetic_noise_std": 0.03,
+        "biological_ramp_fraction": 0.4,
+        "high_dose_weight": 18.0
+      }
+    },
+    {
+      "member": 8,
+      "metrics": {
+        "r2": 0.7975011676566793,
+        "rmse": 0.024428200085070524,
+        "mae": 0.022485688116626823,
+        "ic50": 2.935676336288452,
+        "ic50_gap": 0.055676336288452255,
+        "hill": 1.9560625553131104,
+        "hill_gap": 0.03606255531311042
+      },
+      "parameters": {
+        "ic50": 2.935676336288452,
+        "hill": 1.9560625553131104,
+        "ic50_gap": 0.055676336288452255,
+        "hill_gap": 0.03606255531311042
+      },
+      "plausibility": {
+        "all_passed": true,
+        "doses": {
+          "0.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "0.30000001192092896": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "3.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          },
+          "30.0": {
+            "passed": true,
+            "checks": {
+              "non_negative": true,
+              "bounded": true,
+              "smooth": true,
+              "steady_state": true,
+              "suppression": true,
+              "dose_suppression": true
+            }
+          }
+        }
+      },
+      "best_epoch": 1378,
+      "stop_reason": null,
+      "predictions": [
+        0.9752596020698547,
+        0.9391363263130188,
+        0.8804543018341064,
+        0.9074131846427917
+      ],
+      "variant": 1,
+      "variant_params": {
+        "id": 1,
+        "loss_biological": 22.0,
+        "monotonic_gradient_weight": 8.0,
+        "synthetic_noise_std": 0.03,
+        "biological_ramp_fraction": 0.4,
+        "high_dose_weight": 18.0
+      }
+    }
+  ],
+  "ensemble_metrics": {
+    "r2": 0.7593204379081726,
+    "rmse": 0.02663175756753403,
+    "mae": 0.024626389145851135,
+    "ic50_mean": 2.930123507976532,
+    "ic50_std": 0.008474541971963503,
+    "hill_mean": 1.9537336826324463,
+    "hill_std": 0.005018731187856079,
+    "ic50_gap_mean": 0.05012350797653209,
+    "ic50_gap_std": 0.008474541971963503,
+    "hill_gap_mean": 0.03373368263244636,
+    "hill_gap_std": 0.005018731187856079
+  },
+  "ensemble_predictions": {
+    "mean": [
+      0.9708698987960815,
+      0.9433207511901855,
+      0.8802785873413086,
+      0.9072487950325012
+    ],
+    "std": [
+      0.002590805059298873,
+      0.002585927490144968,
+      0.00029720080783590674,
+      0.00040633202297613025
+    ]
+  },
+  "residual_diagnostics": {
+    "residuals": [
+      0.029130101203918457,
+      -0.02872997522354126,
+      -0.03330349922180176,
+      0.007341980934143066
+    ],
+    "standardized_residuals": [
+      1.1267284154891968,
+      -1.1112518310546875,
+      -1.2881519794464111,
+      0.2839818000793457
+    ],
+    "normality": {
+      "shapiro_stat": 0.894669307722871,
+      "shapiro_p_value": 0.4050660464792374,
+      "jb_stat": 0.49648779233232393,
+      "jb_p_value": 0.7801696396877438,
+      "is_normal": true
+    },
+    "autocorrelation": {
+      "durbin_watson": 1.7697415351867676,
+      "has_autocorrelation": false
+    },
+    "heteroscedasticity": {
+      "breusch_pagan_stat": null,
+      "breusch_pagan_p_value": null,
+      "is_homoscedastic": null
+    },
+    "runs_test": {
+      "runs": 2.0,
+      "expected_runs": 3.0,
+      "z_statistic": -1.224744871391589,
+      "p_value": 0.22067136191984682,
+      "is_random": true
+    },
+    "statistics": {
+      "mean": -0.0063903480768203735,
+      "std": 0.025853702798485756,
+      "min": -0.03330349922180176,
+      "max": 0.029130101203918457,
+      "q1": -0.029873356223106384,
+      "median": -0.010693997144699097,
+      "q3": 0.012789011001586914,
+      "skewness": 0.24251191318035126,
+      "kurtosis": -1.6564054489135742
+    }
+  },
+  "pareto": {
+    "points": [
+      {
+        "member": 1,
+        "r2": 0.7541052784308946,
+        "rmse": 0.02691874509455212,
+        "parameter_gap": 0.061733675003051935
+      },
+      {
+        "member": 3,
+        "r2": 0.7488229772145958,
+        "rmse": 0.027206342500288253,
+        "parameter_gap": 0.08506162166595477
+      },
+      {
+        "member": 5,
+        "r2": 0.7322166451224699,
+        "rmse": 0.028091310232290757,
+        "parameter_gap": 0.09689457416534442
+      },
+      {
+        "member": 8,
+        "r2": 0.7975011676566793,
+        "rmse": 0.024428200085070524,
+        "parameter_gap": 0.09173889160156268
+      }
+    ],
+    "knee_index": 2,
+    "knee_point": {
+      "member": 8,
+      "r2": 0.7975011676566793,
+      "rmse": 0.024428200085070524,
+      "parameter_gap": 0.09173889160156268
+    }
+  },
+  "figures": {
+    "pareto": "results/unified/figures/pareto_frontier.png",
+    "dose_response": "results/unified/figures/dose_response.png",
+    "time_courses": "results/unified/figures/time_courses.png"
+  },
+  "dose_response_curve": {
+    "dex_range": [
+      0.01,
+      0.01080471822318129,
+      0.011674193588234582,
+      0.012613637220374436,
+      0.01362867959355774,
+      0.01472540427624123,
+      0.015910384392721525,
+      0.017190722018585746,
+      0.01857409074638572,
+      0.020068781676649675,
+      0.021683753109874342,
+      0.02342868423732233,
+      0.02531403315241567,
+      0.027351099530412093,
+      0.02955209235202888,
+      0.031930203076910274,
+      0.034499684705497156,
+      0.0372759372031494,
+      0.040275599798502974,
+      0.04351665070924416,
+      0.04701851489299852,
+      0.0508021804691302,
+      0.05489032450921558,
+      0.05930744895010558,
+      0.06408002744416,
+      0.06923666402678727,
+      0.07480826455225086,
+      0.08082822192522715,
+      0.08733261623828432,
+      0.0943604310147889,
+      0.10195378685327301,
+      0.11015819387358995,
+      0.1190228244778715,
+      0.12860080806105664,
+      0.13894954943731375,
+      0.15013107289081734,
+      0.1622123939129172,
+      0.17526592085367584,
+      0.18936988889503603,
+      0.2046088289466012,
+      0.22107407427431247,
+      0.2388643078984598,
+      0.2580861540418074,
+      0.278854817172629,
+      0.30129477247269904,
+      0.3255405118685032,
+      0.351737350096938,
+      0.38004229563658837,
+      0.4106249917244298,
+      0.44366873309786115,
+      0.47937156455582164,
+      0.517947467923121,
+      0.5596276445319552,
+      0.6046619009070435,
+      0.6533201459593774,
+      0.7058940086618741,
+      0.7626985859023444,
+      0.8240743309893657,
+      0.890389094129673,
+      0.9620403271064756,
+      1.0394574653722626,
+      1.1231045018329515,
+      1.213482767749143,
+      1.3111339374215643,
+      1.4166432746690207,
+      1.5306431405563579,
+      1.6538167833956732,
+      1.7869024337358286,
+      1.9306977288832496,
+      2.0860644934719565,
+      2.253933904734791,
+      2.435312073433415,
+      2.631286073895942,
+      2.8430304593026623,
+      3.0718143012686965,
+      3.319008795914677,
+      3.586095482011829,
+      3.874675120456128,
+      4.186477288289951,
+      4.523370744772101,
+      4.887374631624422,
+      5.280670574582637,
+      5.705615758781021,
+      6.164757056337161,
+      6.660846290809154,
+      7.196856730011521,
+      7.7760009060380355,
+      8.401749869294335,
+      9.077853991937548,
+      9.808365445406672,
+      10.597662486760708,
+      11.450475699382812,
+      12.371916345321594,
+      13.367506999197078,
+      14.443214647272804,
+      15.605486450070734,
+      16.861288382868803,
+      18.218146985669748,
+      19.684194472866114,
+      21.268217472962082,
+      22.979709690469626,
+      24.828928805603276,
+      26.826957952797247,
+      28.98577214651065,
+      31.31831005243845,
+      33.83855153428233,
+      36.56160144085194,
+      39.5037801356664,
+      42.68272131163821,
+      46.11747767708256,
+      49.828635146473005,
+      53.838436220334835,
+      58.170913293743574,
+      62.852032692400975,
+      67.90985029955706,
+      73.3746797065138,
+      79.27927389450598,
+      85.65902153685491,
+      92.55215909791345,
+      100.0
+    ],
+    "mean": [
+      0.9697461724281311,
+      0.9696564674377441,
+      0.9695595502853394,
+      0.9694551229476929,
+      0.9693425297737122,
+      0.9692208766937256,
+      0.9690897464752197,
+      0.9689483046531677,
+      0.9687958359718323,
+      0.9686315059661865,
+      0.9684542417526245,
+      0.9682632684707642,
+      0.9680573344230652,
+      0.967835545539856,
+      0.9675968289375305,
+      0.9673395752906799,
+      0.9670625925064087,
+      0.9667648077011108,
+      0.9664440155029297,
+      0.966099202632904,
+      0.9657284617424011,
+      0.9653300046920776,
+      0.9649020433425903,
+      0.9644426107406616,
+      0.9639493227005005,
+      0.9634203314781189,
+      0.9628530144691467,
+      0.9622454643249512,
+      0.9615948796272278,
+      0.9608988165855408,
+      0.9601547718048096,
+      0.9593597650527954,
+      0.9585114121437073,
+      0.9576069116592407,
+      0.9566434621810913,
+      0.9556183218955994,
+      0.9545288681983948,
+      0.9533724784851074,
+      0.9521467089653015,
+      0.9508494734764099,
+      0.9494783282279968,
+      0.9480316638946533,
+      0.9465078711509705,
+      0.9449059367179871,
+      0.9432252049446106,
+      0.9414652585983276,
+      0.9396268129348755,
+      0.9377106428146362,
+      0.935718297958374,
+      0.9336525797843933,
+      0.9315166473388672,
+      0.9293143153190613,
+      0.9270505905151367,
+      0.9247311353683472,
+      0.922362744808197,
+      0.9199528694152832,
+      0.9175098538398743,
+      0.9150426983833313,
+      0.9125611782073975,
+      0.9100757241249084,
+      0.9075973629951477,
+      0.9051371812820435,
+      0.9027069807052612,
+      0.9003185033798218,
+      0.8979833722114563,
+      0.8957134485244751,
+      0.8935197591781616,
+      0.8914136290550232,
+      0.8894054293632507,
+      0.887505292892456,
+      0.8857221007347107,
+      0.8840645551681519,
+      0.8825398087501526,
+      0.8811549544334412,
+      0.8799156546592712,
+      0.8788264393806458,
+      0.8778913021087646,
+      0.8771132230758667,
+      0.8764945268630981,
+      0.8760358095169067,
+      0.8757378458976746,
+      0.8755999207496643,
+      0.87562096118927,
+      0.8757988810539246,
+      0.876131534576416,
+      0.8766158819198608,
+      0.8772485256195068,
+      0.8780252933502197,
+      0.8789423108100891,
+      0.8799949884414673,
+      0.8811784982681274,
+      0.8824880123138428,
+      0.8839183449745178,
+      0.8854643702507019,
+      0.8871209025382996,
+      0.888882577419281,
+      0.8907445669174194,
+      0.8927013278007507,
+      0.8947476148605347,
+      0.8968787789344788,
+      0.8990895748138428,
+      0.9013752937316895,
+      0.9037312865257263,
+      0.9061528444290161,
+      0.9086356163024902,
+      0.9111754894256592,
+      0.9137682318687439,
+      0.9164096117019653,
+      0.9190962910652161,
+      0.9218243360519409,
+      0.9245904684066772,
+      0.9273910522460938,
+      0.9302233457565308,
+      0.9330838918685913,
+      0.935969889163971,
+      0.9388787746429443,
+      0.9418079257011414,
+      0.9447547197341919,
+      0.9477168917655945,
+      0.9506921768188477
+    ],
+    "std": [
+      0.002337786601856351,
+      0.0023177904076874256,
+      0.002295945305377245,
+      0.0022727090399712324,
+      0.002247716998681426,
+      0.002220617141574621,
+      0.002191378967836499,
+      0.00216011144220829,
+      0.0021262718364596367,
+      0.002089929999783635,
+      0.002050874289125204,
+      0.0020089480094611645,
+      0.0019638286903500557,
+      0.0019150760490447283,
+      0.0018630042904987931,
+      0.0018071284284815192,
+      0.00174702366348356,
+      0.001682880218140781,
+      0.0016138236969709396,
+      0.0015401429263874888,
+      0.001461172359995544,
+      0.0013768052449449897,
+      0.0012869002530351281,
+      0.0011909381719306111,
+      0.0010887962998822331,
+      0.0009804596193134785,
+      0.0008655195124447346,
+      0.0007442867499776185,
+      0.0006172096473164856,
+      0.000485470169223845,
+      0.0003536097938194871,
+      0.00023650424554944038,
+      0.00019025466463062912,
+      0.0002725074882619083,
+      0.00042325735557824373,
+      0.0005998389096930623,
+      0.0007911979919299483,
+      0.000993466004729271,
+      0.0012047361815348268,
+      0.0014239567099139094,
+      0.0016500536585226655,
+      0.0018820270197466016,
+      0.0021184864453971386,
+      0.0023581217974424362,
+      0.0025993993040174246,
+      0.0028403738979250193,
+      0.003079327754676342,
+      0.0033137111458927393,
+      0.003541253274306655,
+      0.003759243758395314,
+      0.003964648116379976,
+      0.0041545722633600235,
+      0.0043260580860078335,
+      0.004475605208426714,
+      0.004600352607667446,
+      0.0046968962997198105,
+      0.004762384574860334,
+      0.004794192034751177,
+      0.004789732396602631,
+      0.0047469185665249825,
+      0.00466402992606163,
+      0.004540255758911371,
+      0.004374959506094456,
+      0.004168256651610136,
+      0.003920992836356163,
+      0.0036346714477986097,
+      0.0033112706150859594,
+      0.002953730057924986,
+      0.002565601607784629,
+      0.002150821965187788,
+      0.0017146151512861252,
+      0.0012636975152418017,
+      0.0008102198480628431,
+      0.00039921957068145275,
+      0.0003596054739318788,
+      0.0007542168023064733,
+      0.0012086080387234688,
+      0.001663912902586162,
+      0.0021066858898848295,
+      0.0025302318390458822,
+      0.002929063979536295,
+      0.003298945492133498,
+      0.003635949920862913,
+      0.00393662927672267,
+      0.004198264796286821,
+      0.004418158903717995,
+      0.004594396334141493,
+      0.004725018981844187,
+      0.004808808211237192,
+      0.004844828508794308,
+      0.004832262638956308,
+      0.004770978819578886,
+      0.004660399165004492,
+      0.004501177463680506,
+      0.004293242935091257,
+      0.004037855658680201,
+      0.0037351534701883793,
+      0.003386569442227483,
+      0.0029933650512248278,
+      0.0025570972356945276,
+      0.0020802770741283894,
+      0.0015673417365178466,
+      0.0010296577820554376,
+      0.000527514610439539,
+      0.0005030497559346259,
+      0.0010620241519063711,
+      0.0017457916401326656,
+      0.0024809804745018482,
+      0.003254758194088936,
+      0.004062045365571976,
+      0.004900426138192415,
+      0.00576771330088377,
+      0.0066622463054955006,
+      0.007582419086247683,
+      0.008527133613824844,
+      0.009494788944721222,
+      0.010484335012733936,
+      0.011494255624711514,
+      0.01252351701259613,
+      0.013571280986070633
+    ]
+  },
+  "time_courses": {
+    "0.0": {
+      "time": [
+        0.0,
+        0.40336134453781514,
+        0.8067226890756303,
+        1.2100840336134455,
+        1.6134453781512605,
+        2.0168067226890756,
+        2.420168067226891,
+        2.823529411764706,
+        3.226890756302521,
+        3.630252100840336,
+        4.033613445378151,
+        4.436974789915967,
+        4.840336134453782,
+        5.243697478991597,
+        5.647058823529412,
+        6.050420168067227,
+        6.453781512605042,
+        6.857142857142858,
+        7.260504201680672,
+        7.663865546218488,
+        8.067226890756302,
+        8.470588235294118,
+        8.873949579831933,
+        9.277310924369749,
+        9.680672268907564,
+        10.084033613445378,
+        10.487394957983193,
+        10.890756302521009,
+        11.294117647058824,
+        11.69747899159664,
+        12.100840336134453,
+        12.504201680672269,
+        12.907563025210084,
+        13.3109243697479,
+        13.714285714285715,
+        14.117647058823529,
+        14.521008403361344,
+        14.92436974789916,
+        15.327731092436975,
+        15.73109243697479,
+        16.134453781512605,
+        16.537815126050422,
+        16.941176470588236,
+        17.34453781512605,
+        17.747899159663866,
+        18.15126050420168,
+        18.554621848739497,
+        18.95798319327731,
+        19.36134453781513,
+        19.764705882352942,
+        20.168067226890756,
+        20.571428571428573,
+        20.974789915966387,
+        21.378151260504204,
+        21.781512605042018,
+        22.18487394957983,
+        22.58823529411765,
+        22.991596638655462,
+        23.39495798319328,
+        23.798319327731093,
+        24.201680672268907,
+        24.605042016806724,
+        25.008403361344538,
+        25.411764705882355,
+        25.81512605042017,
+        26.218487394957982,
+        26.6218487394958,
+        27.025210084033613,
+        27.42857142857143,
+        27.831932773109244,
+        28.235294117647058,
+        28.638655462184875,
+        29.04201680672269,
+        29.445378151260506,
+        29.84873949579832,
+        30.252100840336134,
+        30.65546218487395,
+        31.058823529411764,
+        31.46218487394958,
+        31.865546218487395,
+        32.26890756302521,
+        32.67226890756302,
+        33.075630252100844,
+        33.47899159663866,
+        33.88235294117647,
+        34.285714285714285,
+        34.6890756302521,
+        35.09243697478992,
+        35.49579831932773,
+        35.89915966386555,
+        36.30252100840336,
+        36.705882352941174,
+        37.109243697478995,
+        37.51260504201681,
+        37.91596638655462,
+        38.319327731092436,
+        38.72268907563026,
+        39.12605042016807,
+        39.529411764705884,
+        39.9327731092437,
+        40.33613445378151,
+        40.73949579831933,
+        41.142857142857146,
+        41.54621848739496,
+        41.94957983193277,
+        42.35294117647059,
+        42.75630252100841,
+        43.15966386554622,
+        43.563025210084035,
+        43.96638655462185,
+        44.36974789915966,
+        44.77310924369748,
+        45.1764705882353,
+        45.57983193277311,
+        45.983193277310924,
+        46.38655462184874,
+        46.78991596638656,
+        47.19327731092437,
+        47.596638655462186,
+        48.0
+      ],
+      "mean": [
+        0.9737883806228638,
+        0.9737648963928223,
+        0.9737401008605957,
+        0.9737144708633423,
+        0.9736877679824829,
+        0.9736599922180176,
+        0.9736312627792358,
+        0.9736014604568481,
+        0.9735707640647888,
+        0.9735389351844788,
+        0.9735060930252075,
+        0.9734724760055542,
+        0.9734377861022949,
+        0.9734021425247192,
+        0.9733655452728271,
+        0.9733281135559082,
+        0.9732896685600281,
+        0.9732503890991211,
+        0.9732102155685425,
+        0.9731690287590027,
+        0.973127007484436,
+        0.9730842113494873,
+        0.9730404615402222,
+        0.9729958772659302,
+        0.9729504585266113,
+        0.9729040861129761,
+        0.9728569984436035,
+        0.9728091955184937,
+        0.9727603793144226,
+        0.972710907459259,
+        0.9726606011390686,
+        0.9726094007492065,
+        0.9725576639175415,
+        0.9725050926208496,
+        0.9724518656730652,
+        0.9723976850509644,
+        0.9723429083824158,
+        0.9722873568534851,
+        0.9722311496734619,
+        0.9721741676330566,
+        0.9721165895462036,
+        0.9720582962036133,
+        0.9719993472099304,
+        0.9719398021697998,
+        0.9718794822692871,
+        0.9718185663223267,
+        0.9717570543289185,
+        0.9716949462890625,
+        0.9716321229934692,
+        0.971568763256073,
+        0.971504807472229,
+        0.9714403748512268,
+        0.9713751077651978,
+        0.9713095426559448,
+        0.9712433218955994,
+        0.9711766242980957,
+        0.9711092710494995,
+        0.9710415005683899,
+        0.9709732532501221,
+        0.9709043502807617,
+        0.9708350896835327,
+        0.970765233039856,
+        0.9706950187683105,
+        0.9706242680549622,
+        0.9705531597137451,
+        0.9704816341400146,
+        0.9704095125198364,
+        0.9703369736671448,
+        0.9702640771865845,
+        0.9701907634735107,
+        0.9701170325279236,
+        0.9700430631637573,
+        0.9699685573577881,
+        0.969893753528595,
+        0.9698185324668884,
+        0.969743013381958,
+        0.9696671962738037,
+        0.969590961933136,
+        0.9695144891738892,
+        0.9694375991821289,
+        0.9693604111671448,
+        0.9692829847335815,
+        0.9692052602767944,
+        0.969127357006073,
+        0.9690490961074829,
+        0.9689704775810242,
+        0.9688917994499207,
+        0.9688127040863037,
+        0.9687333703041077,
+        0.9686540365219116,
+        0.9685744047164917,
+        0.9684944748878479,
+        0.9684144854545593,
+        0.9683342576026917,
+        0.9682537317276001,
+        0.9681732654571533,
+        0.9680924415588379,
+        0.9680114388465881,
+        0.9679304361343384,
+        0.9678492546081543,
+        0.9677680134773254,
+        0.967686653137207,
+        0.9676050543785095,
+        0.967523455619812,
+        0.967441737651825,
+        0.9673598408699036,
+        0.9672779440879822,
+        0.9671960473060608,
+        0.9671140909194946,
+        0.9670321941375732,
+        0.9669499397277832,
+        0.9668678045272827,
+        0.9667855501174927,
+        0.9667035341262817,
+        0.9666212797164917,
+        0.966539204120636,
+        0.9664570093154907,
+        0.9663747549057007,
+        0.966292679309845,
+        0.9662105441093445
+      ],
+      "std": [
+        0.003843531012535095,
+        0.0037822178564965725,
+        0.0037217203062027693,
+        0.0036620711907744408,
+        0.0036028982140123844,
+        0.0035445550456643105,
+        0.003487088717520237,
+        0.0034303676802664995,
+        0.0033744829706847668,
+        0.0033195186406373978,
+        0.003265530802309513,
+        0.003212431212887168,
+        0.003160352585837245,
+        0.00310926022939384,
+        0.0030591844115406275,
+        0.003010235959663987,
+        0.0029624418821185827,
+        0.002915816381573677,
+        0.002870457014068961,
+        0.0028263707645237446,
+        0.0027835280634462833,
+        0.002742187352851033,
+        0.0027022056747227907,
+        0.0026637325063347816,
+        0.0026268346700817347,
+        0.0025914094876497984,
+        0.0025577577762305737,
+        0.0025256965309381485,
+        0.0024955368135124445,
+        0.002467102836817503,
+        0.00244054920040071,
+        0.0024157841689884663,
+        0.00239315303042531,
+        0.002372532384470105,
+        0.00235372269526124,
+        0.0023372212890535593,
+        0.0023228097707033157,
+        0.0023105309810489416,
+        0.0023003953974694014,
+        0.0022924309596419334,
+        0.002286771312355995,
+        0.0022833324037492275,
+        0.0022819635923951864,
+        0.0022829908411949873,
+        0.002286201575770974,
+        0.002291443757712841,
+        0.0022988959681242704,
+        0.0023084734566509724,
+        0.00232025608420372,
+        0.002333979355171323,
+        0.0023498241789638996,
+        0.0023676303680986166,
+        0.0023872889578342438,
+        0.0024089370854198933,
+        0.0024323572870343924,
+        0.0024574757553637028,
+        0.002484313677996397,
+        0.002512803766876459,
+        0.0025428931694477797,
+        0.002574492245912552,
+        0.002607493894174695,
+        0.0026420222129672766,
+        0.0026777442544698715,
+        0.0027148316148668528,
+        0.0027533043175935745,
+        0.002792652929201722,
+        0.0028334029484540224,
+        0.0028750537894666195,
+        0.0029178019613027573,
+        0.0029616442043334246,
+        0.0030061884317547083,
+        0.0030517394188791513,
+        0.003098210319876671,
+        0.0031455419957637787,
+        0.003193471347913146,
+        0.003242333885282278,
+        0.003291853005066514,
+        0.0033420987892895937,
+        0.003392776008695364,
+        0.003444115864112973,
+        0.003496193327009678,
+        0.0035487525165081024,
+        0.003602060256525874,
+        0.0036556182894855738,
+        0.003709796816110611,
+        0.003764330642297864,
+        0.0038195918314158916,
+        0.0038750125095248222,
+        0.003931016661226749,
+        0.003987339790910482,
+        0.004044027533382177,
+        0.0041011241264641285,
+        0.004158734809607267,
+        0.004216461442410946,
+        0.004274532664567232,
+        0.004333131015300751,
+        0.004391801543533802,
+        0.004450815264135599,
+        0.004510173108428717,
+        0.004569829907268286,
+        0.0046297889202833176,
+        0.004689923953264952,
+        0.00475022429600358,
+        0.004811014048755169,
+        0.0048718759790062904,
+        0.004933041054755449,
+        0.004994255490601063,
+        0.005055862478911877,
+        0.00511764083057642,
+        0.005179677624255419,
+        0.005241822451353073,
+        0.005304255988448858,
+        0.005366782192140818,
+        0.005429594777524471,
+        0.005492484197020531,
+        0.005555666983127594,
+        0.005618915893137455,
+        0.00568234222009778,
+        0.005745981819927692,
+        0.005809893365949392
+      ]
+    },
+    "0.3": {
+      "time": [
+        0.0,
+        0.40336134453781514,
+        0.8067226890756303,
+        1.2100840336134455,
+        1.6134453781512605,
+        2.0168067226890756,
+        2.420168067226891,
+        2.823529411764706,
+        3.226890756302521,
+        3.630252100840336,
+        4.033613445378151,
+        4.436974789915967,
+        4.840336134453782,
+        5.243697478991597,
+        5.647058823529412,
+        6.050420168067227,
+        6.453781512605042,
+        6.857142857142858,
+        7.260504201680672,
+        7.663865546218488,
+        8.067226890756302,
+        8.470588235294118,
+        8.873949579831933,
+        9.277310924369749,
+        9.680672268907564,
+        10.084033613445378,
+        10.487394957983193,
+        10.890756302521009,
+        11.294117647058824,
+        11.69747899159664,
+        12.100840336134453,
+        12.504201680672269,
+        12.907563025210084,
+        13.3109243697479,
+        13.714285714285715,
+        14.117647058823529,
+        14.521008403361344,
+        14.92436974789916,
+        15.327731092436975,
+        15.73109243697479,
+        16.134453781512605,
+        16.537815126050422,
+        16.941176470588236,
+        17.34453781512605,
+        17.747899159663866,
+        18.15126050420168,
+        18.554621848739497,
+        18.95798319327731,
+        19.36134453781513,
+        19.764705882352942,
+        20.168067226890756,
+        20.571428571428573,
+        20.974789915966387,
+        21.378151260504204,
+        21.781512605042018,
+        22.18487394957983,
+        22.58823529411765,
+        22.991596638655462,
+        23.39495798319328,
+        23.798319327731093,
+        24.201680672268907,
+        24.605042016806724,
+        25.008403361344538,
+        25.411764705882355,
+        25.81512605042017,
+        26.218487394957982,
+        26.6218487394958,
+        27.025210084033613,
+        27.42857142857143,
+        27.831932773109244,
+        28.235294117647058,
+        28.638655462184875,
+        29.04201680672269,
+        29.445378151260506,
+        29.84873949579832,
+        30.252100840336134,
+        30.65546218487395,
+        31.058823529411764,
+        31.46218487394958,
+        31.865546218487395,
+        32.26890756302521,
+        32.67226890756302,
+        33.075630252100844,
+        33.47899159663866,
+        33.88235294117647,
+        34.285714285714285,
+        34.6890756302521,
+        35.09243697478992,
+        35.49579831932773,
+        35.89915966386555,
+        36.30252100840336,
+        36.705882352941174,
+        37.109243697478995,
+        37.51260504201681,
+        37.91596638655462,
+        38.319327731092436,
+        38.72268907563026,
+        39.12605042016807,
+        39.529411764705884,
+        39.9327731092437,
+        40.33613445378151,
+        40.73949579831933,
+        41.142857142857146,
+        41.54621848739496,
+        41.94957983193277,
+        42.35294117647059,
+        42.75630252100841,
+        43.15966386554622,
+        43.563025210084035,
+        43.96638655462185,
+        44.36974789915966,
+        44.77310924369748,
+        45.1764705882353,
+        45.57983193277311,
+        45.983193277310924,
+        46.38655462184874,
+        46.78991596638656,
+        47.19327731092437,
+        47.596638655462186,
+        48.0
+      ],
+      "mean": [
+        0.9459279775619507,
+        0.9459041357040405,
+        0.9458793997764587,
+        0.9458537697792053,
+        0.945827305316925,
+        0.9458001255989075,
+        0.9457719922065735,
+        0.9457431435585022,
+        0.945713460445404,
+        0.9456830024719238,
+        0.9456517696380615,
+        0.9456198215484619,
+        0.9455870389938354,
+        0.9455535411834717,
+        0.9455193281173706,
+        0.9454842805862427,
+        0.9454485774040222,
+        0.9454121589660645,
+        0.9453749656677246,
+        0.945337176322937,
+        0.9452986121177673,
+        0.9452593922615051,
+        0.9452195167541504,
+        0.9451788663864136,
+        0.9451376795768738,
+        0.9450958967208862,
+        0.9450533390045166,
+        0.9450103044509888,
+        0.9449664950370789,
+        0.9449220895767212,
+        0.9448772072792053,
+        0.9448314905166626,
+        0.944785475730896,
+        0.9447386860847473,
+        0.9446914196014404,
+        0.9446434378623962,
+        0.944595217704773,
+        0.9445462226867676,
+        0.9444966912269592,
+        0.9444466829299927,
+        0.9443961977958679,
+        0.9443451166152954,
+        0.9442936182022095,
+        0.9442416429519653,
+        0.944189190864563,
+        0.9441362619400024,
+        0.9440826177597046,
+        0.9440288543701172,
+        0.9439745545387268,
+        0.943919837474823,
+        0.9438647031784058,
+        0.9438089728355408,
+        0.9437530040740967,
+        0.9436966776847839,
+        0.9436397552490234,
+        0.9435827136039734,
+        0.9435251355171204,
+        0.9434671401977539,
+        0.9434088468551636,
+        0.9433501958847046,
+        0.943291187286377,
+        0.9432319402694702,
+        0.9431722164154053,
+        0.9431123733520508,
+        0.9430520534515381,
+        0.9429913759231567,
+        0.9429305791854858,
+        0.9428695440292358,
+        0.9428080320358276,
+        0.9427463412284851,
+        0.9426844716072083,
+        0.9426223635673523,
+        0.9425598382949829,
+        0.9424971342086792,
+        0.9424341917037964,
+        0.9423711895942688,
+        0.9423080682754517,
+        0.9422445297241211,
+        0.9421808123588562,
+        0.9421168565750122,
+        0.9420528411865234,
+        0.9419885277748108,
+        0.9419242739677429,
+        0.9418596625328064,
+        0.9417949914932251,
+        0.941730260848999,
+        0.9416654109954834,
+        0.9416003227233887,
+        0.9415351152420044,
+        0.9414697885513306,
+        0.9414046406745911,
+        0.9413392543792725,
+        0.9412734508514404,
+        0.9412079453468323,
+        0.9411422610282898,
+        0.9410765171051025,
+        0.9410108327865601,
+        0.940945029258728,
+        0.9408791661262512,
+        0.9408133029937744,
+        0.9407473802566528,
+        0.940681517124176,
+        0.9406155943870544,
+        0.9405498504638672,
+        0.940483808517456,
+        0.9404178857803345,
+        0.9403519630432129,
+        0.9402862787246704,
+        0.9402204751968384,
+        0.9401545524597168,
+        0.9400889277458191,
+        0.9400233030319214,
+        0.9399577379226685,
+        0.9398921132087708,
+        0.9398268461227417,
+        0.9397614598274231,
+        0.939696192741394,
+        0.9396310448646545,
+        0.9395660161972046,
+        0.9395011067390442
+      ],
+      "std": [
+        0.004638860933482647,
+        0.004590778611600399,
+        0.004543022718280554,
+        0.004495761822909117,
+        0.004448940046131611,
+        0.004402466118335724,
+        0.004356432240456343,
+        0.004310740157961845,
+        0.004265469964593649,
+        0.0042206416837871075,
+        0.004176306072622538,
+        0.004132312256842852,
+        0.004088664893060923,
+        0.004045492969453335,
+        0.004002718720585108,
+        0.0039604101330041885,
+        0.003918553702533245,
+        0.003876997157931328,
+        0.003836041549220681,
+        0.0037954035215079784,
+        0.003755235578864813,
+        0.0037155416794121265,
+        0.0036763043608516455,
+        0.003637464949861169,
+        0.0035992655903100967,
+        0.0035612303763628006,
+        0.003523865481838584,
+        0.0034868610091507435,
+        0.003450439777225256,
+        0.003414400387555361,
+        0.0033788678701967,
+        0.0033440233673900366,
+        0.003309524618089199,
+        0.0032754542771726847,
+        0.003241915488615632,
+        0.0032088886946439743,
+        0.0031765310559421778,
+        0.0031446320936083794,
+        0.003113271901383996,
+        0.003082496579736471,
+        0.0030520895961672068,
+        0.0030225743539631367,
+        0.0029933005571365356,
+        0.0029648325871676207,
+        0.002936751814559102,
+        0.0029093832708895206,
+        0.002882750006392598,
+        0.002856554463505745,
+        0.0028310485649853945,
+        0.0028062022756785154,
+        0.0027818765956908464,
+        0.002758345101028681,
+        0.0027355828788131475,
+        0.002713210182264447,
+        0.002691724104806781,
+        0.0026707788929343224,
+        0.0026507435832172632,
+        0.0026311941910535097,
+        0.002612645272165537,
+        0.0025946323294192553,
+        0.0025773965753614902,
+        0.002560986438766122,
+        0.002545275492593646,
+        0.002530348254367709,
+        0.0025162447709590197,
+        0.0025028514210134745,
+        0.0024902690201997757,
+        0.0024785336572676897,
+        0.0024677321780472994,
+        0.002457657130435109,
+        0.00244838185608387,
+        0.0024399075191468,
+        0.002432494657114148,
+        0.002425656421110034,
+        0.002419876866042614,
+        0.0024148798547685146,
+        0.0024106265045702457,
+        0.0024074057582765818,
+        0.0024049710482358932,
+        0.0024034357629716396,
+        0.002402873709797859,
+        0.002403039950877428,
+        0.002404118189588189,
+        0.0024059752468019724,
+        0.0024088213685899973,
+        0.002412578323855996,
+        0.0024170256219804287,
+        0.002422418911010027,
+        0.0024286461994051933,
+        0.002435674425214529,
+        0.002443585777655244,
+        0.0024524156469851732,
+        0.0024619363248348236,
+        0.0024722213856875896,
+        0.0024834387004375458,
+        0.0024954539258033037,
+        0.002508214209228754,
+        0.0025217286311089993,
+        0.0025360144209116697,
+        0.0025510883424431086,
+        0.0025669203605502844,
+        0.0025835016276687384,
+        0.002600698033347726,
+        0.0026187272742390633,
+        0.0026374091394245625,
+        0.0026568141765892506,
+        0.002676885575056076,
+        0.0026975786313414574,
+        0.0027189557440578938,
+        0.0027409561444073915,
+        0.0027635919395834208,
+        0.0027868570759892464,
+        0.0028108926489949226,
+        0.00283536734059453,
+        0.002860457869246602,
+        0.002886080415919423,
+        0.002912332536652684,
+        0.0029391017742455006,
+        0.0029664640314877033,
+        0.0029943310655653477
+      ]
+    },
+    "3.0": {
+      "time": [
+        0.0,
+        0.40336134453781514,
+        0.8067226890756303,
+        1.2100840336134455,
+        1.6134453781512605,
+        2.0168067226890756,
+        2.420168067226891,
+        2.823529411764706,
+        3.226890756302521,
+        3.630252100840336,
+        4.033613445378151,
+        4.436974789915967,
+        4.840336134453782,
+        5.243697478991597,
+        5.647058823529412,
+        6.050420168067227,
+        6.453781512605042,
+        6.857142857142858,
+        7.260504201680672,
+        7.663865546218488,
+        8.067226890756302,
+        8.470588235294118,
+        8.873949579831933,
+        9.277310924369749,
+        9.680672268907564,
+        10.084033613445378,
+        10.487394957983193,
+        10.890756302521009,
+        11.294117647058824,
+        11.69747899159664,
+        12.100840336134453,
+        12.504201680672269,
+        12.907563025210084,
+        13.3109243697479,
+        13.714285714285715,
+        14.117647058823529,
+        14.521008403361344,
+        14.92436974789916,
+        15.327731092436975,
+        15.73109243697479,
+        16.134453781512605,
+        16.537815126050422,
+        16.941176470588236,
+        17.34453781512605,
+        17.747899159663866,
+        18.15126050420168,
+        18.554621848739497,
+        18.95798319327731,
+        19.36134453781513,
+        19.764705882352942,
+        20.168067226890756,
+        20.571428571428573,
+        20.974789915966387,
+        21.378151260504204,
+        21.781512605042018,
+        22.18487394957983,
+        22.58823529411765,
+        22.991596638655462,
+        23.39495798319328,
+        23.798319327731093,
+        24.201680672268907,
+        24.605042016806724,
+        25.008403361344538,
+        25.411764705882355,
+        25.81512605042017,
+        26.218487394957982,
+        26.6218487394958,
+        27.025210084033613,
+        27.42857142857143,
+        27.831932773109244,
+        28.235294117647058,
+        28.638655462184875,
+        29.04201680672269,
+        29.445378151260506,
+        29.84873949579832,
+        30.252100840336134,
+        30.65546218487395,
+        31.058823529411764,
+        31.46218487394958,
+        31.865546218487395,
+        32.26890756302521,
+        32.67226890756302,
+        33.075630252100844,
+        33.47899159663866,
+        33.88235294117647,
+        34.285714285714285,
+        34.6890756302521,
+        35.09243697478992,
+        35.49579831932773,
+        35.89915966386555,
+        36.30252100840336,
+        36.705882352941174,
+        37.109243697478995,
+        37.51260504201681,
+        37.91596638655462,
+        38.319327731092436,
+        38.72268907563026,
+        39.12605042016807,
+        39.529411764705884,
+        39.9327731092437,
+        40.33613445378151,
+        40.73949579831933,
+        41.142857142857146,
+        41.54621848739496,
+        41.94957983193277,
+        42.35294117647059,
+        42.75630252100841,
+        43.15966386554622,
+        43.563025210084035,
+        43.96638655462185,
+        44.36974789915966,
+        44.77310924369748,
+        45.1764705882353,
+        45.57983193277311,
+        45.983193277310924,
+        46.38655462184874,
+        46.78991596638656,
+        47.19327731092437,
+        47.596638655462186,
+        48.0
+      ],
+      "mean": [
+        0.8794552087783813,
+        0.8794829249382019,
+        0.8795099258422852,
+        0.8795363903045654,
+        0.8795623183250427,
+        0.8795875906944275,
+        0.8796124458312988,
+        0.8796366453170776,
+        0.8796603083610535,
+        0.8796834945678711,
+        0.8797060251235962,
+        0.8797281980514526,
+        0.8797497153282166,
+        0.8797709345817566,
+        0.8797913193702698,
+        0.8798114061355591,
+        0.8798309564590454,
+        0.8798499703407288,
+        0.8798686861991882,
+        0.8798866868019104,
+        0.8799042701721191,
+        0.8799214959144592,
+        0.8799381256103516,
+        0.8799543976783752,
+        0.8799700140953064,
+        0.8799853324890137,
+        0.8800002932548523,
+        0.8800146579742432,
+        0.8800286650657654,
+        0.8800422549247742,
+        0.8800554275512695,
+        0.8800680637359619,
+        0.8800804615020752,
+        0.8800923824310303,
+        0.8801038861274719,
+        0.8801149725914001,
+        0.8801257014274597,
+        0.8801360130310059,
+        0.8801459670066833,
+        0.8801555633544922,
+        0.8801648020744324,
+        0.8801736235618591,
+        0.880182147026062,
+        0.8801902532577515,
+        0.8801980018615723,
+        0.880205512046814,
+        0.8802126049995422,
+        0.8802193403244019,
+        0.8802258372306824,
+        0.8802319765090942,
+        0.8802378177642822,
+        0.8802434206008911,
+        0.8802486062049866,
+        0.8802534937858582,
+        0.8802580833435059,
+        0.880262553691864,
+        0.8802664875984192,
+        0.88027024269104,
+        0.8802738785743713,
+        0.880277156829834,
+        0.8802800178527832,
+        0.8802827596664429,
+        0.8802852630615234,
+        0.8802875280380249,
+        0.8802894949913025,
+        0.880291223526001,
+        0.8802928924560547,
+        0.8802940845489502,
+        0.8802952170372009,
+        0.880295991897583,
+        0.8802967071533203,
+        0.8802971839904785,
+        0.8802974820137024,
+        0.8802974224090576,
+        0.8802973031997681,
+        0.8802970051765442,
+        0.8802965879440308,
+        0.8802958726882935,
+        0.8802949786186218,
+        0.8802940845489502,
+        0.8802929520606995,
+        0.8802917003631592,
+        0.8802902102470398,
+        0.8802886009216309,
+        0.8802868723869324,
+        0.8802849054336548,
+        0.880282998085022,
+        0.8802809119224548,
+        0.8802785277366638,
+        0.8802762031555176,
+        0.8802738189697266,
+        0.8802711367607117,
+        0.8802685737609863,
+        0.8802658319473267,
+        0.8802628517150879,
+        0.8802599906921387,
+        0.8802570104598999,
+        0.8802538514137268,
+        0.8802506327629089,
+        0.8802474737167358,
+        0.8802441358566284,
+        0.8802407383918762,
+        0.880237340927124,
+        0.8802338242530823,
+        0.8802304267883301,
+        0.8802269101142883,
+        0.880223274230957,
+        0.880219578742981,
+        0.8802160620689392,
+        0.8802123069763184,
+        0.8802086114883423,
+        0.880204975605011,
+        0.8802012205123901,
+        0.8801975846290588,
+        0.8801938891410828,
+        0.8801901340484619,
+        0.8801864385604858,
+        0.880182683467865,
+        0.8801789879798889,
+        0.8801753520965576
+      ],
+      "std": [
+        0.0005520072882063687,
+        0.0005393261671997607,
+        0.0005268888198770583,
+        0.0005149642820470035,
+        0.0005033521447330713,
+        0.000491921731736511,
+        0.00048108864575624466,
+        0.00047029051347635686,
+        0.0004599388921633363,
+        0.0004499283095356077,
+        0.0004402896447572857,
+        0.00043090502731502056,
+        0.00042182899778708816,
+        0.0004130841407459229,
+        0.00040477581205777824,
+        0.0003966423973906785,
+        0.00038896745536476374,
+        0.0003815137315541506,
+        0.00037446289206855,
+        0.00036759095382876694,
+        0.0003610872372519225,
+        0.0003548552340362221,
+        0.000349063309840858,
+        0.0003435258404351771,
+        0.00033811526373028755,
+        0.0003332445630803704,
+        0.0003285903949290514,
+        0.00032403497607447207,
+        0.0003199080238118768,
+        0.0003159564221277833,
+        0.0003124565992038697,
+        0.00030907036853022873,
+        0.00030604307539761066,
+        0.00030328804859891534,
+        0.00030072976369410753,
+        0.0002985025057569146,
+        0.00029621992143802345,
+        0.00029430471477098763,
+        0.00029271707171574235,
+        0.00029118635575287044,
+        0.0002900623658206314,
+        0.00028896593721583486,
+        0.00028804075554944575,
+        0.00028737890534102917,
+        0.00028679496608674526,
+        0.000286570138996467,
+        0.00028629059670493007,
+        0.00028632881003431976,
+        0.000286458118353039,
+        0.0002866823342628777,
+        0.00028717025998048484,
+        0.00028774383827112615,
+        0.0002884322020690888,
+        0.0002891628828365356,
+        0.00029020532383583486,
+        0.00029121566331014037,
+        0.00029239896684885025,
+        0.00029365747468546033,
+        0.0002950260532088578,
+        0.00029648063355125487,
+        0.00029811635613441467,
+        0.0002997705596499145,
+        0.0003015020047314465,
+        0.00030339221120812,
+        0.0003053993859793991,
+        0.00030745923868380487,
+        0.00030947188497520983,
+        0.00031171736191026866,
+        0.0003139718610327691,
+        0.00031636873609386384,
+        0.0003189016133546829,
+        0.0003214775933884084,
+        0.0003241497033741325,
+        0.0003267929423600435,
+        0.0003295716887805611,
+        0.0003325186553411186,
+        0.0003354641085024923,
+        0.0003384607844054699,
+        0.00034146016696467996,
+        0.00034472160041332245,
+        0.0003480525338090956,
+        0.00035130922333337367,
+        0.0003547055530361831,
+        0.0003581430937629193,
+        0.0003617430629674345,
+        0.00036543476744554937,
+        0.00036906838067807257,
+        0.00037291159969754517,
+        0.00037676902138628066,
+        0.0003807178291026503,
+        0.0003846133186016232,
+        0.00038870912976562977,
+        0.0003928043006453663,
+        0.00039695677696727216,
+        0.0004012746794614941,
+        0.0004056362377014011,
+        0.0004098059143871069,
+        0.0004144398553762585,
+        0.0004188314778730273,
+        0.00042347487760707736,
+        0.000427990045864135,
+        0.00043274782365188,
+        0.0004374643031042069,
+        0.00044236244866624475,
+        0.00044716810225509107,
+        0.0004521108348853886,
+        0.0004571382887661457,
+        0.000462052266811952,
+        0.00046716214274056256,
+        0.0004722320882137865,
+        0.0004773979599121958,
+        0.00048266121302731335,
+        0.000487878656713292,
+        0.0004931307630613446,
+        0.0004984413390047848,
+        0.0005038025556132197,
+        0.0005093282670713961,
+        0.0005146342446096241,
+        0.0005200637388043106,
+        0.0005254626739770174
+      ]
+    },
+    "30.0": {
+      "time": [
+        0.0,
+        0.40336134453781514,
+        0.8067226890756303,
+        1.2100840336134455,
+        1.6134453781512605,
+        2.0168067226890756,
+        2.420168067226891,
+        2.823529411764706,
+        3.226890756302521,
+        3.630252100840336,
+        4.033613445378151,
+        4.436974789915967,
+        4.840336134453782,
+        5.243697478991597,
+        5.647058823529412,
+        6.050420168067227,
+        6.453781512605042,
+        6.857142857142858,
+        7.260504201680672,
+        7.663865546218488,
+        8.067226890756302,
+        8.470588235294118,
+        8.873949579831933,
+        9.277310924369749,
+        9.680672268907564,
+        10.084033613445378,
+        10.487394957983193,
+        10.890756302521009,
+        11.294117647058824,
+        11.69747899159664,
+        12.100840336134453,
+        12.504201680672269,
+        12.907563025210084,
+        13.3109243697479,
+        13.714285714285715,
+        14.117647058823529,
+        14.521008403361344,
+        14.92436974789916,
+        15.327731092436975,
+        15.73109243697479,
+        16.134453781512605,
+        16.537815126050422,
+        16.941176470588236,
+        17.34453781512605,
+        17.747899159663866,
+        18.15126050420168,
+        18.554621848739497,
+        18.95798319327731,
+        19.36134453781513,
+        19.764705882352942,
+        20.168067226890756,
+        20.571428571428573,
+        20.974789915966387,
+        21.378151260504204,
+        21.781512605042018,
+        22.18487394957983,
+        22.58823529411765,
+        22.991596638655462,
+        23.39495798319328,
+        23.798319327731093,
+        24.201680672268907,
+        24.605042016806724,
+        25.008403361344538,
+        25.411764705882355,
+        25.81512605042017,
+        26.218487394957982,
+        26.6218487394958,
+        27.025210084033613,
+        27.42857142857143,
+        27.831932773109244,
+        28.235294117647058,
+        28.638655462184875,
+        29.04201680672269,
+        29.445378151260506,
+        29.84873949579832,
+        30.252100840336134,
+        30.65546218487395,
+        31.058823529411764,
+        31.46218487394958,
+        31.865546218487395,
+        32.26890756302521,
+        32.67226890756302,
+        33.075630252100844,
+        33.47899159663866,
+        33.88235294117647,
+        34.285714285714285,
+        34.6890756302521,
+        35.09243697478992,
+        35.49579831932773,
+        35.89915966386555,
+        36.30252100840336,
+        36.705882352941174,
+        37.109243697478995,
+        37.51260504201681,
+        37.91596638655462,
+        38.319327731092436,
+        38.72268907563026,
+        39.12605042016807,
+        39.529411764705884,
+        39.9327731092437,
+        40.33613445378151,
+        40.73949579831933,
+        41.142857142857146,
+        41.54621848739496,
+        41.94957983193277,
+        42.35294117647059,
+        42.75630252100841,
+        43.15966386554622,
+        43.563025210084035,
+        43.96638655462185,
+        44.36974789915966,
+        44.77310924369748,
+        45.1764705882353,
+        45.57983193277311,
+        45.983193277310924,
+        46.38655462184874,
+        46.78991596638656,
+        47.19327731092437,
+        47.596638655462186,
+        48.0
+      ],
+      "mean": [
+        0.9029181003570557,
+        0.9030117988586426,
+        0.903104841709137,
+        0.9031969904899597,
+        0.9032883644104004,
+        0.9033788442611694,
+        0.9034687876701355,
+        0.9035578966140747,
+        0.9036462903022766,
+        0.9037336111068726,
+        0.9038205146789551,
+        0.9039063453674316,
+        0.90399169921875,
+        0.9040762186050415,
+        0.9041600227355957,
+        0.904242992401123,
+        0.9043252468109131,
+        0.9044067859649658,
+        0.9044875502586365,
+        0.9045677185058594,
+        0.9046471118927002,
+        0.9047256708145142,
+        0.9048035144805908,
+        0.9048808813095093,
+        0.9049572348594666,
+        0.9050329923629761,
+        0.9051081538200378,
+        0.9051827192306519,
+        0.9052563309669495,
+        0.9053292870521545,
+        0.9054017066955566,
+        0.9054734110832214,
+        0.9055442810058594,
+        0.9056145548820496,
+        0.9056843519210815,
+        0.9057533740997314,
+        0.9058216214179993,
+        0.9058893322944641,
+        0.9059563875198364,
+        0.9060227274894714,
+        0.9060885310173035,
+        0.906153678894043,
+        0.9062182307243347,
+        0.9062820672988892,
+        0.9063452482223511,
+        0.90640789270401,
+        0.9064699411392212,
+        0.9065312147140503,
+        0.9065920114517212,
+        0.9066522717475891,
+        0.9067119359970093,
+        0.9067707061767578,
+        0.9068292379379272,
+        0.9068870544433594,
+        0.9069442749023438,
+        0.9070007801055908,
+        0.9070570468902588,
+        0.9071124792098999,
+        0.9071674942970276,
+        0.9072219133377075,
+        0.9072756767272949,
+        0.9073289632797241,
+        0.9073817729949951,
+        0.9074337482452393,
+        0.9074854254722595,
+        0.9075366258621216,
+        0.9075870513916016,
+        0.9076371788978577,
+        0.9076865911483765,
+        0.9077355861663818,
+        0.907784104347229,
+        0.9078319668769836,
+        0.9078794717788696,
+        0.9079263210296631,
+        0.9079729318618774,
+        0.908018946647644,
+        0.9080643653869629,
+        0.9081093072891235,
+        0.908153772354126,
+        0.9081977605819702,
+        0.908241331577301,
+        0.9082843065261841,
+        0.9083269834518433,
+        0.9083691835403442,
+        0.9084107279777527,
+        0.9084519743919373,
+        0.9084927439689636,
+        0.9085330963134766,
+        0.9085729122161865,
+        0.9086123704910278,
+        0.9086512327194214,
+        0.9086899757385254,
+        0.9087279438972473,
+        0.9087656736373901,
+        0.9088030457496643,
+        0.9088398814201355,
+        0.908876359462738,
+        0.9089123010635376,
+        0.9089480042457581,
+        0.9089832901954651,
+        0.9090180397033691,
+        0.9090524911880493,
+        0.9090865850448608,
+        0.9091202020645142,
+        0.9091534614562988,
+        0.9091864228248596,
+        0.9092190265655518,
+        0.9092511534690857,
+        0.9092828631401062,
+        0.9093141555786133,
+        0.909345269203186,
+        0.9093761444091797,
+        0.909406304359436,
+        0.9094363451004028,
+        0.909466028213501,
+        0.9094952940940857,
+        0.9095243215560913,
+        0.909552812576294,
+        0.909581184387207,
+        0.9096091985702515
+      ],
+      "std": [
+        0.0007089523714967072,
+        0.0006950150127522647,
+        0.0006814330699853599,
+        0.0006681728409603238,
+        0.0006552841514348984,
+        0.0006427175248973072,
+        0.0006306907162070274,
+        0.0006188743282109499,
+        0.0006074738339520991,
+        0.0005964533775113523,
+        0.0005857575451955199,
+        0.0005754335434176028,
+        0.0005654134438373148,
+        0.0005558616830967367,
+        0.000546527502592653,
+        0.0005376167828217149,
+        0.0005291122943162918,
+        0.0005208465736359358,
+        0.000513001752551645,
+        0.0005053525092080235,
+        0.0004981723031960428,
+        0.0004913199809379876,
+        0.0004848236858379096,
+        0.0004786041972693056,
+        0.00047251005889847875,
+        0.00046688379370607436,
+        0.0004617602680809796,
+        0.0004566039133351296,
+        0.00045174043043516576,
+        0.0004473027656786144,
+        0.00044314333354122937,
+        0.00043911696411669254,
+        0.0004355448763817549,
+        0.0004319793952163309,
+        0.0004288703785277903,
+        0.00042586243944242597,
+        0.0004231338098179549,
+        0.00042067430331371725,
+        0.0004182326083537191,
+        0.00041612377390265465,
+        0.0004141108656767756,
+        0.0004124878323636949,
+        0.000411000830354169,
+        0.00040960314800031483,
+        0.00040840634028427303,
+        0.0004073390446137637,
+        0.0004064661043230444,
+        0.0004055878089275211,
+        0.0004050995339639485,
+        0.00040465357596985996,
+        0.00040431320667266846,
+        0.0004040618077851832,
+        0.00040381462895311415,
+        0.00040404198807664216,
+        0.0004039392515551299,
+        0.00040420881123282015,
+        0.0004045809037052095,
+        0.0004048622795380652,
+        0.0004053818993270397,
+        0.00040602084482088685,
+        0.0004066305991727859,
+        0.00040744166471995413,
+        0.00040826998883858323,
+        0.0004091105074621737,
+        0.00041022986988537014,
+        0.00041116715874522924,
+        0.00041232231887988746,
+        0.0004135351919103414,
+        0.00041493424214422703,
+        0.0004162818950135261,
+        0.00041766074718907475,
+        0.0004192866326775402,
+        0.0004209039034321904,
+        0.0004225278098601848,
+        0.0004241635906510055,
+        0.00042613610276021063,
+        0.00042801868403330445,
+        0.00042987047345377505,
+        0.0004320052685216069,
+        0.00043421349255368114,
+        0.00043637232738547027,
+        0.00043871134403161705,
+        0.0004410609253682196,
+        0.0004436309391167015,
+        0.0004461698408704251,
+        0.00044881762005388737,
+        0.0004515719774644822,
+        0.00045440762187354267,
+        0.0004572818579617888,
+        0.00046031438978388906,
+        0.00046345379087142646,
+        0.0004666727618314326,
+        0.00046992063289508224,
+        0.0004732602392323315,
+        0.0004769751394633204,
+        0.00048043185961432755,
+        0.0004842792986892164,
+        0.00048806582344695926,
+        0.0004920728388242424,
+        0.0004960386431775987,
+        0.0005002627149224281,
+        0.000504544994328171,
+        0.0005088140605948865,
+        0.0005134866223670542,
+        0.000517905515152961,
+        0.0005226209759712219,
+        0.0005275590228848159,
+        0.000532531994394958,
+        0.0005375011241994798,
+        0.000542573572602123,
+        0.0005478581297211349,
+        0.0005533234216272831,
+        0.0005587469204328954,
+        0.0005644483026117086,
+        0.000570274714846164,
+        0.0005760382628068328,
+        0.0005820151418447495,
+        0.0005881079123355448,
+        0.0005942389252595603,
+        0.0006007908959873021
+      ]
+    }
+  }
+}

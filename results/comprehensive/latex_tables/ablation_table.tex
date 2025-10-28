@@ -1,0 +1,16 @@
+\begin{table}
+\caption{Ablation Study Results: Performance comparison of different PINN configurations for the Deep Ensemble approach.}
+\label{tab:ablation_study}
+\begin{tabular}{lccccccc}
+\toprule
+Configuration & Description & R² Mean & R² Std & RMSE Mean & RMSE Std & Hill Kinetics & Physics λ \\
+\midrule
+Baseline Ensemble & Baseline for Deep Ensemble (no dropout, Hill kinetics) & 0.8561 & 0.0075 & 0.0206 & 0.0005 & Yes & 100.000000 \\
+No Physics Loss & Pure data-driven (no ODE constraints) & -0.3187 & 1.1026 & 0.0572 & 0.0247 & Yes & 0.000000 \\
+No Data Loss & Pure physics (no data fitting) & -0.3187 & 1.1026 & 0.0572 & 0.0247 & Yes & 100.000000 \\
+Balanced Loss & Balanced data and physics weights & -0.3187 & 1.1026 & 0.0572 & 0.0247 & Yes & 10.000000 \\
+Data Heavy & Data-heavy weighting (100:10:5) & -0.3187 & 1.1026 & 0.0572 & 0.0247 & Yes & 10.000000 \\
+Physics Heavy & Physics-heavy weighting (1:200:10) & -0.3187 & 1.1026 & 0.0572 & 0.0247 & Yes & 200.000000 \\
+\bottomrule
+\end{tabular}
+\end{table}
