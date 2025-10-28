@@ -1,0 +1,16 @@
+
+\begin{table}[htbp]
+\centering
+\caption{Comparison of Pure NN vs. Physics-Informed NN}
+\label{tab:pure_nn_comparison}
+\begin{tabular}{lcccc}
+\hline
+\textbf{Method} & \textbf{Train R$^2$} & \textbf{CV R$^2$} & \textbf{RMSE} & \textbf{Violations} \\
+\hline
+Pure NN & 0.973 & 0.000 & 0.007 & 0/5 \\
+PINN (SW=0.3) & 0.803 & 0.79 & 0.024 & 0/5 \\
+\hline
+\multicolumn{5}{l}{\small Pure NN shows severe overfitting (train-test gap 0.97)} \\
+\multicolumn{5}{l}{\small PINN maintains controlled fitting with physics constraints} \\
+\end{tabular}
+\end{table}
