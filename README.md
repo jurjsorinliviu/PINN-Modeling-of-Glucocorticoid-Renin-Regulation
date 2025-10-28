@@ -311,7 +311,7 @@ Experimental data from:
 If you use this code or methodology in your research, please cite:
 
 ```bibtex
-TBA
+S. L. Jurj, PINN-Modeling-of-Glucocorticoid-Renin-Regulation. GitHub repository. Accessed: Oct. 28, 2025. [Online]. Available: https://github.com/jurjsorinliviu/PINN-Modeling-of-Glucocorticoid-Renin-Regulation
 ```
 
 ## License
