@@ -71,7 +71,6 @@ We developed a **PINN ensemble** that achieves **R² = 0.803 ± 0.015** on exper
 │   ├── visualization.py              # Plotting functions
 │   ├── statistical_utils.py          # Statistical analysis tools
 │   ├── ode_baseline.py               # Traditional ODE baseline
-│   └── readme.md                     # Source code documentation
 │
 ├── results/                          # Experimental results & outputs
 │   ├── unified_03/                   # SW=0.3 ensemble (n=5) [OPTIMAL]
