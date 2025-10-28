@@ -62,12 +62,17 @@ This repository contains the implementation of Physics-Informed Neural Networks 
 │   ├── comprehensive/           # Ablation studies & validation
 │   └── ode_baseline_results.json
 │
-├── 1_setup_and_data_check.py    # Environment verification
-├── 2_train_ode_baseline.py      # Traditional ODE baseline
-├── 8_unified_pipeline.py         # SW=0.5 baseline ensemble
-├── 9_ensemble_synthetic_03.py    # SW=0.3 optimal ensemble [MAIN]
-├── 10_compare_ensembles.py       # Statistical comparison
-├── reproduce_manuscript.py       # One-click reproduction script
+├── 1_setup_and_data_check.py         # Environment verification
+├── 2_train_ode_baseline.py           # Traditional ODE baseline
+├── 3_train_pinn_model.py             # PINN model training
+├── 4_run_all_experiments.py          # Run all experiments
+├── 5_comprehensive_ieee_analysis.py  # Comprehensive IEEE analysis
+├── 6_generate_missing_reports.py     # Generate missing reports
+├── 7_improved_training.py            # Improved training experiments
+├── 8_unified_pipeline.py             # SW=0.5 baseline ensemble
+├── 9_ensemble_synthetic_03.py        # SW=0.3 optimal ensemble [MAIN]
+├── 10_compare_ensembles.py           # Statistical comparison
+├── reproduce_manuscript.py           # One-click reproduction script
 │
 └── requirements.txt              # Python dependencies
 ```
