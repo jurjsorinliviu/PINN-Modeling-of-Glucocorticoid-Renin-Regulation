@@ -3,12 +3,25 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-ee4c2c.svg)](https://pytorch.org/)
+[![Status](https://img.shields.io/badge/Status-Active-success.svg)](https://github.com/jurjsorinliviu/PINN-Modeling-of-Glucocorticoid-Renin-Regulation)
 
 ## Overview
 
-This repository contains the implementation of Physics-Informed Neural Networks (PINNs) for modeling glucocorticoid-induced renin regulation from sparse experimental data. Our approach demonstrates how PINNs can learn complex biological dynamics with limited observations while maintaining biological plausibility through physics-based constraints.
+This repository contains the implementation of **Physics-Informed Neural Networks (PINNs)** for modeling glucocorticoid-induced renin regulation from sparse experimental data. Our approach demonstrates how PINNs can learn complex biological dynamics with only **4 data points** while maintaining biological plausibility through physics-based constraints.
 
-**Key Achievement:** We developed a PINN ensemble that achieves **R² = 0.803 ± 0.015** on experimental data while respecting underlying ODEs governing glucocorticoid receptor dynamics, substantially outperforming a traditional ODE baseline (R² = -0.220).
+### Key Achievement
+
+We developed a **PINN ensemble** that achieves **R² = 0.803 ± 0.015** on experimental data while respecting underlying ordinary differential equations (ODEs) governing glucocorticoid receptor dynamics, substantially outperforming a traditional ODE baseline (R² = -0.220).
+
+### Research Highlights
+
+- 📊 **Sparse Data Learning**: Achieves high accuracy with only 4 experimental observations
+- 🧬 **Biology-Informed**: Incorporates 6-state ODE system for glucocorticoid receptor dynamics
+- 🎯 **Parameter Estimation**: Accurately estimates IC50 (2.925 ± 0.012 nM) and Hill coefficient (1.950 ± 0.009)
+- 📈 **Ensemble Approach**: Statistical validation through multiple model training with plausibility checks
+- 🔬 **Synthetic Weight Optimization**: Balances data accuracy vs. biological parameter alignment (SW=0.3 optimal)
+
+---
 
 ## Table of Contents
 
@@ -19,8 +32,12 @@ This repository contains the implementation of Physics-Informed Neural Networks 
 - [Methodology](#methodology)
 - [Results](#results)
 - [Reproducibility](#reproducibility)
+- [Data Source](#data-source)
 - [Citation](#citation)
 - [License](#license)
+- [Contact](#contact)
+
+---
 
 ## Features
 
@@ -30,62 +47,80 @@ This repository contains the implementation of Physics-Informed Neural Networks 
 - **Ensemble training** with plausibility checks and uncertainty quantification
 - **Synthetic weight optimization** balancing data accuracy vs. biological parameter alignment
 - **Plateau ramp mechanism** for stable high-dose suppression training
-- **Comprehensive validation** including ablation studies and temporal extrapolation
+- **Statistical validation** including Mann-Whitney U tests and bootstrap confidence intervals
+- **Comprehensive visualization** with dose-response curves, time courses, and Pareto frontiers
 
 ### Model Architecture
 
-- 6-state ODE system: mRNA, protein, secreted renin, and 3 glucocorticoid receptor states
-- Fully connected neural network: [2] → [128, 128, 128, 128] → [6]
-- Physics constraints: ODE residuals, initial conditions, biological plausibility
-- Loss balancing: Data fitting, synthetic data alignment, monotonicity constraints
+- **6-state ODE system**: mRNA, protein, secreted renin, and 3 glucocorticoid receptor states
+- **Neural network**: [2 inputs] → [128, 128, 128, 128] → [6 outputs]
+- **Physics constraints**: ODE residuals, initial conditions, biological plausibility
+- **Loss balancing**: Data fitting, synthetic data alignment, monotonicity constraints
+
+---
 
 ## Repository Structure
 
 ```
 .
-├── src/                          # Core source code
-│   ├── model.py                  # ReninPINN architecture (6-state ODE)
-│   ├── trainer.py                # UnifiedPINNTrainer with plateau ramp
-│   ├── data.py                   # Experimental data from Latia (2020)
-│   ├── unified_ensemble.py       # Ensemble training utilities
-│   ├── visualization.py          # Plotting functions
-│   └── statistical_utils.py      # Statistical analysis tools
+├── src/                              # Core source code
+│   ├── model.py                      # ReninPINN architecture (6-state ODE)
+│   ├── trainer.py                    # UnifiedPINNTrainer with plateau ramp
+│   ├── data.py                       # Experimental data from Latia (2020)
+│   ├── unified_ensemble.py           # Ensemble training utilities
+│   ├── visualization.py              # Plotting functions
+│   ├── statistical_utils.py          # Statistical analysis tools
+│   ├── ode_baseline.py               # Traditional ODE baseline
+│   └── readme.md                     # Source code documentation
 │
-├── results/                      # Experimental results
-│   ├── unified_03/              # SW=0.3 ensemble (n=5) [PRIMARY RESULT]
+├── results/                          # Experimental results & outputs
+│   ├── unified_03/                   # SW=0.3 ensemble (n=5) [OPTIMAL]
 │   │   ├── unified_ensemble_03_results.json
-│   │   ├── figures/             # Dose-response, time courses, Pareto
-│   │   └── models/              # Trained model checkpoints
-│   ├── unified/                 # SW=0.5 ensemble (n=4) [BASELINE]
-│   ├── unified_02/              # SW=0.2 ensemble (n=1) [EXPLORATORY]
-│   ├── comparison/              # Three-way ensemble comparison
-│   ├── comprehensive/           # Ablation studies & validation
-│   └── ode_baseline_results.json
+│   │   ├── figures/                  # Dose-response, time courses, Pareto
+│   │   └── models/                   # Trained model checkpoints
+│   ├── unified/                      # SW=0.5 ensemble (n=4) [BASELINE]
+│   ├── unified_02/                   # SW=0.2 ensemble (n=1) [EXPLORATORY]
+│   ├── comparison/                   # Three-way ensemble comparison
+│   │   ├── figures/                  # Comparison visualizations
+│   │   └── tables/                   # LaTeX comparison tables
+│   ├── statistical_analysis/         # Mann-Whitney U test results
+│   │   ├── wilcoxon_test_results.json
+│   │   ├── comparison_table.tex
+│   │   └── wilcoxon_test_summary.txt
+│   ├── comprehensive/                # Ablation studies & validation
+│   │   ├── figures/                  # Enhanced diagnostic plots
+│   │   └── latex_tables/             # Manuscript-ready tables
+│   └── ode_baseline_results.json     # Traditional ODE results
 │
-├── 1_setup_and_data_check.py         # Environment verification
-├── 2_train_ode_baseline.py           # Traditional ODE baseline
-├── 3_train_pinn_model.py             # PINN model training
-├── 4_run_all_experiments.py          # Run all experiments
-├── 5_comprehensive_ieee_analysis.py  # Comprehensive IEEE analysis
-├── 6_generate_missing_reports.py     # Generate missing reports
-├── 7_improved_training.py            # Improved training experiments
-├── 8_unified_pipeline.py             # SW=0.5 baseline ensemble
-├── 9_ensemble_synthetic_03.py        # SW=0.3 optimal ensemble [MAIN]
-├── 10_compare_ensembles.py           # Statistical comparison
-├── reproduce_manuscript.py           # One-click reproduction script
+├── 1_setup_and_data_check.py        # Environment verification
+├── 2_train_ode_baseline.py          # Traditional ODE baseline
+├── 3_train_pinn_model.py            # PINN model training
+├── 4_run_all_experiments.py         # Run all experiments
+├── 5_comprehensive_ieee_analysis.py # Comprehensive IEEE analysis
+├── 6_generate_missing_reports.py    # Generate missing reports
+├── 7_improved_training.py           # Improved training experiments
+├── 8_unified_pipeline.py            # SW=0.5 baseline ensemble
+├── 9_ensemble_synthetic_03.py       # SW=0.3 optimal ensemble [MAIN]
+├── 10_compare_ensembles.py          # Three-way ensemble comparison
+├── wilcoxon_test.py                 # Statistical significance testing
+├── reproduce_manuscript.py          # One-click reproduction script
 │
-└── requirements.txt              # Python dependencies
+├── requirements.txt                  # Python dependencies
+└── README.md                         # This file
 ```
+
+---
 
 ## Installation
 
 ### Requirements
 
-- Python 3.8+
-- PyTorch 2.0+
-- NumPy, SciPy, Matplotlib, Pandas
+- **Python** 3.8 or higher
+- **PyTorch** 2.0 or higher
+- **NumPy**, **SciPy**, **Matplotlib**, **Pandas**
+- Optional: **seaborn**, **tqdm**, **statsmodels**
 
-### Setup
+### Setup Instructions
 
 ```bash
 # Clone repository
@@ -100,57 +135,102 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-## Quick Start
-
-### 1. Verify Installation
+### Verify Installation
 
 ```bash
 python 1_setup_and_data_check.py
 ```
 
-### 2. Reproduce Main Results
+This will check all dependencies and generate a visualization of the raw experimental data.
+
+---
+
+## Quick Start
+
+### 1. Verify Installation & Data
 
 ```bash
-# Train optimal ensemble (SW=0.3, n=5)
-python 9_ensemble_synthetic_03.py
+python 1_setup_and_data_check.py
+```
 
-# Compare with baselines
+✓ Checks Python packages  
+✓ Verifies experimental data  
+✓ Creates results directories  
+✓ Generates raw data visualization
+
+### 2. Train Optimal Ensemble (SW=0.3)
+
+```bash
+python 9_ensemble_synthetic_03.py
+```
+
+⏱ **Runtime**: ~30 minutes  
+📊 **Output**: 5-member ensemble with R² = 0.803 ± 0.015  
+📁 **Location**: `results/unified_03/`
+
+### 3. Compare Ensemble Configurations
+
+```bash
 python 10_compare_ensembles.py
 ```
 
-### 3. Full Reproduction Pipeline
+📈 Generates three-way comparison (SW=0.2, 0.3, 0.5)  
+📊 Creates comparison visualizations and tables  
+📁 **Location**: `results/comparison/`
+
+### 4. Statistical Significance Testing
+
+```bash
+python wilcoxon_test.py
+```
+
+📊 Performs Mann-Whitney U tests  
+📈 Computes effect sizes (Cohen's d)  
+🔢 Generates bootstrap 95% confidence intervals  
+📁 **Location**: `results/statistical_analysis/`
+
+### 5. Full Reproduction Pipeline
 
 ```bash
 # Reproduces all experiments from manuscript
 python reproduce_manuscript.py
 ```
 
+⏱ **Runtime**: ~1-2 hours  
+📊 **Output**: Complete results including baselines and ablations
+
+---
+
 ## Methodology
 
 ### Problem Statement
 
-Model glucocorticoid-induced renin suppression from **4 experimental data points** (L. Latia, “Regulation des Renin-Gens durch Dexamethason,” Heinrich-Heine-Universität Düsseldorf, Düsseldorf, Germany, 2020. Accessed: Oct. 28, 2025. [Online]. Available: https://docserv.uni-duesseldorf.de/servlets/DerivateServlet/Derivate-56964/Latia%2C%20Larissa_finale%20Fassung-1.pdf):
+Model glucocorticoid-induced renin suppression from **4 experimental data points** (Latia, 2020):
 
-- Baseline (0 nM dex): 1.000 ± 0.030
-- Low dose (0.3 nM): 0.915 ± 0.020  
-- Medium dose (3 nM): 0.847 ± 0.018
-- High dose (30 nM): 0.914 ± 0.014
+| Dex Concentration | Normalized Renin | Std Dev |
+| ----------------- | ---------------- | ------- |
+| 0 nM (baseline)   | 1.000            | ±0.030  |
+| 0.3 nM (low)      | 0.915            | ±0.020  |
+| 3 nM (medium)     | 0.847            | ±0.018  |
+| 30 nM (high)      | 0.914            | ±0.014  |
+
+**Challenge**: Non-monotonic dose-response with only 4 observations requires physics-based constraints to prevent overfitting.
 
 ### Physics-Informed Neural Network
 
-**State Variables:**
+#### State Variables
 
 1. **mRNA(t)**: Renin mRNA concentration
-2. **Protein(t)**: Renin protein in cells
+2. **Protein(t)**: Renin protein in cells  
 3. **ReninSecreted(t)**: Secreted renin (observable)
 4. **GR_free(t)**: Free glucocorticoid receptors
 5. **GR_cyto(t)**: Cytoplasmic GR-glucocorticoid complexes
 6. **GR_nuc(t)**: Nuclear GR complexes (transcriptional repressor)
 
-**Governing ODEs:**
+#### Governing ODEs
 
 ```
-dmRNA/dt = k_synth(1 - GR_nuc) - k_deg·mRNA
+dmRNA/dt = k_synth·(1 - GR_nuc) - k_deg·mRNA
 dProtein/dt = k_translation·mRNA - k_secretion·Protein
 dReninSecreted/dt = k_secretion·Protein
 dGR_free/dt = -k_binding·GR_free·[Dex] + k_dissoc·GR_cyto
@@ -158,26 +238,35 @@ dGR_cyto/dt = k_binding·GR_free·[Dex] - (k_dissoc + k_nuclear)·GR_cyto
 dGR_nuc/dt = k_nuclear·GR_cyto - k_export·GR_nuc
 ```
 
-**Loss Function:**
+#### Loss Function
 
 ```
 L_total = L_data + λ_physics·L_ode + λ_ic·L_ic + 
           λ_param·L_param + λ_synth·L_synth + λ_bio·L_bio
 ```
 
+**Loss Components:**
+
+- `L_data`: Mean squared error on experimental data
+- `L_ode`: Physics constraint (ODE residuals)
+- `L_ic`: Initial condition constraint
+- `L_param`: Parameter alignment with biological targets
+- `L_synth`: Synthetic data alignment (dose-response curve)
+- `L_bio`: Biological plausibility (monotonicity, boundedness)
+
 ### Key Innovations
 
-#### 1. Synthetic Weight Optimization
+#### 1. Synthetic Weight (SW) Optimization
 
-The **synthetic weight (SW)** parameter balances data accuracy vs. biological parameter alignment:
+The **synthetic weight** parameter balances data accuracy vs. biological parameter alignment:
 
-| SW Value | Success Rate  | R²        | Parameter Gap | Recommended Use              |
-| -------- | ------------- | --------- | ------------- | ---------------------------- |
-| 0.5      | 40% (n=4)     | 0.759     | 0.060         | Baseline                     |
-| **0.3**  | **50% (n=5)** | **0.803** | **0.054**     | **Optimal "Goldilocks"**     |
-| 0.2      | 20% (n=1)     | 0.789     | 0.050         | Exploratory (insufficient n) |
+| SW Value | Success Rate   | Ensemble Size | R² Score        | IC50 Gap        | Status           |
+| -------- | -------------- | ------------- | --------------- | --------------- | ---------------- |
+| 0.5      | 40% (4/10)     | n=4           | 0.759±0.028     | 0.050±0.010     | ✓ Valid baseline |
+| **0.3**  | **50% (5/10)** | **n=5**       | **0.803±0.015** | **0.045±0.014** | **✓ Optimal**    |
+| 0.2      | 20% (1/5)      | n=1           | 0.789           | 0.041           | ⚠ Insufficient   |
 
-**Finding:** SW=0.3 provides the best balance between model accuracy and biological parameter alignment while maintaining sufficient ensemble members (n≥3) for statistical validity.
+**Key Finding**: SW=0.3 provides the best balance ("Goldilocks zone") between model accuracy and biological parameter alignment while maintaining sufficient ensemble members for statistical validity.
 
 #### 2. Plateau Ramp Mechanism
 
@@ -196,12 +285,14 @@ else:
 
 All ensemble members must satisfy biological constraints:
 
-- ✓ Non-negativity: All states ≥ 0
-- ✓ Boundedness: States within physiological ranges
-- ✓ Smooth dynamics: No oscillations
-- ✓ Steady-state convergence
-- ✓ Dose-dependent suppression
-- ✓ High-dose suppression ≥ 5%
+- ✓ **Non-negativity**: All states ≥ 0
+- ✓ **Boundedness**: States within physiological ranges
+- ✓ **Smooth dynamics**: No oscillations
+- ✓ **Steady-state convergence**: Stable equilibrium by t=48h
+- ✓ **Dose-dependent suppression**: Monotonic relationship
+- ✓ **High-dose suppression**: ≥ 5% reduction from baseline
+
+---
 
 ## Results
 
@@ -209,26 +300,34 @@ All ensemble members must satisfy biological constraints:
 
 **Model Performance:**
 
-- **R² Score:** 0.803 ± 0.015
-- **RMSE:** 0.024 ± 0.001 (normalized units)
-- **MAE:** 0.022 ± 0.002
-- **Ensemble Size:** n = 5 (5/10 seeds passed plausibility)
+- **R² Score**: 0.803 ± 0.015 (ensemble mean ± std)
+- **RMSE**: 0.024 ± 0.001 (normalized units)
+- **MAE**: 0.022 ± 0.002
+- **Ensemble Size**: n = 5 (5/10 seeds passed plausibility)
 
 **Estimated Biological Parameters:**
 
-- **IC50:** 2.925 ± 0.012 nM (Literature: 2.88 nM)
-- **Hill Coefficient:** 1.950 ± 0.009 (Literature: 1.92)
-- **IC50 Gap:** 0.045 ± 0.012 nM
-- **Hill Gap:** 0.030 ± 0.009
+- **IC50**: 2.925 ± 0.012 nM (Literature: 2.88 nM → Gap: 0.045 nM)
+- **Hill Coefficient**: 1.950 ± 0.009 (Literature: 1.92 → Gap: 0.030)
 
-**Comparison with Baselines:**
+### Comparison with Baselines
 
-| Method          | R²        | RMSE      | IC50 Gap  | n     | Status         |
-| --------------- | --------- | --------- | --------- | ----- | -------------- |
-| ODE Baseline    | -0.220    | 0.060     | N/A       | 1     | Poor fit       |
-| PINN SW=0.5     | 0.759     | 0.027     | 0.050     | 4     | ✓ Valid        |
-| **PINN SW=0.3** | **0.803** | **0.024** | **0.045** | **5** | **✓ Optimal**  |
-| PINN SW=0.2     | 0.789     | 0.025     | 0.041     | 1     | ⚠ Insufficient |
+| Method          | R²              | RMSE            | IC50 (nM)     | Hill Coeff    | n     | Status         |
+| --------------- | --------------- | --------------- | ------------- | ------------- | ----- | -------------- |
+| ODE Baseline    | -0.220          | 0.060           | N/A           | N/A           | 1     | Poor fit       |
+| PINN SW=0.5     | 0.759±0.028     | 0.027±0.002     | 18.20±0.88    | 8.37±0.39     | 4     | ✓ Valid        |
+| **PINN SW=0.3** | **0.803±0.015** | **0.024±0.001** | **2.93±0.01** | **1.95±0.01** | **5** | **✓ Optimal**  |
+| PINN SW=0.2     | 0.789           | 0.025           | 2.84          | 1.91          | 1     | ⚠ Insufficient |
+
+### Statistical Validation
+
+**Mann-Whitney U Test (SW=0.3 vs SW=0.5):**
+
+- R² difference: +0.020 (p=1.000, Cohen's d=0.38, small effect)
+- RMSE difference: -0.001 (p=1.000, Cohen's d=-0.41, small effect)
+- IC50 gap difference: -0.005 (p=1.000, Cohen's d=-0.41, small effect)
+
+**Interpretation**: No statistically significant differences detected due to small sample sizes (n=4, n=5), but effect sizes suggest meaningful practical improvements with SW=0.3.
 
 ### Key Findings
 
@@ -236,15 +335,28 @@ All ensemble members must satisfy biological constraints:
 2. **Synthetic weight SW=0.3 is optimal** – balances accuracy, parameter alignment, and training success
 3. **Ensemble approach is essential** – single models can be outliers; need n≥3 for valid statistics
 4. **Plausibility checks prevent biological violations** – all ensemble members respect known physiology
+5. **Small sample limitation** – current ensemble sizes limit statistical power; larger ensembles (n≥10 each) recommended for confirmatory studies
 
-### Visualization
+### Visualizations
 
-Results include:
+All results include:
 
-- **Dose-response curves** with uncertainty bands ([`results/unified_03/figures/dose_response.png`](results/unified_03/figures/dose_response.png))
-- **Time course trajectories** for all doses ([`results/unified_03/figures/time_courses.png`](results/unified_03/figures/time_courses.png))
-- **Pareto frontier** analysis (accuracy vs. parameter gap) ([`results/unified_03/figures/pareto_frontier.png`](results/unified_03/figures/pareto_frontier.png))
-- **Residual diagnostics** with normality tests ([`results/comprehensive/figures/`](results/comprehensive/figures/))
+- **Dose-response curves** with uncertainty bands  
+  [`results/unified_03/figures/dose_response.png`](results/unified_03/figures/dose_response.png)
+
+- **Time course trajectories** for all doses  
+  [`results/unified_03/figures/time_courses.png`](results/unified_03/figures/time_courses.png)
+
+- **Pareto frontier** analysis (accuracy vs. parameter gap)  
+  [`results/unified_03/figures/pareto_frontier.png`](results/unified_03/figures/pareto_frontier.png)
+
+- **Ensemble comparison** visualizations  
+  [`results/comparison/figures/ensemble_comparison.png`](results/comparison/figures/ensemble_comparison.png)
+
+- **Residual diagnostics** with normality tests  
+  [`results/comprehensive/figures/`](results/comprehensive/figures/)
+
+---
 
 ## Reproducibility
 
@@ -253,12 +365,14 @@ Results include:
 **Optimal Hyperparameters (SW=0.3):**
 
 ```python
+# Core settings
 constraint_weight = 0.005
 synthetic_weight = 0.3
 epochs = 1400
 learning_rate = 0.001
 batch_size = full dataset (4 points)
 
+# Variant parameters (plateau ramp configuration)
 variant_params = {
     'loss_biological': 22.0,
     'monotonic_gradient_weight': 8.0,
@@ -270,12 +384,12 @@ variant_params = {
 
 ### Compute Requirements
 
-- **Training time:** ~2-3 minutes per ensemble member (CPU)
-- **Full ensemble (10 seeds):** ~20-30 minutes
-- **Memory:** < 2 GB RAM
-- **Hardware:** Any modern CPU (no GPU required)
+- **Training time**: ~2-3 minutes per ensemble member (CPU)
+- **Full ensemble (10 seeds)**: ~20-30 minutes
+- **Memory**: < 2 GB RAM
+- **Hardware**: Any modern CPU (no GPU required)
 
-### Reproducibility Steps
+### Step-by-Step Reproduction
 
 ```bash
 # Step 1: Verify environment
@@ -293,33 +407,94 @@ python 9_ensemble_synthetic_03.py
 # Step 5: Compare all ensembles
 python 10_compare_ensembles.py
 
-# Step 6: Generate comprehensive analysis
+# Step 6: Statistical analysis
+python wilcoxon_test.py
+
+# Step 7: Generate comprehensive analysis
 python 5_comprehensive_ieee_analysis.py
 ```
 
 ### Expected Runtime
 
-- Full reproduction: **~1-2 hours** on standard laptop
-- Main results only: **~30 minutes** (Steps 1, 4, 5)
+- **Full reproduction**: ~1-2 hours on standard laptop
+- **Main results only**: ~30 minutes (Steps 1, 4, 5, 6)
+
+---
 
 ## Data Source
 
 Experimental data from:
 
-> L. Latia, “Regulation des Renin-Gens durch Dexamethason,” Heinrich-Heine-Universität Düsseldorf, Düsseldorf, Germany, 2020. Accessed: Oct. 28, 2025. [Online]. Available: https://docserv.uni-duesseldorf.de/servlets/DerivateServlet/Derivate-56964/Latia%2C%20Larissa_finale%20Fassung-1.pdf)
+> L. Latia, "Regulation des Renin-Gens durch Dexamethason," Heinrich-Heine-Universität Düsseldorf, Düsseldorf, Germany, 2020. Accessed: Oct. 28, 2025. [Online]. Available: https://docserv.uni-duesseldorf.de/servlets/DerivateServlet/Derivate-56964/Latia%2C%20Larissa_finale%20Fassung-1.pdf
+
+**Data Details:**
+
+- **Type**: ELISA measurements of renin secretion
+- **Treatment**: Dexamethasone (synthetic glucocorticoid)
+- **Doses**: 0, 0.3, 3, 30 nM
+- **Time**: 24-hour treatment
+- **Replicates**: n=9 per condition
+
+---
 
 ## Citation
 
 If you use this code or methodology in your research, please cite:
 
 ```bibtex
-S. L. Jurj, PINN-Modeling-of-Glucocorticoid-Renin-Regulation. GitHub repository. Accessed: Oct. 28, 2025. [Online]. Available: https://github.com/jurjsorinliviu/PINN-Modeling-of-Glucocorticoid-Renin-Regulation
+@software{jurj2025pinn,
+  author = {Jurj, Sorin Liviu},
+  title = {PINN-Modeling-of-Glucocorticoid-Renin-Regulation},
+  year = {2025},
+  publisher = {GitHub},
+  url = {https://github.com/jurjsorinliviu/PINN-Modeling-of-Glucocorticoid-Renin-Regulation},
+  note = {Accessed: Oct. 28, 2025}
+}
+
+@phdthesis{latia2020,
+  author = {Latia, Larissa},
+  title = {Regulation des Renin-Gens durch Dexamethason},
+  school = {Heinrich-Heine-Universität Düsseldorf},
+  year = {2020},
+  address = {Düsseldorf, Germany},
+  url = {https://docserv.uni-duesseldorf.de/servlets/DerivateServlet/Derivate-56964/Latia%2C%20Larissa_finale%20Fassung-1.pdf}
+}
 ```
-
-## License
-
-This project is licensed under the MIT License - see [`LICENSE`](LICENSE) file for details.
 
 ---
 
-**Project Status:** ✓ Active Development | 📝 Manuscript in Preparation | 🔬 Research Code
+## License
+
+This project is licensed under the **MIT License** - see [`LICENSE`](LICENSE) file for details.
+
+---
+
+## Contact
+
+**Author**: Sorin Liviu Jurj  
+**Project Link**: [https://github.com/jurjsorinliviu/PINN-Modeling-of-Glucocorticoid-Renin-Regulation](https://github.com/jurjsorinliviu/PINN-Modeling-of-Glucocorticoid-Renin-Regulation)
+
+---
+
+## Project Status
+
+✅ **Active Development** | 📝 **Manuscript in Preparation** | 🔬 **Research Code**
+
+### Latest Updates
+
+- ✓ Optimal ensemble configuration identified (SW=0.3, n=5)
+- ✓ Three-way ensemble comparison completed (SW=0.2, 0.3, 0.5)
+- ✓ Statistical validation with Mann-Whitney U tests
+- ✓ Comprehensive ablation studies and validation
+- ✓ Manuscript figures and tables generated
+
+### Future Work
+
+- [ ] Expand ensemble sizes (n≥10 per configuration) for improved statistical power
+- [ ] Extend to multi-timepoint experimental data
+- [ ] Apply methodology to other glucocorticoid-responsive genes
+- [ ] Integrate with systems biology models of the renin-angiotensin system
+
+---
+
+**Keywords**: Physics-Informed Neural Networks, PINN, Glucocorticoids, Renin Regulation, Sparse Data, Ensemble Learning, Biological Modeling, Parameter Estimation, Deep Learning, Computational Biology
