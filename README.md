@@ -69,9 +69,6 @@ This repository contains the implementation of Physics-Informed Neural Networks 
 ├── 10_compare_ensembles.py       # Statistical comparison
 ├── reproduce_manuscript.py       # One-click reproduction script
 │
-├── MANUSCRIPT_SUMMARY.md         # Key findings & paper structure
-├── ENSEMBLE_COMPARISON_README.md # Ensemble comparison details
-├── Main Manuscript.pdf           # Draft manuscript
 └── requirements.txt              # Python dependencies
 ```
 
