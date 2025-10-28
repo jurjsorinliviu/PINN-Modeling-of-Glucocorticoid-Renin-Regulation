@@ -1,0 +1,65 @@
+
+================================================================================
+STATISTICAL COMPARISON: SW=0.3 vs SW=0.5 ENSEMBLES
+================================================================================
+
+SAMPLE SIZES:
+  - SW=0.3: n = 5 ensemble members
+  - SW=0.5: n = 4 ensemble members
+
+STATISTICAL METHOD:
+  - Mann-Whitney U test (Wilcoxon rank-sum test)
+  - Non-parametric test appropriate for small samples
+  - Two-sided alternative hypothesis
+  - Bonferroni correction for multiple comparisons (α = 0.0167)
+
+RESULTS:
+--------------------------------------------------------------------------------
+
+R2:
+  SW=0.3: 0.778128 ± 0.065505
+  SW=0.5: 0.758162 ± 0.027835
+  Difference: 0.019967
+  95% CI: (-0.029720, 0.081264)
+  Mann-Whitney U: 10.00
+  p-value (raw): 1.000000
+  p-value (corrected): 1.000000
+  Cohen's d: 0.3784 (small)
+  Not significant at α=0.0167 level
+
+RMSE:
+  SW=0.3: 0.025289 ± 0.004229
+  SW=0.5: 0.026661 ± 0.001570
+  Difference: -0.001372
+  95% CI: (-0.005302, 0.001674)
+  Mann-Whitney U: 10.00
+  p-value (raw): 1.000000
+  p-value (corrected): 1.000000
+  Cohen's d: -0.4087 (small)
+  Not significant at α=0.0167 level
+
+IC50_GAP:
+  SW=0.3: 0.045095 ± 0.013803
+  SW=0.5: 0.050124 ± 0.009786
+  Difference: -0.005029
+  95% CI: (-0.018542, 0.008836)
+  Mann-Whitney U: 7.00
+  p-value (raw): 0.555556
+  p-value (corrected): 1.000000
+  Cohen's d: -0.4107 (small)
+  Not significant at α=0.0167 level
+
+--------------------------------------------------------------------------------
+INTERPRETATION NOTES:
+1. Small sample sizes (n=4, n=5) limit statistical power
+2. Non-parametric test does not assume normality
+3. Bonferroni correction controls family-wise error rate
+4. Cohen's d provides effect size independent of sample size
+5. Bootstrap CI provides robust uncertainty quantification
+
+LIMITATIONS:
+- Limited power to detect small effects with n<10 per group
+- Type II error (false negative) risk is elevated
+- Results should be interpreted alongside domain knowledge
+- Larger ensembles (n≥10) recommended for confirmatory studies
+================================================================================

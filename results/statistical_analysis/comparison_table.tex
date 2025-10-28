@@ -1,0 +1,19 @@
+
+\begin{table}[htbp]
+\centering
+\caption{Statistical Comparison of PINN Ensembles: SW=0.3 vs SW=0.5}
+\label{tab:ensemble_comparison}
+\begin{tabular}{lcccccc}
+\hline
+\textbf{Metric} & \textbf{SW=0.3} & \textbf{SW=0.5} & \textbf{Diff.} & \textbf{$p$-value} & \textbf{Cohen's $d$} & \textbf{Effect} \\
+                & $(n=5)$         & $(n=4)$         & (95\% CI)      & (corrected)        &                     & Size \\
+\hline
+$R^2$ & 0.7781$\pm$0.0655 & 0.7582$\pm$0.0278 & 0.0200 (-0.0297, 0.0813) & 1.0000 & 0.38 & small \\
+RMSE & 0.0253$\pm$0.0042 & 0.0267$\pm$0.0016 & -0.0014 (-0.0053, 0.0017) & 1.0000 & -0.41 & small \\
+IC$_{50}$ Gap & 0.0451$\pm$0.0138 & 0.0501$\pm$0.0098 & -0.0050 (-0.0185, 0.0088) & 1.0000 & -0.41 & small \\
+\hline
+\multicolumn{7}{l}{\small $^*p<0.05$, $^{**}p<0.01$, $^{***}p<0.001$ (Bonferroni-corrected)} \\
+\multicolumn{7}{l}{\small Mann-Whitney U test with bootstrap 95\% CI (10,000 iterations)} \\
+\multicolumn{7}{l}{\small Effect size interpretation: |d|<0.2 (negligible), 0.2-0.5 (small), 0.5-0.8 (medium), >0.8 (large)} \\
+\end{tabular}
+\end{table}
