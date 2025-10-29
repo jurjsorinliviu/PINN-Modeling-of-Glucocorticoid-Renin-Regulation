@@ -735,6 +735,16 @@ def run_all_supplementary_experiments():
     start_time = time.time()
     all_results = {}
     
+    # JSON serializer that handles numpy types
+    def json_serializer(obj):
+        if isinstance(obj, np.floating):
+            return float(obj)
+        elif isinstance(obj, np.integer):
+            return int(obj)
+        elif isinstance(obj, np.ndarray):
+            return obj.tolist()
+        raise TypeError(f"Object of type {type(obj)} is not JSON serializable")
+    
     # Experiment 1: Ramp Ablation
     try:
         print("\n[Running] Experiment 1: Ramp Ablation...")
@@ -744,7 +754,7 @@ def run_all_supplementary_experiments():
         # Save immediately
         exp1_file = OUTPUT_DIR / "experiment_1_results.json"
         with exp1_file.open('w') as f:
-            json.dump(exp1_results, f, indent=2, default=lambda x: float(x) if isinstance(x, np.floating) else x)
+            json.dump(exp1_results, f, indent=2, default=json_serializer)
         print(f"[OK] Experiment 1 results saved: {exp1_file}")
         
         # Try to plot
@@ -766,7 +776,7 @@ def run_all_supplementary_experiments():
         # Save immediately
         exp2_file = OUTPUT_DIR / "experiment_2_results.json"
         with exp2_file.open('w') as f:
-            json.dump(exp2_results, f, indent=2, default=lambda x: float(x) if isinstance(x, np.floating) else x)
+            json.dump(exp2_results, f, indent=2, default=json_serializer)
         print(f"[OK] Experiment 2 results saved: {exp2_file}")
     except Exception as e:
         print(f"[ERROR] Experiment 2 failed: {e}")
@@ -782,7 +792,7 @@ def run_all_supplementary_experiments():
         # Save immediately
         exp3_file = OUTPUT_DIR / "experiment_3_results.json"
         with exp3_file.open('w') as f:
-            json.dump(exp3_results, f, indent=2, default=lambda x: float(x) if isinstance(x, np.floating) else x)
+            json.dump(exp3_results, f, indent=2, default=json_serializer)
         print(f"[OK] Experiment 3 results saved: {exp3_file}")
         
         # Try to plot
@@ -799,7 +809,7 @@ def run_all_supplementary_experiments():
     if all_results:
         results_file = OUTPUT_DIR / "supplementary_experiments_results.json"
         with results_file.open('w') as f:
-            json.dump(all_results, f, indent=2, default=lambda x: float(x) if isinstance(x, np.floating) else x)
+            json.dump(all_results, f, indent=2, default=json_serializer)
         print(f"\n[OK] Combined results saved: {results_file}")
     
     elapsed = time.time() - start_time
@@ -811,10 +821,10 @@ def run_all_supplementary_experiments():
     print(f"Completed experiments: {len(all_results)}/3")
     print(f"\nResults saved to: {OUTPUT_DIR}")
     if all_results:
-        print("  Individual experiment files:")
-        for exp_name in all_results.keys():
+        print("  All experiment files:")
+        for exp_name in sorted(all_results.keys()):
             exp_num = exp_name.split('_')[-1]
-            print(f"    - experiment_{exp_num}_results.json")
+            print(f"    [OK] experiment_{exp_num}_results.json")
     print(f"\nModels saved to: {MODELS_DIR}")
     print(f"Tables saved to: {TABLES_DIR}")
     print(f"Figures saved to: {FIGURES_DIR}")
