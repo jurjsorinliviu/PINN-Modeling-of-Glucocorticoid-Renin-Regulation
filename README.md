@@ -84,6 +84,7 @@ We developed a **PINN ensemble** that achieves **R² = 0.803 ± 0.015** on exper
 │   │   └── models/                   # Trained model checkpoints
 │   ├── unified/                      # SW=0.5 ensemble (n=4) [BASELINE]
 │   ├── unified_02/                   # SW=0.2 ensemble (n=1) [EXPLORATORY]
+│   ├── sobol_comprehensive_analysis.png  # Sensitivity analysis results
 │   ├── pure_nn_baseline/             # Pure NN baseline (no physics)
 │   │   ├── pure_nn_results.json     # Pure NN training results
 │   │   ├── figures/                  # Pure NN vs PINN comparison
@@ -129,6 +130,7 @@ We developed a **PINN ensemble** that achieves **R² = 0.803 ± 0.015** on exper
 ├── 11_supplementary_experiments.py  # Supplementary experiments [3 studies, ~30-60 min]
 ├── 12_pure_nn_baseline.py           # Pure NN baseline (no physics)
 ├── regenerate_supplementary_figures_only.py  # Regenerate the supplementary figures without training [~5 sec]
+├── sobol_analysis_images.py         # Generate Sobol sensitivity analysis visualizations
 ├── wilcoxon_test.py                 # Statistical significance testing
 ├── reproduce_manuscript.py          # One-click reproduction script [BETA]
 │
@@ -179,6 +181,7 @@ This will check all dependencies and generate a visualization of the raw experim
 ```bash
 python 1_setup_and_data_check.py
 ```
+
 ✓ Checks Python packages  
 ✓ Verifies experimental data  
 ✓ Creates results directories  
@@ -189,6 +192,7 @@ python 1_setup_and_data_check.py
 ```bash
 python 9_ensemble_synthetic_03.py
 ```
+
 ⏱ **Runtime**: ~30 minutes  
 📊 **Output**: 5-member ensemble with R² = 0.803 ± 0.015  
 📁 **Location**: `results/unified_03/`
@@ -198,6 +202,7 @@ python 9_ensemble_synthetic_03.py
 ```bash
 python 10_compare_ensembles.py
 ```
+
 📈 Generates three-way comparison (SW=0.2, 0.3, 0.5)  
 📊 Creates comparison visualizations and tables  
 📁 **Location**: `results/comparison/`
@@ -207,6 +212,7 @@ python 10_compare_ensembles.py
 ```bash
 python wilcoxon_test.py
 ```
+
 📊 Performs Mann-Whitney U tests  
 📈 Computes effect sizes (Cohen's d)  
 🔢 Generates bootstrap 95% confidence intervals  
@@ -218,6 +224,7 @@ python wilcoxon_test.py
 # Full training (only if needed)
 python 11_supplementary_experiments.py
 ```
+
 ⏱ **Runtime**: ~30-60 minutes
 📊 **Output**: Three ablation studies for manuscript validation
 📁 **Location**: `results/supplementary_experiments/`
@@ -228,10 +235,12 @@ python 11_supplementary_experiments.py
 # Fast regeneration without training
 python regenerate_supplementary_figures_only.py
 ```
+
 ⏱ **Runtime**: ~5 seconds
 📊 **Output**: All 4 supplementary figures regenerated
 
 **Experiments Included:**
+
 1. **Ramp Ablation**: Constant vs. ramped high-dose weighting (+80% improvement)
 2. **Cross-Validation**: Leave-one-dose-out validation (4 folds, avg test error 0.046)
 3. **Hyperparameter Sensitivity**: Architecture (3-5 layers) & collocation (256-1024 points)
@@ -241,6 +250,7 @@ python regenerate_supplementary_figures_only.py
 ```bash
 python 12_pure_nn_baseline.py
 ```
+
 ⏱ **Runtime**: ~15 seconds
 📊 **Output**: Demonstrates severe overfitting without physics constraints
 📁 **Location**: `results/pure_nn_baseline/`
@@ -253,6 +263,7 @@ python 12_pure_nn_baseline.py
 # Reproduces all experiments from manuscript
 python reproduce_manuscript.py
 ```
+
 ⏱ **Runtime**: ~2-3 hours (includes all experiments)
 📊 **Output**: Complete results including baselines, ensembles, and supplementary studies
 
@@ -267,7 +278,7 @@ python reproduce_manuscript.py
 Model glucocorticoid-induced renin suppression from **4 experimental data points** (Latia, 2020):
 
 | Dex Concentration | Normalized Renin | Std Dev |
-|-------------------|------------------|---------|
+| ----------------- | ---------------- | ------- |
 | 0 nM (baseline)   | 1.000            | ±0.030  |
 | 0.3 nM (low)      | 0.915            | ±0.020  |
 | 3 nM (medium)     | 0.847            | ±0.018  |
@@ -305,6 +316,7 @@ L_total = L_data + λ_physics·L_ode + λ_ic·L_ic +
 ```
 
 **Loss Components:**
+
 - `L_data`: Mean squared error on experimental data
 - `L_ode`: Physics constraint (ODE residuals)
 - `L_ic`: Initial condition constraint
@@ -318,11 +330,11 @@ L_total = L_data + λ_physics·L_ode + λ_ic·L_ic +
 
 The **synthetic weight** parameter balances data accuracy vs. biological parameter alignment:
 
-| SW Value | Success Rate  | Ensemble Size | R² Score   | IC50 Gap   | Status          |
-|----------|---------------|---------------|------------|------------|-----------------|
-| 0.5      | 40% (4/10)    | n=4           | 0.759±0.028| 0.050±0.010| ✓ Valid baseline|
-| **0.3**  | **50% (5/10)**| **n=5**       | **0.803±0.015**| **0.045±0.014**| **✓ Optimal**   |
-| 0.2      | 20% (1/5)     | n=1           | 0.789      | 0.041      | ⚠ Insufficient  |
+| SW Value | Success Rate   | Ensemble Size | R² Score        | IC50 Gap        | Status           |
+| -------- | -------------- | ------------- | --------------- | --------------- | ---------------- |
+| 0.5      | 40% (4/10)     | n=4           | 0.759±0.028     | 0.050±0.010     | ✓ Valid baseline |
+| **0.3**  | **50% (5/10)** | **n=5**       | **0.803±0.015** | **0.045±0.014** | **✓ Optimal**    |
+| 0.2      | 20% (1/5)      | n=1           | 0.789           | 0.041           | ⚠ Insufficient   |
 
 **Key Finding**: SW=0.3 provides the best balance ("Goldilocks zone") between model accuracy and biological parameter alignment while maintaining sufficient ensemble members for statistical validity.
 
@@ -357,30 +369,33 @@ All ensemble members must satisfy biological constraints:
 ### Primary Results (SW=0.3 Ensemble)
 
 **Model Performance:**
+
 - **R² Score**: 0.803 ± 0.015 (ensemble mean ± std)
 - **RMSE**: 0.024 ± 0.001 (normalized units)
 - **MAE**: 0.022 ± 0.002
 - **Ensemble Size**: n = 5 (5/10 seeds passed plausibility)
 
 **Estimated Biological Parameters:**
+
 - **IC50**: 2.925 ± 0.012 nM (Literature: 2.88 nM → Gap: 0.045 nM)
 - **Hill Coefficient**: 1.950 ± 0.009 (Literature: 1.92 → Gap: 0.030)
 
 ### Comparison with Baselines
 
-| Method          | Train R²    | CV R²       | RMSE        | IC50 (nM)    | n    | Status         |
-|-----------------|-------------|-------------|-------------|--------------|------|----------------|
-| ODE Baseline    | -0.220      | N/A         | 0.060       | N/A          | 1    | Poor fit       |
-| Pure NN         | 0.973±0.040 | 0.000†      | 0.026±0.001 | N/A          | 5    | ✗ Overfits     |
-| PINN SW=0.5     | 0.759±0.028 | ~0.79       | 0.027±0.002 | 18.20±0.88   | 4    | ✓ Valid        |
+| Method          | Train R²        | CV R²     | RMSE            | IC50 (nM)     | n     | Status         |
+| --------------- | --------------- | --------- | --------------- | ------------- | ----- | -------------- |
+| ODE Baseline    | -0.220          | N/A       | 0.060           | N/A           | 1     | Poor fit       |
+| Pure NN         | 0.973±0.040     | 0.000†    | 0.026±0.001     | N/A           | 5     | ✗ Overfits     |
+| PINN SW=0.5     | 0.759±0.028     | ~0.79     | 0.027±0.002     | 18.20±0.88    | 4     | ✓ Valid        |
 | **PINN SW=0.3** | **0.803±0.015** | **~0.79** | **0.024±0.001** | **2.93±0.01** | **5** | **✓ Optimal**  |
-| PINN SW=0.2     | 0.789       | N/A         | 0.025       | 2.84         | 1    | ⚠ Insufficient |
+| PINN SW=0.2     | 0.789           | N/A       | 0.025           | 2.84          | 1     | ⚠ Insufficient |
 
 †Pure NN cross-validation failed (all test folds R²=NaN), indicating catastrophic overfitting.
 
 ### Statistical Validation
 
 **Mann-Whitney U Test (SW=0.3 vs SW=0.5):**
+
 - R² difference: +0.020 (p=1.000, Cohen's d=0.38, small effect)
 - RMSE difference: -0.001 (p=1.000, Cohen's d=-0.41, small effect)
 - IC50 gap difference: -0.005 (p=1.000, Cohen's d=-0.41, small effect)
@@ -407,19 +422,22 @@ All results include:
 
 - **Dose-response curves** with uncertainty bands  
   [`results/unified_03/figures/dose_response.png`](results/unified_03/figures/dose_response.png)
-  
+
 - **Time course trajectories** for all doses  
   [`results/unified_03/figures/time_courses.png`](results/unified_03/figures/time_courses.png)
-  
-- **Pareto frontier** analysis (accuracy vs. parameter gap)  
+
+- **Pareto frontier** analysis (accuracy vs. parameter gap)
   [`results/unified_03/figures/pareto_frontier.png`](results/unified_03/figures/pareto_frontier.png)
-  
-- **Ensemble comparison** visualizations  
+
+- **Sensitivity analysis** (Sobol indices revealing identifiability challenges)
+  [`results/sobol_comprehensive_analysis.png`](results/sobol_comprehensive_analysis.png)
+
+- **Ensemble comparison** visualizations
   [`results/comparison/figures/ensemble_comparison.png`](results/comparison/figures/ensemble_comparison.png)
-  
+
 - **Residual diagnostics** with normality tests
   [`results/comprehensive/figures/`](results/comprehensive/figures/)
-  
+
 - **Pure NN vs PINN comparison** demonstrating physics constraint importance
   [`results/pure_nn_baseline/figures/pure_nn_vs_pinn_comparison.png`](results/pure_nn_baseline/figures/pure_nn_vs_pinn_comparison.png)
 
@@ -511,6 +529,7 @@ Experimental data from:
 > L. Latia, "Regulation des Renin-Gens durch Dexamethason," Heinrich-Heine-Universität Düsseldorf, Düsseldorf, Germany, 2020. Accessed: Oct. 28, 2025. [Online]. Available: https://docserv.uni-duesseldorf.de/servlets/DerivateServlet/Derivate-56964/Latia%2C%20Larissa_finale%20Fassung-1.pdf
 
 **Data Details:**
+
 - **Type**: ELISA measurements of renin secretion
 - **Treatment**: Dexamethasone (synthetic glucocorticoid)
 - **Doses**: 0, 0.3, 3, 30 nM
@@ -571,6 +590,7 @@ This project is licensed under the **MIT License** - see [`LICENSE`](LICENSE) fi
 - ✅ **Fast figure regeneration**: New script regenerates all figures in ~5 seconds without retraining
 - ✅ **Statistical validation**: Mann-Whitney U tests with effect sizes and bootstrap confidence intervals
 - ✅ **Comprehensive studies**: Ablation analysis, temporal validation, dose-response extrapolation
+- ✅ **Sensitivity analysis**: Sobol indices revealing weak identifiability (IC₅₀+Hill: 3.2% vs expected >50%)
 - ✅ **Manuscript-ready outputs**: All figures with legends, tables, and LaTeX code generated
 
 ### Future Directions
@@ -590,6 +610,7 @@ This work demonstrates that **Physics-Informed Neural Networks can learn complex
 2. **Technical**: Novel plateau ramp mechanism for stable training
 3. **Biological**: Accurate IC50 estimation (2.925 nM vs. literature 2.88 nM)
 4. **Validation**: Comprehensive ablation studies proving physics constraints prevent overfitting
+5. **Transparency**: Honest assessment of identifiability limitations through failed Sobol analysis
 
 ---
 
