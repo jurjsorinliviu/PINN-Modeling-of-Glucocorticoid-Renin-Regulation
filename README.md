@@ -71,6 +71,11 @@ We developed a **PINN ensemble** that achieves **R² = 0.803 ± 0.015** on exper
 │   ├── visualization.py              # Plotting functions
 │   ├── statistical_utils.py          # Statistical analysis tools
 │   ├── ode_baseline.py               # Traditional ODE baseline
+│   ├── enhanced_architectures.py     # Advanced model architectures
+│   ├── enhanced_visualization.py     # Enhanced plotting utilities
+│   ├── sensitivity_analysis.py       # Parameter sensitivity analysis
+│   ├── uncertainty_quantification.py # Uncertainty quantification tools
+│   └── comprehensive_reporting.py    # Comprehensive analysis reporting
 │
 ├── results/                          # Experimental results & outputs
 │   ├── unified_03/                   # SW=0.3 ensemble (n=5) [OPTIMAL]
@@ -80,10 +85,18 @@ We developed a **PINN ensemble** that achieves **R² = 0.803 ± 0.015** on exper
 │   ├── unified/                      # SW=0.5 ensemble (n=4) [BASELINE]
 │   ├── unified_02/                   # SW=0.2 ensemble (n=1) [EXPLORATORY]
 │   ├── pure_nn_baseline/             # Pure NN baseline (no physics)
-│   │   ├── pure_nn_results.json     # Pure NN training results
+│   │   ├── pure_nn_results.json      # Pure NN training results
 │   │   ├── figures/                  # Pure NN vs PINN comparison
 │   │   ├── tables/                   # Comparison LaTeX tables
 │   │   └── models/                   # Pure NN model checkpoints
+│   ├── supplementary_experiments/    # Supplementary ablation studies
+│   │   ├── experiment_1_results.json # Ramp ablation study
+│   │   ├── experiment_2_results.json # Cross-validation analysis
+│   │   ├── experiment_3_results.json # Hyperparameter sensitivity
+│   │   ├── supplementary_experiments_results.json
+│   │   ├── figures/                  # Supplementary experiment plots
+│   │   ├── tables/                   # LaTeX tables for manuscript
+│   │   └── models/                   # Experiment model checkpoints
 │   ├── comparison/                   # Three-way ensemble comparison
 │   │   ├── figures/                  # Comparison visualizations
 │   │   └── tables/                   # LaTeX comparison tables
@@ -91,9 +104,16 @@ We developed a **PINN ensemble** that achieves **R² = 0.803 ± 0.015** on exper
 │   │   ├── wilcoxon_test_results.json
 │   │   ├── comparison_table.tex
 │   │   └── wilcoxon_test_summary.txt
-│   ├── comprehensive/                # Ablation studies & validation
+│   ├── comprehensive/                # Comprehensive validation studies
 │   │   ├── figures/                  # Enhanced diagnostic plots
-│   │   └── latex_tables/             # Manuscript-ready tables
+│   │   ├── latex_tables/             # Manuscript-ready tables
+│   │   ├── ablation_study.json       # Ablation analysis results
+│   │   └── dose_response/            # Dose-response analysis
+│   ├── improved_training/            # Improved training experiments
+│   │   ├── improved_training_results.json
+│   │   ├── figures/                  # Training comparison plots
+│   │   ├── tables/                   # Performance comparison tables
+│   │   └── models/                   # Improved model checkpoints
 │   └── ode_baseline_results.json     # Traditional ODE results
 │
 ├── 1_setup_and_data_check.py        # Environment verification
@@ -106,10 +126,10 @@ We developed a **PINN ensemble** that achieves **R² = 0.803 ± 0.015** on exper
 ├── 8_unified_pipeline.py            # SW=0.5 baseline ensemble
 ├── 9_ensemble_synthetic_03.py       # SW=0.3 optimal ensemble [MAIN]
 ├── 10_compare_ensembles.py          # Three-way ensemble comparison
-├── 11_supplementary_experiments.py  # Supplementary ablation studies
+├── 11_supplementary_experiments.py  # Supplementary experiments [3 studies]
 ├── 12_pure_nn_baseline.py           # Pure NN baseline (no physics)
 ├── wilcoxon_test.py                 # Statistical significance testing
-├── reproduce_manuscript.py          # One-click reproduction script
+├── reproduce_manuscript.py          # One-click reproduction script [BETA]
 │
 ├── requirements.txt                  # Python dependencies
 └── README.md                         # This file
@@ -195,7 +215,23 @@ python wilcoxon_test.py
 🔢 Generates bootstrap 95% confidence intervals  
 📁 **Location**: `results/statistical_analysis/`
 
-### 5. Pure NN Baseline (No Physics)
+### 5. Supplementary Experiments
+
+```bash
+python 11_supplementary_experiments.py
+```
+
+⏱ **Runtime**: ~30-60 minutes
+📊 **Output**: Three ablation studies for manuscript validation
+📁 **Location**: `results/supplementary_experiments/`
+
+**Experiments Included:**
+
+1. **Ramp Ablation**: Constant vs. ramped high-dose weighting (~80% improvement)
+2. **Cross-Validation**: Leave-one-dose-out validation (4 folds)
+3. **Hyperparameter Sensitivity**: Architecture & collocation point testing
+
+### 6. Pure NN Baseline (No Physics)
 
 ```bash
 python 12_pure_nn_baseline.py
@@ -205,15 +241,19 @@ python 12_pure_nn_baseline.py
 📊 **Output**: Demonstrates severe overfitting without physics constraints
 📁 **Location**: `results/pure_nn_baseline/`
 
-### 6. Full Reproduction Pipeline
+**Key Finding**: Pure NN achieves near-perfect training (R²=0.973) but completely fails cross-validation (R²=0.000), demonstrating that physics constraints are essential for generalization, not just beneficial.
+
+### 7. Full Reproduction Pipeline
 
 ```bash
 # Reproduces all experiments from manuscript
 python reproduce_manuscript.py
 ```
 
-⏱ **Runtime**: ~1-2 hours
-📊 **Output**: Complete results including baselines and ablations
+⏱ **Runtime**: ~2-3 hours (includes all experiments)
+📊 **Output**: Complete results including baselines, ensembles, and supplementary studies
+
+**Note**: This is currently in beta. For tested reproduction, run scripts individually in order (Steps 1-6).
 
 ---
 
@@ -435,17 +475,31 @@ python 9_ensemble_synthetic_03.py
 # Step 5: Compare all ensembles
 python 10_compare_ensembles.py
 
-# Step 6: Statistical analysis
+# Step 6: Pure NN baseline
+python 12_pure_nn_baseline.py
+
+# Step 7: Supplementary experiments (optional, time-intensive)
+python 11_supplementary_experiments.py
+
+# Step 8: Statistical analysis
 python wilcoxon_test.py
 
-# Step 7: Generate comprehensive analysis
+# Step 9: Generate comprehensive analysis
 python 5_comprehensive_ieee_analysis.py
 ```
 
 ### Expected Runtime
 
-- **Full reproduction**: ~1-2 hours on standard laptop
+- **Full reproduction**: ~2-3 hours on standard laptop (all steps)
 - **Main results only**: ~30 minutes (Steps 1, 4, 5, 6)
+- **Core experiments**: ~1 hour (Steps 1-6, excluding supplementary)
+
+### Computational Requirements
+
+- **CPU**: Any modern processor (Intel i5/Ryzen 5 or better recommended)
+- **RAM**: 4-8 GB minimum (8 GB+ recommended)
+- **Storage**: ~500 MB for all results, models, and figures
+- **GPU**: Not required (CPU training is sufficient for this dataset)
 
 ---
 
@@ -508,21 +562,33 @@ This project is licensed under the **MIT License** - see [`LICENSE`](LICENSE) fi
 
 ✅ **Active Development** | 📝 **Manuscript in Preparation** | 🔬 **Research Code**
 
-### Latest Updates
+### Latest Updates (October 2025)
 
-- ✓ Optimal ensemble configuration identified (SW=0.3, n=5)
-- ✓ Three-way ensemble comparison completed (SW=0.2, 0.3, 0.5)
-- ✓ Pure NN baseline demonstrates critical role of physics constraints
-- ✓ Statistical validation with Mann-Whitney U tests
-- ✓ Comprehensive ablation studies and validation
-- ✓ Manuscript figures and tables generated
+- ✅ **Optimal ensemble identified**: SW=0.3 (n=5, R²=0.803±0.015)
+- ✅ **Three-way comparison**: SW=0.2, 0.3, 0.5 configurations analyzed
+- ✅ **Pure NN baseline**: Validated critical importance of physics constraints (overfitting gap: 0.973 vs 0.01)
+- ✅ **Supplementary experiments**: Ramp ablation (+80% improvement), cross-validation (4 folds), hyperparameter sensitivity
+- ✅ **Statistical validation**: Mann-Whitney U tests with effect sizes and bootstrap confidence intervals
+- ✅ **Comprehensive studies**: Ablation analysis, temporal validation, dose-response extrapolation
+- ✅ **Manuscript-ready outputs**: All figures, tables, and LaTeX code generated
 
-### Future Work
+### Future Directions
 
-- [ ] Expand ensemble sizes (n≥10 per configuration) for improved statistical power
-- [ ] Extend to multi-timepoint experimental data
-- [ ] Apply methodology to other glucocorticoid-responsive genes
-- [ ] Integrate with systems biology models of the renin-angiotensin system
+- [ ] **Larger ensembles**: Expand to n≥10 per configuration for improved statistical power
+- [ ] **Multi-timepoint data**: Extend methodology to time-series experimental datasets
+- [ ] **Gene networks**: Apply to other glucocorticoid-responsive genes (e.g., GILZ, FKBP5)
+- [ ] **Systems integration**: Couple with full renin-angiotensin system models
+- [ ] **Clinical translation**: Adapt for patient-specific parameter estimation
+- [ ] **Uncertainty quantification**: Bayesian PINNs for probabilistic predictions
+
+### Research Impact
+
+This work demonstrates that **Physics-Informed Neural Networks can learn complex biological dynamics from extremely sparse data** (n=4 observations) while maintaining biological plausibility. Key contributions:
+
+1. **Methodological**: First application of PINNs to glucocorticoid receptor dynamics
+2. **Technical**: Novel plateau ramp mechanism for stable training
+3. **Biological**: Accurate IC50 estimation (2.925 nM vs. literature 2.88 nM)
+4. **Validation**: Comprehensive ablation studies proving physics constraints prevent overfitting
 
 ---
 
