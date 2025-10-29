@@ -643,9 +643,10 @@ def plot_experiment_1_results(results: dict, save_path: Path):
         results['ramped']['success_rate']
     ]
     
-    bars = ax1.bar(configs, success_rates, color=['#e74c3c', '#27ae60'], alpha=0.7, edgecolor='black', linewidth=2)
+    bars = ax1.bar(configs, success_rates, color=['#e74c3c', '#27ae60'], alpha=0.7, edgecolor='black', linewidth=2,
+                   label=['Lower success', 'Higher success'])
     ax1.set_ylabel('Success Rate (%)', fontweight='bold')
-    ax1.set_title('(a) Plausibility Success Rate', fontweight='bold')
+    ax1.set_title('a) Plausibility Success Rate', fontweight='bold')
     ax1.set_ylim([0, 100])
     ax1.grid(axis='y', alpha=0.3)
     
@@ -653,6 +654,12 @@ def plot_experiment_1_results(results: dict, save_path: Path):
         height = bar.get_height()
         ax1.text(bar.get_x() + bar.get_width()/2., height + 2,
                 f'{rate:.1f}%', ha='center', va='bottom', fontweight='bold')
+    
+    # Add color legend
+    from matplotlib.patches import Patch
+    legend_elements = [Patch(facecolor='#27ae60', alpha=0.7, label='Higher success'),
+                      Patch(facecolor='#e74c3c', alpha=0.7, label='Lower success')]
+    ax1.legend(handles=legend_elements, loc='upper left', fontsize=9)
     
     # R² comparison
     if results['constant']['mean_r2'] > 0 and results['ramped']['mean_r2'] > 0:
@@ -663,14 +670,20 @@ def plot_experiment_1_results(results: dict, save_path: Path):
         
         bars = ax2.bar(configs, r2_values, color=['#e74c3c', '#27ae60'], alpha=0.7, edgecolor='black', linewidth=2)
         ax2.set_ylabel('Mean R² (Passed Models)', fontweight='bold')
-        ax2.set_title('(b) Model Accuracy', fontweight='bold')
+        ax2.set_title('b) Model Accuracy', fontweight='bold')
         ax2.set_ylim([0, 1])
         ax2.grid(axis='y', alpha=0.3)
         
         for bar, r2 in zip(bars, r2_values):
             height = bar.get_height()
             ax2.text(bar.get_x() + bar.get_width()/2., height + 0.02,
-                    f'{r2:.3f}', ha='center', va='bottom', fontweight='bold')
+                     f'{r2:.3f}', ha='center', va='bottom', fontweight='bold')
+        
+        # Add color legend
+        from matplotlib.patches import Patch
+        legend_elements = [Patch(facecolor='#27ae60', alpha=0.7, label='Ramped (better)'),
+                          Patch(facecolor='#e74c3c', alpha=0.7, label='Constant')]
+        ax2.legend(handles=legend_elements, loc='upper left', fontsize=9)
     
     plt.suptitle('Experiment 1: Constant vs. Ramped High-Dose Weighting',
                 fontsize=14, fontweight='bold')
@@ -687,28 +700,42 @@ def plot_experiment_3_results(results: dict, save_path: Path):
     # Architecture sensitivity
     n_layers = [r['n_layers'] for r in results['architecture']]
     success_arch = [r['success_rate'] for r in results['architecture']]
+    mean_r2_arch = [r['mean_r2'] for r in results['architecture']]
     
-    ax1.plot(n_layers, success_arch, 'o-', markersize=10, linewidth=2, color='#3498db')
+    ax1.plot(n_layers, success_arch, 'o-', markersize=10, linewidth=2, color='#3498db', label='Success Rate')
     ax1.set_xlabel('Number of Layers', fontweight='bold')
     ax1.set_ylabel('Success Rate (%)', fontweight='bold')
-    ax1.set_title('(a) Architecture Sensitivity', fontweight='bold')
+    ax1.set_title('a) Architecture Sensitivity', fontweight='bold')
     ax1.set_xticks(n_layers)
     ax1.grid(True, alpha=0.3)
-    ax1.set_ylim([0, 100])
+    ax1.set_ylim([0, 105])
+    
+    # Add R² values as text annotations
+    for n, success, r2 in zip(n_layers, success_arch, mean_r2_arch):
+        ax1.text(n, success + 2, f'R²={r2:.3f}', ha='center', va='bottom', fontsize=7, fontweight='bold')
+    
+    ax1.legend(loc='lower left', fontsize=9)
     
     # Collocation point sensitivity
     n_points = [r['n_points'] for r in results['collocation']]
     success_coll = [r['success_rate'] for r in results['collocation']]
+    mean_r2_coll = [r['mean_r2'] for r in results['collocation']]
     
-    ax2.plot(n_points, success_coll, 's-', markersize=10, linewidth=2, color='#e67e22')
+    ax2.plot(n_points, success_coll, 's-', markersize=10, linewidth=2, color='#e67e22', label='Success Rate')
     ax2.set_xlabel('Collocation Points', fontweight='bold')
     ax2.set_ylabel('Success Rate (%)', fontweight='bold')
-    ax2.set_title('(b) Collocation Point Sensitivity', fontweight='bold')
+    ax2.set_title('b) Collocation Point Sensitivity', fontweight='bold')
     ax2.set_xscale('log', base=2)
     ax2.set_xticks(n_points)
     ax2.set_xticklabels(n_points)
     ax2.grid(True, alpha=0.3)
-    ax2.set_ylim([0, 100])
+    ax2.set_ylim([0, 105])
+    
+    # Add R² values as text annotations
+    for pts, success, r2 in zip(n_points, success_coll, mean_r2_coll):
+        ax2.text(pts, success + 2, f'R²={r2:.3f}', ha='center', va='bottom', fontsize=7, fontweight='bold')
+    
+    ax2.legend(loc='lower left', fontsize=9)
     
     plt.suptitle('Experiment 3: Hyperparameter Sensitivity Analysis',
                 fontsize=14, fontweight='bold')
