@@ -595,12 +595,12 @@ This project is licensed under the **MIT License** - see [`LICENSE`](LICENSE) fi
 
 ### Future Directions
 
-- [ ] **Larger ensembles**: Expand to n≥10 per configuration for improved statistical power
-- [ ] **Multi-timepoint data**: Extend methodology to time-series experimental datasets
-- [ ] **Gene networks**: Apply to other glucocorticoid-responsive genes (e.g., GILZ, FKBP5)
-- [ ] **Systems integration**: Couple with full renin-angiotensin system models
-- [ ] **Clinical translation**: Adapt for patient-specific parameter estimation
-- [ ] **Uncertainty quantification**: Bayesian PINNs for probabilistic predictions
+- [ ] **Larger ensembles**: Increase the number of independent training runs (n ≥ 10 per configuration) to improve statistical robustness and quantify convergence variability
+- [ ] **Multi-timepoint data**: Apply the framework to datasets with temporal resolution to validate dynamic predictions directly.
+- [ ] **Gene networks**: Extend the approach to other glucocorticoid-responsive targets such as GILZ and FKBP5 to test generality across pathways.
+- [ ] **Systems integration**: Couple the model with comprehensive renin–angiotensin–aldosterone system (RAAS) simulations to capture cross-regulation effects.
+- [ ] **Clinical translation**: Adapt the method for patient-specific parameter estimation and individualized risk prediction.
+- [ ] **Uncertainty quantification**: Incorporate Bayesian physics-informed neural networks for probabilistic and interpretable predictions.
 
 ### Research Impact
 
