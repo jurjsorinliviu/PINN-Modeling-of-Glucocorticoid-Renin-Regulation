@@ -524,17 +524,101 @@ python 5_comprehensive_ieee_analysis.py
 
 ## Data Source
 
-Experimental data from:
+The data in this project is **not synthetically generated** — it is extracted from real experimental measurements published in a doctoral dissertation.
+
+### Primary Source
 
 > L. Latia, "Regulation des Renin-Gens durch Dexamethason," Heinrich-Heine-Universität Düsseldorf, Düsseldorf, Germany, 2020. Accessed: Oct. 28, 2025. [Online]. Available: https://docserv.uni-duesseldorf.de/servlets/DerivateServlet/Derivate-56964/Latia%2C%20Larissa_finale%20Fassung-1.pdf
 
-**Data Details:**
+### Data Extraction Overview
 
-- **Type**: ELISA measurements of renin secretion
-- **Treatment**: Dexamethasone (synthetic glucocorticoid)
-- **Doses**: 0, 0.3, 3, 30 nM
-- **Time**: 24-hour treatment
-- **Replicates**: n=9 per condition
+```mermaid
+flowchart TB
+    subgraph Source["Latia (2020) Dissertation"]
+        E["ELISA Data<br/>Table 4, Figure 6<br/>(pages 20-21)"]
+        L["Luciferase Data<br/>Table 1, Figure 4<br/>(page 16)"]
+    end
+    
+    subgraph Measurements["Experimental Measurements"]
+        E --> RS["Renin Secretion<br/>(ng/ml/24h)<br/>n=9 replicates"]
+        L --> PA["Promoter Activity<br/>(relative units)<br/>n=3 replicates"]
+    end
+    
+    subgraph Conditions["Dexamethasone Concentrations"]
+        D0["0.0 mg/dl<br/>(control)"]
+        D1["0.3 mg/dl<br/>(low)"]
+        D2["3.0 mg/dl<br/>(medium)"]
+        D3["30.0 mg/dl<br/>(high)"]
+    end
+    
+    RS --> D0 & D1 & D2 & D3
+    PA --> D0 & D1 & D2 & D3
+    
+    subgraph Processing["Data Processing"]
+        N["Normalization<br/>to control"]
+        S["IQR → SD<br/>conversion"]
+    end
+    
+    D0 & D1 & D2 & D3 --> N --> S --> PINN["PINN Training<br/>(4 data points)"]
+```
+
+### Two Types of Experimental Data
+
+#### 1. ELISA Data (Renin Secretion) — Primary Dataset
+
+| Dex (mg/dl) | Renin Median (ng/ml/24h) | Q1    | Q3    | n    |
+| ----------- | ------------------------ | ----- | ----- | ---- |
+| 0.0         | 28.1                     | 26.0  | 28.8  | 9    |
+| 0.3         | 25.7                     | 24.65 | 27.03 | 9    |
+| 3.0         | 23.8                     | 23.15 | 24.78 | 9    |
+| 30.0        | 25.7                     | 19.73 | 27.73 | 9    |
+
+- **Source:** Table 4, Figure 6 (pages 20-21)
+- **Replicates:** n=9 per concentration
+- **Statistics:** Median with interquartile range (IQR)
+
+#### 2. Luciferase Data (Promoter Activity) — Secondary Dataset
+
+| Dex (mg/dl) | Activity Mean | Activity SD |
+| ----------- | ------------- | ----------- |
+| 0.0         | 0.0627        | 0.0311      |
+| 0.3         | 0.0564        | 0.0530      |
+| 3.0         | 0.0561        | 0.0460      |
+| 30.0        | 0.0497        | 0.0533      |
+
+- **Source:** Table 1, Figure 4 (page 16)
+- **Replicates:** n=3 per concentration
+- **Statistics:** Mean ± standard deviation
+
+### Data Processing Steps
+
+The [`get_latia_2020_data()`](src/data.py) function performs:
+
+1. **IQR to SD conversion:** Using the approximation `SD ≈ IQR / 1.35` (valid for normal distributions)
+2. **Normalization:** All values normalized to control (0 mg/dl dexamethasone)
+3. **Time assignment:** All measurements assigned to t=24 hours
+
+### Experimental Conditions
+
+| Parameter            | Value                                    |
+| -------------------- | ---------------------------------------- |
+| **Cell line**        | As4.1 (mouse juxtaglomerular-like cells) |
+| **Treatment time**   | 24 hours                                 |
+| **Temperature**      | 37°C                                     |
+| **Atmosphere**       | 95% air, 5% CO₂, water-saturated         |
+| **Statistical test** | Wilcoxon signed-rank test                |
+
+### Statistical Significance (from Original Study)
+
+| Comparison      | p-value | Significant |
+| --------------- | ------- | ----------- |
+| 0 vs 0.3 mg/dl  | 0.0039  | ✓ Yes       |
+| 0 vs 3.0 mg/dl  | 0.0039  | ✓ Yes       |
+| 0 vs 30.0 mg/dl | 0.0391  | ✓ Yes       |
+
+### Why This Matters for PINNs
+
+This is a **sparse data scenario** — only 4 data points per measurement type, making it an ideal use case for Physics-Informed Neural Networks (PINNs) that can leverage underlying ODE constraints to generalize from limited observations.
 
 ---
 
