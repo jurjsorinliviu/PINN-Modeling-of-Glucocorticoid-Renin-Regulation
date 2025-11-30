@@ -618,7 +618,7 @@ The [`get_latia_2020_data()`](src/data.py) function performs:
 
 ### Why This Matters for PINNs
 
-This is a **sparse data scenario** — only 4 data points per measurement type, making it an ideal use case for Physics-Informed Neural Networks (PINNs) that can leverage underlying ODE constraints to generalize from limited observations.
+This is a **sparse data scenario** — only 4 data points per measurement type, making it an ideal use case for PINNs that can leverage underlying ODE constraints to generalize from limited observations.
 
 ---
 
