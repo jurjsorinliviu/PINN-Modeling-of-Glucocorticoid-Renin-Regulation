@@ -4,6 +4,7 @@
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-ee4c2c.svg)](https://pytorch.org/)
 [![Status](https://img.shields.io/badge/Status-Active-success.svg)](https://github.com/jurjsorinliviu/PINN-Modeling-of-Glucocorticoid-Renin-Regulation)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/jurjsorinliviu/PINN-Modeling-of-Glucocorticoid-Renin-Regulation)
 
 ## Overview
 
@@ -142,14 +143,36 @@ We developed a **PINN ensemble** that achieves **R² = 0.803 ± 0.015** on exper
 
 ## Installation
 
-### Requirements
+### GitHub Codespaces (Recommended for Quick Start)
+
+Launch a fully configured development environment in your browser with one click:
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/jurjsorinliviu/PINN-Modeling-of-Glucocorticoid-Renin-Regulation)
+
+**Steps:**
+
+1. Click the badge above or go to the repository and click **Code** → **Codespaces** → **Create codespace on main**
+2. Wait ~2-3 minutes for the environment to build (all dependencies are automatically installed)
+3. Start running scripts immediately!
+
+```bash
+# Verify installation
+python 1_setup_and_data_check.py
+
+# Train optimal ensemble
+python 9_ensemble_synthetic_03.py
+```
+
+### Local Installation
+
+#### Requirements
 
 - **Python** 3.8 or higher
 - **PyTorch** 2.0 or higher
 - **NumPy**, **SciPy**, **Matplotlib**, **Pandas**
 - Optional: **seaborn**, **tqdm**, **statsmodels**
 
-### Setup Instructions
+#### Setup Instructions
 
 ```bash
 # Clone repository
