@@ -230,7 +230,10 @@ class ReninPINN(nn.Module):
 
 class BayesianReninPINN(ReninPINN):
     """
-    Bayesian PINN with Monte Carlo Dropout for uncertainty quantification
+    Exploratory Bayesian PINN with Monte Carlo dropout.
+
+    This class is retained for auxiliary uncertainty experiments, but it is not
+    used by the final deterministic deep-ensemble training pipeline.
     """
     
     def __init__(self,
@@ -391,8 +394,8 @@ if __name__ == "__main__":
     residual = model.physics_residual(t, dex, u, u_t)
     print(f"Physics residual: {residual}")
     
-    # Test Bayesian PINN
-    print("\nTesting Bayesian PINN...")
+    # Test exploratory Bayesian PINN variant
+    print("\nTesting exploratory Bayesian PINN...")
     bayesian_model = BayesianReninPINN(dropout_rate=0.1)
     
     mean, std, samples = bayesian_model.predict_with_uncertainty(

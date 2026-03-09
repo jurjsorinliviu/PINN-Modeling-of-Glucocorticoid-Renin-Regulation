@@ -207,12 +207,12 @@ class ComprehensiveReporter:
             if 'cross_validation' in dr:
                 cv = dr['cross_validation']['summary']
                 rows.append({
-                    'Metric': 'CV R² (LOOCV)',
+                    'Metric': 'CV R² (LODO)',
                     'Value': f"{cv.get('overall_r2', 0):.4f}",
                     'Category': 'Cross-Validation'
                 })
                 rows.append({
-                    'Metric': 'CV RMSE (LOOCV)',
+                    'Metric': 'CV RMSE (LODO)',
                     'Value': f"{cv.get('overall_rmse', 0):.4f}",
                     'Category': 'Cross-Validation'
                 })
@@ -437,7 +437,7 @@ class ComprehensiveReporter:
         
         if 'cross_validation' in dr:
             cv = dr['cross_validation']['summary']
-            lines.append("Leave-One-Out Cross-Validation:")
+            lines.append("Leave-One-Dose-Out Cross-Validation:")
             lines.append(f"  Overall R² = {cv.get('overall_r2', 0):.4f}")
             lines.append(f"  Overall RMSE = {cv.get('overall_rmse', 0):.4f}")
             lines.append(f"  Overall MAE = {cv.get('overall_mae', 0):.4f}")
@@ -492,7 +492,7 @@ class ComprehensiveReporter:
         findings.append("   - Hill kinetics significantly improves fit over linear models")
         # CHANGED: Updated finding to reflect ensemble
         findings.append("   - Deep Ensemble provides robust uncertainty quantification")
-        findings.append("   - Balanced loss weighting yields optimal performance\n")
+        findings.append("   - Balanced loss weighting yields the strongest performance among tested configurations\n")
         
         findings.append("2. TEMPORAL VALIDATION confirms:")
         findings.append("   - Model predictions are physiologically plausible")
@@ -500,14 +500,14 @@ class ComprehensiveReporter:
         findings.append("   - Transient responses show appropriate time scales\n")
         
         findings.append("3. DOSE-RESPONSE EXTRAPOLATION shows:")
-        findings.append("   - Strong cross-validation performance (LOOCV)")
+        findings.append("   - Strong cross-validation performance (LODO)")
         findings.append("   - Appropriate uncertainty increase in extrapolation regions")
         findings.append("   - Saturation behavior at high doses as expected\n")
         
         findings.append("4. PARAMETER UNCERTAINTY reveals:")
-        findings.append("   - Well-constrained parameter estimates from the ensemble")
-        findings.append("   - IC50 and Hill coefficient are identifiable")
-        findings.append("   - Confidence intervals align with literature values")
+        findings.append("   - Ensemble spread provides partial uncertainty estimates")
+        findings.append("   - IC50 and Hill coefficient are more stable than other parameters, but uncertainty remains")
+        findings.append("   - Confidence intervals should be interpreted cautiously in this sparse-data setting")
         
         return "\n".join(findings)
     

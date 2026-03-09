@@ -3,7 +3,7 @@ Ablation Study Framework for PINN-Based Glucocorticoid-Renin Model (Deep Ensembl
 
 This module systematically evaluates the contribution of each model component for the
 Deep Ensemble approach. It focuses on loss weighting and physics constraints,
-as dropout has been found to be detrimental for this sparse dataset.
+as dropout was not retained in the final deterministic sparse-data pipeline.
 
 For IEEE Access submission requirements.
 """
