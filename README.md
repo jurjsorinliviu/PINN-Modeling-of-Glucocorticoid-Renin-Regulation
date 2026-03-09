@@ -4,7 +4,6 @@
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-ee4c2c.svg)](https://pytorch.org/)
 [![Status](https://img.shields.io/badge/Status-Active-success.svg)](https://github.com/jurjsorinliviu/PINN-Modeling-of-Glucocorticoid-Renin-Regulation)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/jurjsorinliviu/PINN-Modeling-of-Glucocorticoid-Renin-Regulation)
 
 ## Overview
 
@@ -143,36 +142,14 @@ We developed a **PINN ensemble** that achieves **R² = 0.803 ± 0.015** on exper
 
 ## Installation
 
-### GitHub Codespaces (Recommended for Quick Start)
-
-Launch a fully configured development environment in your browser with one click:
-
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/jurjsorinliviu/PINN-Modeling-of-Glucocorticoid-Renin-Regulation)
-
-**Steps:**
-
-1. Click the badge above or go to the repository and click **Code** → **Codespaces** → **Create codespace on main**
-2. Wait ~2-3 minutes for the environment to build (all dependencies are automatically installed)
-3. Start running scripts immediately!
-
-```bash
-# Verify installation
-python 1_setup_and_data_check.py
-
-# Train optimal ensemble
-python 9_ensemble_synthetic_03.py
-```
-
-### Local Installation
-
-#### Requirements
+### Requirements
 
 - **Python** 3.8 or higher
 - **PyTorch** 2.0 or higher
 - **NumPy**, **SciPy**, **Matplotlib**, **Pandas**
 - Optional: **seaborn**, **tqdm**, **statsmodels**
 
-#### Setup Instructions
+### Setup Instructions
 
 ```bash
 # Clone repository
@@ -278,7 +255,7 @@ python 12_pure_nn_baseline.py
 📊 **Output**: Demonstrates severe overfitting without physics constraints
 📁 **Location**: `results/pure_nn_baseline/`
 
-**Key Finding**: Pure NN achieves near-perfect training (R²=0.973) but completely fails cross-validation (R²=0.000), demonstrating that physics constraints are essential for generalization, not just beneficial.
+**Key Finding**: Pure NN achieves near-perfect training (R²=0.973) but completely fails held-out-dose cross-validation (test-fold R² values undefined/NaN; mean test RMSE = 0.114), demonstrating that physics constraints are essential for generalization, not just beneficial.
 
 ### 7. Full Reproduction Pipeline
 
@@ -408,26 +385,26 @@ All ensemble members must satisfy biological constraints:
 | Method          | Train R²        | CV R²     | RMSE            | IC50 (nM)     | n     | Status         |
 | --------------- | --------------- | --------- | --------------- | ------------- | ----- | -------------- |
 | ODE Baseline    | -0.220          | N/A       | 0.060           | N/A           | 1     | Poor fit       |
-| Pure NN         | 0.973±0.040     | 0.000†    | 0.026±0.001     | N/A           | 5     | ✗ Overfits     |
+| Pure NN         | 0.973±0.040     | NaN†      | 0.007±0.006     | N/A           | 5     | ✗ Overfits     |
 | PINN SW=0.5     | 0.759±0.028     | ~0.79     | 0.027±0.002     | 18.20±0.88    | 4     | ✓ Valid        |
 | **PINN SW=0.3** | **0.803±0.015** | **~0.79** | **0.024±0.001** | **2.93±0.01** | **5** | **✓ Optimal**  |
 | PINN SW=0.2     | 0.789           | N/A       | 0.025           | 2.84          | 1     | ⚠ Insufficient |
 
-†Pure NN cross-validation failed (all test folds R²=NaN), indicating catastrophic overfitting.
+†Pure NN cross-validation failed: all held-out test folds had undefined/NaN R², with mean test RMSE = 0.114, indicating catastrophic overfitting.
 
 ### Statistical Validation
 
 **Mann-Whitney U Test (SW=0.3 vs SW=0.5):**
 
-- R² difference: +0.020 (p=1.000, Cohen's d=0.38, small effect)
-- RMSE difference: -0.001 (p=1.000, Cohen's d=-0.41, small effect)
-- IC50 gap difference: -0.005 (p=1.000, Cohen's d=-0.41, small effect)
+- R² difference: +0.020 (corrected p=1.000, Cohen's d=0.38, small effect)
+- RMSE difference: -0.001 (corrected p=1.000, Cohen's d=-0.41, small effect)
+- IC50 gap difference: -0.005 (corrected p=1.000, Cohen's d=-0.41, small effect)
 
 **Interpretation**: No statistically significant differences detected due to small sample sizes (n=4, n=5), but effect sizes suggest meaningful practical improvements with SW=0.3.
 
 ### Key Findings
 
-1. **Physics constraints are essential, not just network architecture**: Pure NN (identical architecture to PINN but without physics constraints) achieves near-perfect training fit (R²=0.973) but completely fails cross-validation (R²=0.000), demonstrating severe overfitting. Overfitting gap: 0.973 vs. PINN's controlled gap of 0.01.
+1. **Physics constraints are essential, not just network architecture**: Pure NN (identical architecture to PINN but without physics constraints) achieves near-perfect training fit (R²=0.973) but completely fails held-out-dose cross-validation (test-fold R² values undefined/NaN; mean test RMSE = 0.114), demonstrating severe overfitting.
 
 2. **PINNs substantially outperform traditional ODE fitting** (ΔR² = +1.023) on sparse data while maintaining generalization through physics-based regularization.
 
@@ -641,7 +618,7 @@ The [`get_latia_2020_data()`](src/data.py) function performs:
 
 ### Why This Matters for PINNs
 
-This is a **sparse data scenario** — only 4 data points per measurement type, making it an ideal use case for PINNs that can leverage underlying ODE constraints to generalize from limited observations.
+This is a **sparse data scenario** — only 4 data points per measurement type, making it an ideal use case for Physics-Informed Neural Networks (PINNs) that can leverage underlying ODE constraints to generalize from limited observations.
 
 ---
 
