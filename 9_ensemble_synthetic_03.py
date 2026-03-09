@@ -1,11 +1,12 @@
 """
-Alternative ensemble with synthetic_weight=0.2 for tighter parameter alignment.
+Middle-ground ensemble with synthetic_weight=0.3.
 
-This script trains a 5-member ensemble using synthetic_weight=0.2 (instead of 0.5)
-based on calibration results showing better parameter alignment while maintaining
-plausibility.
+This script trains up to 10 seeded runs using synthetic_weight=0.3 and retains
+only members that satisfy the acceptance criteria. It is the main deterministic
+deep-ensemble configuration used in the final codebase.
 
-Results are saved to results/unified_02/ for comparison with the main ensemble.
+Results are saved to results/unified_03/ for comparison against the SW=0.5
+baseline and the exploratory SW=0.2 configuration.
 """
 
 import json

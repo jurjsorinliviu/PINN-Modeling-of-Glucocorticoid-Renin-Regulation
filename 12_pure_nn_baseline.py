@@ -39,6 +39,39 @@ EPOCHS = 1400  # Same as PINN
 LEARNING_RATE = 1e-3
 
 
+def load_json_if_exists(path: Path):
+    """Load a JSON file when available."""
+    if not path.exists():
+        return None
+    with path.open('r', encoding='utf-8') as f:
+        return json.load(f)
+
+
+def load_pinn_cv_r2(default: float = 0.79) -> float:
+    """Load PINN cross-validation R^2 from the best available report."""
+    dose_response_report = load_json_if_exists(
+        Path("results/comprehensive/dose_response/dose_response_results.json")
+    )
+    if dose_response_report is not None:
+        summary = dose_response_report.get('cross_validation', {}).get('summary', {})
+        if summary.get('overall_r2') is not None:
+            return float(summary['overall_r2'])
+
+    supplementary_cv = load_json_if_exists(
+        Path("results/supplementary_experiments/experiment_2_results.json")
+    )
+    if supplementary_cv is not None:
+        fold_train_r2 = [
+            fold.get('train_r2')
+            for fold in supplementary_cv.get('folds', [])
+            if fold.get('train_r2') is not None
+        ]
+        if fold_train_r2:
+            return float(np.mean(fold_train_r2))
+
+    return default
+
+
 def setup_directories():
     """Create output directories"""
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -432,23 +465,23 @@ def plot_comparison_with_pinn(pure_nn_summary: dict, pinn_results_path: Path):
     """Create comparison plots: Pure NN vs PINN vs ODE"""
     
     # Load PINN results
-    if pinn_results_path.exists():
-        with pinn_results_path.open('r') as f:
-            pinn_results = json.load(f)
+    pinn_results = load_json_if_exists(pinn_results_path)
+    if pinn_results is not None:
         pinn_r2 = pinn_results['ensemble_metrics']['r2']
         pinn_rmse = pinn_results['ensemble_metrics']['rmse']
     else:
-        # Use values from paper if file not found
+        # Fallback values from the current manuscript draft
         pinn_r2 = 0.803
         pinn_rmse = 0.024
+
+    pinn_cv_r2 = load_pinn_cv_r2()
     
     # Load ODE results
-    ode_results_path = Path("results/ode_baseline_results.json")
-    if ode_results_path.exists():
-        with ode_results_path.open('r') as f:
-            ode_results = json.load(f)
-        ode_r2 = ode_results.get('r2', -0.220)
-        ode_rmse = ode_results.get('rmse', 0.060)
+    ode_results = load_json_if_exists(Path("results/ode_baseline_results.json"))
+    if ode_results is not None:
+        ode_metrics = ode_results.get('metrics', {})
+        ode_r2 = ode_metrics.get('r_squared', ode_results.get('r2', -0.220))
+        ode_rmse = ode_metrics.get('rmse', ode_results.get('rmse', 0.060))
     else:
         ode_r2 = -0.220
         ode_rmse = 0.060
@@ -486,7 +519,7 @@ def plot_comparison_with_pinn(pure_nn_summary: dict, pinn_results_path: Path):
     pure_train = [pure_nn_summary['training_metrics']['mean_r2']]
     pure_test = [pure_nn_cv_r2]
     pinn_train = [pinn_r2]
-    pinn_test = [0.79]  # From your CV results
+    pinn_test = [pinn_cv_r2]
     
     ax2.bar([0], pure_train, width, label='Training', color='#f39c12', alpha=0.7, edgecolor='black', linewidth=2)
     ax2.bar([0], pure_test, width, bottom=[0], label='Test (CV)', color='#f39c12', alpha=0.3, hatch='///', edgecolor='black', linewidth=2)
@@ -503,7 +536,7 @@ def plot_comparison_with_pinn(pure_nn_summary: dict, pinn_results_path: Path):
     
     # Add overfitting gap annotations
     gap_pure = pure_nn_summary['training_metrics']['mean_r2'] - pure_nn_cv_r2
-    gap_pinn = pinn_r2 - 0.79
+    gap_pinn = pinn_r2 - pinn_cv_r2
     ax2.annotate(f'Gap: {gap_pure:.2f}', xy=(0, 0.5), fontsize=10, ha='center', color='red', fontweight='bold')
     ax2.annotate(f'Gap: {gap_pinn:.2f}', xy=(1, 0.85), fontsize=10, ha='center', color='green', fontweight='bold')
     
@@ -586,6 +619,14 @@ def generate_latex_table(pure_nn_summary: dict, pinn_r2: float = 0.803, pinn_rms
     """Generate LaTeX comparison table"""
     
     pure_cv_r2 = pure_nn_summary['cross_validation']['mean_test_r2']
+    pinn_results = load_json_if_exists(Path("results/unified_03/unified_ensemble_03_results.json"))
+    pinn_n_members = 5
+    if pinn_results is not None:
+        pinn_r2 = pinn_results['ensemble_metrics']['r2']
+        pinn_rmse = pinn_results['ensemble_metrics']['rmse']
+        pinn_n_members = int(pinn_results.get('n_members', pinn_n_members))
+
+    pinn_cv_r2 = load_pinn_cv_r2()
     
     latex = r"""
 \begin{table}[htbp]
@@ -601,7 +642,7 @@ def generate_latex_table(pure_nn_summary: dict, pinn_r2: float = 0.803, pinn_rms
     latex += f"Pure NN & {pure_nn_summary['training_metrics']['mean_r2']:.3f} & {pure_cv_r2:.3f} & {pure_nn_summary['training_metrics']['mean_rmse']:.3f} & "
     latex += f"{pure_nn_summary['biological_violations']['models_with_negative']}/{pure_nn_summary['biological_violations']['total_models']} \\\\\n"
     
-    latex += f"PINN (SW=0.3) & {pinn_r2:.3f} & 0.79 & {pinn_rmse:.3f} & 0/5 \\\\\n"
+    latex += f"PINN (SW=0.3) & {pinn_r2:.3f} & {pinn_cv_r2:.3f} & {pinn_rmse:.3f} & 0/{pinn_n_members} \\\\\n"
     
     latex += r"""\hline
 \multicolumn{5}{l}{\small Pure NN shows severe overfitting (train-test gap """ + f"{pure_nn_summary['training_metrics']['mean_r2'] - pure_cv_r2:.2f}" + r""")} \\

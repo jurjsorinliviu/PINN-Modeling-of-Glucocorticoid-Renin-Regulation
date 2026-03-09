@@ -4,8 +4,9 @@ Supplementary Experiments for Manuscript
 This script performs three sets of additional experiments to strengthen the paper:
 1. Ablation study: Constant vs. ramped high-dose weighting
 2. Cross-validation: Leave-one-dose-out analysis with learning curves
-3. Hyperparameter sensitivity: Architecture, collocation points, dropout
+3. Hyperparameter sensitivity: Architecture and collocation points
 
+All experiments use the deterministic PINN used by the final ensemble pipeline.
 Results are saved for inclusion as supplementary material.
 """
 
@@ -265,13 +266,13 @@ def save_experiment_1_table(summary: dict):
 \textbf{Configuration} & \textbf{Success Rate} & \textbf{Passed/Total} & \textbf{Mean R$^2$} \\
 \hline
 """
-    latex_table += f"Constant & {summary['constant']['success_rate']:.1f}\% & {summary['constant']['n_passed']}/{summary['constant']['n_total']} & "
+    latex_table += f"Constant & {summary['constant']['success_rate']:.1f}\\% & {summary['constant']['n_passed']}/{summary['constant']['n_total']} & "
     if summary['constant']['mean_r2'] > 0:
         latex_table += f"{summary['constant']['mean_r2']:.3f} \\\\\n"
     else:
         latex_table += "N/A \\\\\n"
     
-    latex_table += f"Ramped & {summary['ramped']['success_rate']:.1f}\% & {summary['ramped']['n_passed']}/{summary['ramped']['n_total']} & "
+    latex_table += f"Ramped & {summary['ramped']['success_rate']:.1f}\\% & {summary['ramped']['n_passed']}/{summary['ramped']['n_total']} & "
     if summary['ramped']['mean_r2'] > 0:
         latex_table += f"{summary['ramped']['mean_r2']:.3f} \\\\\n"
     else:
@@ -284,7 +285,7 @@ def save_experiment_1_table(summary: dict):
     elif summary['improvement_percent'] == 0:
         latex_table += "Both failed}"
     else:
-        latex_table += f"{summary['improvement_percent']:+.1f}\%}}"
+        latex_table += f"{summary['improvement_percent']:+.1f}\\%}}"
     
     latex_table += r"""
 \end{tabular}
@@ -354,14 +355,22 @@ def experiment_2_cross_validation(n_folds: int = 4, epochs_per_fold: int = 1000)
             save_model=True, model_name=model_name
         )
         
-        # Evaluate on held-out dose
-        model = ReninPINN()
-        # Note: In practice, you'd save/load the trained model here
-        # For now, we'll use the metrics from training
-        
-        # Predict on test set (simplified - in real code, load trained model)
-        # Here we just report training metrics for demonstration
-        test_error = abs(data_test['renin_normalized'][0] - 0.9)  # Placeholder
+        # Evaluate on the held-out dose using the trained model returned above.
+        model.eval()
+        device_obj = next(model.parameters()).device
+        with torch.no_grad():
+            t_test = torch.tensor(
+                data_test['time'], dtype=torch.float32
+            ).reshape(-1, 1).to(device_obj)
+            dex_test = torch.tensor(
+                data_test['dex_concentration'], dtype=torch.float32
+            ).reshape(-1, 1).to(device_obj)
+            states_test = model(t_test, dex_test)
+            y_pred_test = states_test[:, 2].cpu().numpy()
+
+        y_true_test = np.asarray(data_test['renin_normalized'], dtype=np.float32)
+        abs_errors = np.abs(y_pred_test - y_true_test)
+        test_error = float(np.mean(abs_errors))
         
         fold_result = {
             'fold': fold_idx + 1,
@@ -369,6 +378,8 @@ def experiment_2_cross_validation(n_folds: int = 4, epochs_per_fold: int = 1000)
             'train_r2': r2_train,
             'train_rmse': rmse_train,
             'test_error': test_error,
+            'test_prediction': float(np.mean(y_pred_test)),
+            'test_observed': float(np.mean(y_true_test)),
             'passed_plausibility': passed,
             'n_train_samples': data_train['n_samples'],
             'n_test_samples': data_test['n_samples']
@@ -440,7 +451,9 @@ def experiment_3_hyperparameter_sensitivity(n_models_per_config: int = 3) -> dic
     Test sensitivity to:
     1. Network architecture (3, 4, 5 layers)
     2. Collocation points (256, 512, 1024)
-    3. Dropout rate (0.0, 0.05, 0.1) - though likely detrimental
+
+    Dropout is intentionally excluded here because the final pipeline uses the
+    deterministic PINN, and exploratory dropout-based variants were not adopted.
     """
     print("\n" + "="*80)
     print("EXPERIMENT 3: Hyperparameter Sensitivity")
@@ -583,7 +596,7 @@ def save_experiment_3_tables(results: dict):
 \hline
 """
     for r in results['architecture']:
-        arch_table += f"{r['n_layers']} layers & {r['success_rate']:.1f}\% & {r['n_passed']}/{r['n_total']} & "
+        arch_table += f"{r['n_layers']} layers & {r['success_rate']:.1f}\\% & {r['n_passed']}/{r['n_total']} & "
         if r['mean_r2'] > 0:
             arch_table += f"{r['mean_r2']:.3f} \\\\\n"
         else:
@@ -611,7 +624,7 @@ def save_experiment_3_tables(results: dict):
 \hline
 """
     for r in results['collocation']:
-        colloc_table += f"{r['n_points']} & {r['success_rate']:.1f}\% & {r['n_passed']}/{r['n_total']} & "
+        colloc_table += f"{r['n_points']} & {r['success_rate']:.1f}\\% & {r['n_passed']}/{r['n_total']} & "
         if r['mean_r2'] > 0:
             colloc_table += f"{r['mean_r2']:.3f} \\\\\n"
         else:

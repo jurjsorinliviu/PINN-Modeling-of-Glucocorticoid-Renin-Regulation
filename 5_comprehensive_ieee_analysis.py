@@ -3,7 +3,7 @@ Comprehensive IEEE Access Submission Analysis (Deep Ensemble Version)
 
 This script runs ALL enhanced analyses for the IEEE Access submission using a
 Deep Ensemble of PINN models for robust uncertainty quantification.
-1. Ablation studies (10 configurations)
+1. Ablation studies (6 configurations)
 2. Multi-timepoint temporal validation
 3. Dose-response extrapolation with cross-validation
 4. Enhanced diagnostics and visualizations
@@ -188,7 +188,7 @@ def run_ablation_study(data_dict, device='cpu', n_epochs=3000, n_runs=3):
     print("\n" + "="*80)
     print("STEP 1: ABLATION STUDY")
     print("="*80)
-    print("Testing 10 different configurations...")
+    print("Testing 6 different configurations...")
     print(f"- Epochs per configuration: {n_epochs}")
     print(f"- Runs per configuration: {n_runs}")
     print("="*80)
@@ -381,7 +381,7 @@ def main():
     print("="*80)
     print(f"\nStarted: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print("\nThis comprehensive analysis includes:")
-    print("  1. Ablation Study (10 configurations)")
+    print("  1. Ablation Study (6 configurations)")
     print("  2. Temporal Validation (multi-timepoint simulations)")
     print("  3. Dose-Response Extrapolation (with cross-validation)")
     print("  4. Enhanced Diagnostics (publication-quality figures)")
