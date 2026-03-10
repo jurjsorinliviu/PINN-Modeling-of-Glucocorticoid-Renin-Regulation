@@ -140,6 +140,10 @@ We developed a **PINN ensemble** that achieves **R² = 0.803 ± 0.015** on exper
 ├── 12_pure_nn_baseline.py           # Pure NN baseline (no physics)
 ├── 13_reviewer_requested_experiments.py  # Reviewer-requested baselines and ablations
 ├── regenerate_supplementary_figures_only.py  # Regenerate the supplementary figures without training [~5 sec]
+├── 14_generate_corrected_pure_nn_figure.py   # Regenerate manuscript-safe Pure NN vs PINN figure
+├── 15_generate_corrected_dose_response_figure.py  # Regenerate manuscript-safe dose-response figure
+├── 16_generate_corrected_lodo_figure.py      # Regenerate corrected LODO figure
+├── 17_generate_corrected_supplementary_figures.py  # Regenerate corrected supplementary figures 6-8
 ├── sobol_analysis_images.py         # Generate Sobol sensitivity analysis visualizations
 ├── wilcoxon_test.py                 # Statistical significance testing
 ├── reproduce_manuscript.py          # Full deterministic reproduction wrapper
@@ -247,7 +251,7 @@ python regenerate_supplementary_figures_only.py
 ```
 
 ⏱ **Runtime**: ~5 seconds
-📊 **Output**: All 4 supplementary figures regenerated
+📊 **Output**: All 3 supplementary experiment figures regenerated
 
 **Experiments Included:**
 
@@ -430,8 +434,8 @@ All ensemble members must satisfy biological constraints:
 
 All results include:
 
-- **Dose-response curves** with uncertainty bands  
-  [`results/unified_03/figures/dose_response.png`](results/unified_03/figures/dose_response.png)
+- **Dose-response curves** with manuscript-safe measured-dose emphasis  
+  [`results/unified_03/figures/dose_response_corrected.png`](results/unified_03/figures/dose_response_corrected.png)
 
 - **Time course trajectories** for all doses  
   [`results/unified_03/figures/time_courses.png`](results/unified_03/figures/time_courses.png)
@@ -439,8 +443,8 @@ All results include:
 - **Pareto frontier** analysis (accuracy vs. parameter gap)
   [`results/unified_03/figures/pareto_frontier.png`](results/unified_03/figures/pareto_frontier.png)
 
-- **Sensitivity analysis** (Sobol indices revealing identifiability challenges)
-  [`results/sobol_comprehensive_analysis.png`](results/sobol_comprehensive_analysis.png)
+- **Sensitivity analysis** (attempted Sobol analysis with neutral manuscript-safe labeling)
+  [`results/sobol_comprehensive_analysis_corrected.png`](results/sobol_comprehensive_analysis_corrected.png)
 
 - **Ensemble comparison** visualizations
   [`results/comparison/figures/ensemble_comparison.png`](results/comparison/figures/ensemble_comparison.png)
@@ -448,8 +452,13 @@ All results include:
 - **Residual diagnostics** with normality tests
   [`results/comprehensive/figures/`](results/comprehensive/figures/)
 
-- **Pure NN vs PINN comparison** demonstrating physics constraint importance
-  [`results/pure_nn_baseline/figures/pure_nn_vs_pinn_comparison.png`](results/pure_nn_baseline/figures/pure_nn_vs_pinn_comparison.png)
+- **Pure NN vs PINN comparison** demonstrating the role of physics constraints
+  [`results/pure_nn_baseline/figures/pure_nn_vs_pinn_comparison_corrected.png`](results/pure_nn_baseline/figures/pure_nn_vs_pinn_comparison_corrected.png)
+
+- **Corrected supplementary experiment figures** for manuscript sections 4.12 / Figures 6-8
+  [`results/supplementary_experiments/figures/experiment_1_ramp_ablation_corrected.png`](results/supplementary_experiments/figures/experiment_1_ramp_ablation_corrected.png)
+  [`results/supplementary_experiments/figures/experiment_2_cross_validation_corrected.png`](results/supplementary_experiments/figures/experiment_2_cross_validation_corrected.png)
+  [`results/supplementary_experiments/figures/experiment_3_hyperparameter_sensitivity_corrected.png`](results/supplementary_experiments/figures/experiment_3_hyperparameter_sensitivity_corrected.png)
 
 ---
 
@@ -685,6 +694,7 @@ This project is licensed under the **MIT License** - see [`LICENSE`](LICENSE) fi
 - Supplementary leave-one-dose-out CV regenerated after the held-out-dose evaluation fix
 - Statistical comparison outputs regenerated with Mann-Whitney U tests and bootstrap confidence intervals
 - Comprehensive manuscript-facing reports, tables, and figures regenerated
+- Manuscript-safe corrected figures added for Pure NN vs PINN, dose-response, LODO, supplementary Figures 6-8, and Sobol sensitivity analysis
 
 ### Future Directions
 
