@@ -1,50 +1,66 @@
-import torch
-import numpy as np
-import random
+"""
+Reproduce the deterministic manuscript pipeline and reviewer-facing analyses.
 
-# Set seeds for reproducibility
-torch.manual_seed(42)
-np.random.seed(42)
-random.seed(42)
+This wrapper runs the main training, comparison, supplementary, and reviewer
+experiment scripts in the order expected by the final codebase.
+"""
 
-from src.data import prepare_training_data
-from src.model import ReninPINN
-from src.trainer import PINNTrainer
+from __future__ import annotations
 
-# Device
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+import subprocess
+import sys
+import time
+from pathlib import Path
 
-# Load ONLY original experimental data (no synthetic)
-data = prepare_training_data(dataset='elisa', use_log_scale=False)
 
-# Initialize model (same architecture as manuscript)
-model = ReninPINN(
-    hidden_layers=[128, 128, 128, 128],
-    activation='tanh'
-)
+PIPELINE = [
+    "1_setup_and_data_check.py",
+    "2_train_ode_baseline.py",
+    "8_unified_pipeline.py",
+    "9_ensemble_synthetic_03.py",
+    "10_compare_ensembles.py",
+    "11_supplementary_experiments.py",
+    "12_pure_nn_baseline.py",
+    "13_reviewer_requested_experiments.py",
+    "wilcoxon_test.py",
+    "5_comprehensive_ieee_analysis.py",
+    "6_generate_missing_reports.py",
+]
 
-# Initialize standard trainer (NO enhanced constraints)
-trainer = PINNTrainer(
-    model=model,
-    device=device,
-    learning_rate=1e-3,
-    weight_decay=0.01
-)
 
-# Train with standard settings (NO two-stage, NO synthetic data)
-trainer.train(
-    data_dict=data,
-    n_epochs=10000,
-    print_every=1000,
-    curriculum_learning=True
-)
+def run_script(script_name: str) -> None:
+    script_path = Path(script_name)
+    if not script_path.exists():
+        raise FileNotFoundError(f"Required script not found: {script_name}")
 
-# Evaluate
-results = trainer.evaluate(data)
-print(f"R²: {results['r_squared']:.4f}")
-print(f"RMSE: {results['rmse']:.4f}")
-print(f"IC50: {results['ic50']:.3f}")
-print(f"Hill: {results['hill']:.3f}")
+    print("\n" + "=" * 80)
+    print(f"RUNNING: {script_name}")
+    print("=" * 80)
 
-# Save model
-trainer.save_checkpoint('manuscript_model.pth')
+    start = time.time()
+    subprocess.run([sys.executable, script_name], check=True)
+    elapsed = time.time() - start
+
+    print(f"[OK] {script_name} completed in {elapsed / 60:.1f} minutes")
+
+
+def main() -> None:
+    print("=" * 80)
+    print("FULL REPRODUCTION PIPELINE")
+    print("=" * 80)
+    print("This will regenerate the deterministic manuscript results and the")
+    print("reviewer-requested comparison package.")
+
+    total_start = time.time()
+    for script_name in PIPELINE:
+        run_script(script_name)
+
+    total_elapsed = time.time() - total_start
+    print("\n" + "=" * 80)
+    print("REPRODUCTION COMPLETE")
+    print("=" * 80)
+    print(f"Total runtime: {total_elapsed / 3600:.2f} hours")
+
+
+if __name__ == "__main__":
+    main()
