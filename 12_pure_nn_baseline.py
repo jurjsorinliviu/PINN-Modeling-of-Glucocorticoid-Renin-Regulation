@@ -47,29 +47,24 @@ def load_json_if_exists(path: Path):
         return json.load(f)
 
 
-def load_pinn_cv_r2(default: float = 0.79) -> float:
-    """Load PINN cross-validation R^2 from the best available report."""
-    dose_response_report = load_json_if_exists(
-        Path("results/comprehensive/dose_response/dose_response_results.json")
+def load_pinn_lodo_rmse(default: float = 0.238) -> float:
+    """Load strict PINN held-out error from leave-one-dose-out evaluation."""
+    supplementary_cv = load_json_if_exists(
+        Path("results/supplementary_experiments/experiment_2_results.json")
     )
-    if dose_response_report is not None:
-        summary = dose_response_report.get('cross_validation', {}).get('summary', {})
-        if summary.get('overall_r2') is not None:
-            return float(summary['overall_r2'])
+    if supplementary_cv is not None and supplementary_cv.get('avg_test_error') is not None:
+        return float(supplementary_cv['avg_test_error'])
+    return default
 
+
+def load_pinn_lodo_folds() -> List[dict]:
+    """Load strict PINN leave-one-dose-out fold details."""
     supplementary_cv = load_json_if_exists(
         Path("results/supplementary_experiments/experiment_2_results.json")
     )
     if supplementary_cv is not None:
-        fold_train_r2 = [
-            fold.get('train_r2')
-            for fold in supplementary_cv.get('folds', [])
-            if fold.get('train_r2') is not None
-        ]
-        if fold_train_r2:
-            return float(np.mean(fold_train_r2))
-
-    return default
+        return supplementary_cv.get('folds', [])
+    return []
 
 
 def setup_directories():
