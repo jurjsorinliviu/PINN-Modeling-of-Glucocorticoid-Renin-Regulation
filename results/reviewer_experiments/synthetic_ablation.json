@@ -1,0 +1,1767 @@
+{
+  "description": "Synthetic-augmentation ablation with deterministic PINN training",
+  "n_runs_per_setting": 5.0,
+  "settings": {
+    "0.0": {
+      "synthetic_weight": 0.0,
+      "runs": [
+        {
+          "seed": 5000.0,
+          "metrics": {
+            "r2": 0.752337177640063,
+            "rmse": 0.02701535107821064,
+            "mae": 0.025942206170635307,
+            "ic50": 2.942464828491211,
+            "ic50_gap": 0.062464828491211044,
+            "hill": 1.9618823528289795,
+            "hill_gap": 0.04188235282897956
+          },
+          "parameters": {
+            "ic50": 2.942464828491211,
+            "hill": 1.9618823528289795,
+            "ic50_gap": 0.062464828491211044,
+            "hill_gap": 0.04188235282897956
+          },
+          "plausibility": {
+            "all_passed": false,
+            "doses": {
+              "0.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "0.30000001192092896": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "3.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "30.0": {
+                "passed": false,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": false
+                }
+              }
+            }
+          },
+          "best_epoch": 326.0,
+          "stop_reason": "plausibility checks failed repeatedly",
+          "accepted": false
+        },
+        {
+          "seed": 5001.0,
+          "metrics": {
+            "r2": 0.7830110750721943,
+            "rmse": 0.02528709795721863,
+            "mae": 0.023599087979869926,
+            "ic50": 2.9323928356170654,
+            "ic50_gap": 0.052392835617065536,
+            "hill": 1.9553978443145752,
+            "hill_gap": 0.035397844314575266
+          },
+          "parameters": {
+            "ic50": 2.9323928356170654,
+            "hill": 1.9553978443145752,
+            "ic50_gap": 0.052392835617065536,
+            "hill_gap": 0.035397844314575266
+          },
+          "plausibility": {
+            "all_passed": false,
+            "doses": {
+              "0.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "0.30000001192092896": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "3.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "30.0": {
+                "passed": false,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": false
+                }
+              }
+            }
+          },
+          "best_epoch": 731.0,
+          "stop_reason": "plausibility checks failed repeatedly",
+          "accepted": false
+        },
+        {
+          "seed": 5002.0,
+          "metrics": {
+            "r2": 0.7658431408815548,
+            "rmse": 0.026268401695752015,
+            "mae": 0.025175004985408866,
+            "ic50": 2.942622184753418,
+            "ic50_gap": 0.06262218475341808,
+            "hill": 1.963057041168213,
+            "hill_gap": 0.04305704116821296
+          },
+          "parameters": {
+            "ic50": 2.942622184753418,
+            "hill": 1.963057041168213,
+            "ic50_gap": 0.06262218475341808,
+            "hill_gap": 0.04305704116821296
+          },
+          "plausibility": {
+            "all_passed": false,
+            "doses": {
+              "0.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "0.30000001192092896": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "3.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "30.0": {
+                "passed": false,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": false
+                }
+              }
+            }
+          },
+          "best_epoch": 590.0,
+          "stop_reason": "plausibility checks failed repeatedly",
+          "accepted": false
+        },
+        {
+          "seed": 5003.0,
+          "metrics": {
+            "r2": 0.7467369291781555,
+            "rmse": 0.027319084476604166,
+            "mae": 0.026244088795261467,
+            "ic50": 2.921220302581787,
+            "ic50_gap": 0.041220302581787216,
+            "hill": 1.9480067491531372,
+            "hill_gap": 0.028006749153137278
+          },
+          "parameters": {
+            "ic50": 2.921220302581787,
+            "hill": 1.9480067491531372,
+            "ic50_gap": 0.041220302581787216,
+            "hill_gap": 0.028006749153137278
+          },
+          "plausibility": {
+            "all_passed": false,
+            "doses": {
+              "0.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "0.30000001192092896": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "3.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "30.0": {
+                "passed": false,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": false
+                }
+              }
+            }
+          },
+          "best_epoch": 343.0,
+          "stop_reason": "plausibility checks failed repeatedly",
+          "accepted": false
+        },
+        {
+          "seed": 5004.0,
+          "metrics": {
+            "r2": 0.7576083518705137,
+            "rmse": 0.02672631191989795,
+            "mae": 0.025092392947750175,
+            "ic50": 2.931612253189087,
+            "ic50_gap": 0.05161225318908702,
+            "hill": 1.954805612564087,
+            "hill_gap": 0.034805612564086985
+          },
+          "parameters": {
+            "ic50": 2.931612253189087,
+            "hill": 1.954805612564087,
+            "ic50_gap": 0.05161225318908702,
+            "hill_gap": 0.034805612564086985
+          },
+          "plausibility": {
+            "all_passed": false,
+            "doses": {
+              "0.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "0.30000001192092896": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "3.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "30.0": {
+                "passed": false,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": false
+                }
+              }
+            }
+          },
+          "best_epoch": 692.0,
+          "stop_reason": "plausibility checks failed repeatedly",
+          "accepted": false
+        }
+      ],
+      "summary": {
+        "n_runs": 5.0,
+        "accepted_runs": 0.0,
+        "success_rate": 0.0,
+        "accepted_member_metrics": null,
+        "best_single_r2": 0.7830110750721943,
+        "best_single_entry": {
+          "seed": 5001.0,
+          "metrics": {
+            "r2": 0.7830110750721943,
+            "rmse": 0.02528709795721863,
+            "mae": 0.023599087979869926,
+            "ic50": 2.9323928356170654,
+            "ic50_gap": 0.052392835617065536,
+            "hill": 1.9553978443145752,
+            "hill_gap": 0.035397844314575266
+          },
+          "parameters": {
+            "ic50": 2.9323928356170654,
+            "hill": 1.9553978443145752,
+            "ic50_gap": 0.052392835617065536,
+            "hill_gap": 0.035397844314575266
+          },
+          "plausibility": {
+            "all_passed": false,
+            "doses": {
+              "0.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "0.30000001192092896": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "3.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "30.0": {
+                "passed": false,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": false
+                }
+              }
+            }
+          },
+          "best_epoch": 731.0,
+          "stop_reason": "plausibility checks failed repeatedly",
+          "accepted": false
+        }
+      }
+    },
+    "0.2": {
+      "synthetic_weight": 0.2,
+      "runs": [
+        {
+          "seed": 5100.0,
+          "metrics": {
+            "r2": 0.7865512082387294,
+            "rmse": 0.025079972576071394,
+            "mae": 0.0234618184829522,
+            "ic50": 2.933281421661377,
+            "ic50_gap": 0.05328142166137706,
+            "hill": 1.958957552909851,
+            "hill_gap": 0.038957552909851145
+          },
+          "parameters": {
+            "ic50": 2.933281421661377,
+            "hill": 1.958957552909851,
+            "ic50_gap": 0.05328142166137706,
+            "hill_gap": 0.038957552909851145
+          },
+          "plausibility": {
+            "all_passed": false,
+            "doses": {
+              "0.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "0.30000001192092896": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "3.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "30.0": {
+                "passed": false,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": false
+                }
+              }
+            }
+          },
+          "best_epoch": 166.0,
+          "stop_reason": "plausibility checks failed repeatedly",
+          "accepted": false
+        },
+        {
+          "seed": 5101.0,
+          "metrics": {
+            "r2": 0.7481957754151437,
+            "rmse": 0.027240289132282432,
+            "mae": 0.025743856813984,
+            "ic50": 2.9266088008880615,
+            "ic50_gap": 0.04660880088806163,
+            "hill": 1.9510184526443481,
+            "hill_gap": 0.031018452644348216
+          },
+          "parameters": {
+            "ic50": 2.9266088008880615,
+            "hill": 1.9510184526443481,
+            "ic50_gap": 0.04660880088806163,
+            "hill_gap": 0.031018452644348216
+          },
+          "plausibility": {
+            "all_passed": false,
+            "doses": {
+              "0.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "0.30000001192092896": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "3.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "30.0": {
+                "passed": false,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": false
+                }
+              }
+            }
+          },
+          "best_epoch": 217.0,
+          "stop_reason": "plausibility checks failed repeatedly",
+          "accepted": false
+        },
+        {
+          "seed": 5102.0,
+          "metrics": {
+            "r2": 0.7293148448299198,
+            "rmse": 0.028243104073276022,
+            "mae": 0.026205777909832084,
+            "ic50": 2.930030345916748,
+            "ic50_gap": 0.05003034591674815,
+            "hill": 1.9539189338684082,
+            "hill_gap": 0.033918933868408274
+          },
+          "parameters": {
+            "ic50": 2.930030345916748,
+            "hill": 1.9539189338684082,
+            "ic50_gap": 0.05003034591674815,
+            "hill_gap": 0.033918933868408274
+          },
+          "plausibility": {
+            "all_passed": true,
+            "doses": {
+              "0.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "0.30000001192092896": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "3.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "30.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              }
+            }
+          },
+          "best_epoch": 450.0,
+          "stop_reason": "r2 degraded for 350 epochs",
+          "accepted": true
+        },
+        {
+          "seed": 5103.0,
+          "metrics": {
+            "r2": 0.7720672184162307,
+            "rmse": 0.025916932767890487,
+            "mae": 0.023943260099964225,
+            "ic50": 2.9123482704162598,
+            "ic50_gap": 0.03234827041625987,
+            "hill": 1.9422451257705688,
+            "hill_gap": 0.02224512577056892
+          },
+          "parameters": {
+            "ic50": 2.9123482704162598,
+            "hill": 1.9422451257705688,
+            "ic50_gap": 0.03234827041625987,
+            "hill_gap": 0.02224512577056892
+          },
+          "plausibility": {
+            "all_passed": true,
+            "doses": {
+              "0.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "0.30000001192092896": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "3.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "30.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              }
+            }
+          },
+          "best_epoch": 1380.0,
+          "stop_reason": null,
+          "accepted": true
+        },
+        {
+          "seed": 5104.0,
+          "metrics": {
+            "r2": 0.7639298518039985,
+            "rmse": 0.026375502545240053,
+            "mae": 0.025631010320262992,
+            "ic50": 2.9388108253479004,
+            "ic50_gap": 0.0588108253479005,
+            "hill": 1.9591195583343506,
+            "hill_gap": 0.03911955833435066
+          },
+          "parameters": {
+            "ic50": 2.9388108253479004,
+            "hill": 1.9591195583343506,
+            "ic50_gap": 0.0588108253479005,
+            "hill_gap": 0.03911955833435066
+          },
+          "plausibility": {
+            "all_passed": false,
+            "doses": {
+              "0.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "0.30000001192092896": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "3.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "30.0": {
+                "passed": false,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": false
+                }
+              }
+            }
+          },
+          "best_epoch": 570.0,
+          "stop_reason": "plausibility checks failed repeatedly",
+          "accepted": false
+        }
+      ],
+      "summary": {
+        "n_runs": 5.0,
+        "accepted_runs": 2.0,
+        "success_rate": 40.0,
+        "accepted_member_metrics": {
+          "r2": 0.7515153884887695,
+          "rmse": 0.027060136313543544,
+          "mae": 0.025074511766433716,
+          "prediction_std_mean": 0.001218259334564209,
+          "ic50_mean": 2.921189308166504,
+          "ic50_std": 0.00884103775024414,
+          "hill_mean": 1.9480820298194885,
+          "hill_std": 0.005836904048919678,
+          "ic50_gap_mean": 0.04118930816650401,
+          "hill_gap_mean": 0.028082029819488596
+        },
+        "best_single_r2": 0.7865512082387294,
+        "best_single_entry": {
+          "seed": 5100.0,
+          "metrics": {
+            "r2": 0.7865512082387294,
+            "rmse": 0.025079972576071394,
+            "mae": 0.0234618184829522,
+            "ic50": 2.933281421661377,
+            "ic50_gap": 0.05328142166137706,
+            "hill": 1.958957552909851,
+            "hill_gap": 0.038957552909851145
+          },
+          "parameters": {
+            "ic50": 2.933281421661377,
+            "hill": 1.958957552909851,
+            "ic50_gap": 0.05328142166137706,
+            "hill_gap": 0.038957552909851145
+          },
+          "plausibility": {
+            "all_passed": false,
+            "doses": {
+              "0.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "0.30000001192092896": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "3.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "30.0": {
+                "passed": false,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": false
+                }
+              }
+            }
+          },
+          "best_epoch": 166.0,
+          "stop_reason": "plausibility checks failed repeatedly",
+          "accepted": false
+        }
+      }
+    },
+    "0.3": {
+      "synthetic_weight": 0.3,
+      "runs": [
+        {
+          "seed": 5200.0,
+          "metrics": {
+            "r2": 0.7626230705278236,
+            "rmse": 0.026448403431098,
+            "mae": 0.024392142679767692,
+            "ic50": 2.9326162338256836,
+            "ic50_gap": 0.0526162338256837,
+            "hill": 1.954712152481079,
+            "hill_gap": 0.03471215248107917
+          },
+          "parameters": {
+            "ic50": 2.9326162338256836,
+            "hill": 1.954712152481079,
+            "ic50_gap": 0.0526162338256837,
+            "hill_gap": 0.03471215248107917
+          },
+          "plausibility": {
+            "all_passed": true,
+            "doses": {
+              "0.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "0.30000001192092896": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "3.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "30.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              }
+            }
+          },
+          "best_epoch": 1393.0,
+          "stop_reason": null,
+          "accepted": true
+        },
+        {
+          "seed": 5201.0,
+          "metrics": {
+            "r2": 0.7623054965858026,
+            "rmse": 0.026466089472412465,
+            "mae": 0.02443431296594628,
+            "ic50": 2.929283380508423,
+            "ic50_gap": 0.04928338050842296,
+            "hill": 1.9534066915512085,
+            "hill_gap": 0.03340669155120857
+          },
+          "parameters": {
+            "ic50": 2.929283380508423,
+            "hill": 1.9534066915512085,
+            "ic50_gap": 0.04928338050842296,
+            "hill_gap": 0.03340669155120857
+          },
+          "plausibility": {
+            "all_passed": true,
+            "doses": {
+              "0.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "0.30000001192092896": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "3.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "30.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              }
+            }
+          },
+          "best_epoch": 1370.0,
+          "stop_reason": null,
+          "accepted": true
+        },
+        {
+          "seed": 5202.0,
+          "metrics": {
+            "r2": 0.806237680326385,
+            "rmse": 0.0238954310638522,
+            "mae": 0.021906763103084648,
+            "ic50": 2.9360883235931396,
+            "ic50_gap": 0.056088323593139755,
+            "hill": 1.9573882818222046,
+            "hill_gap": 0.03738828182220466
+          },
+          "parameters": {
+            "ic50": 2.9360883235931396,
+            "hill": 1.9573882818222046,
+            "ic50_gap": 0.056088323593139755,
+            "hill_gap": 0.03738828182220466
+          },
+          "plausibility": {
+            "all_passed": true,
+            "doses": {
+              "0.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "0.30000001192092896": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "3.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "30.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              }
+            }
+          },
+          "best_epoch": 1399.0,
+          "stop_reason": null,
+          "accepted": true
+        },
+        {
+          "seed": 5203.0,
+          "metrics": {
+            "r2": 0.7450749454852748,
+            "rmse": 0.027408575668335208,
+            "mae": 0.025479018476085746,
+            "ic50": 2.9325637817382812,
+            "ic50_gap": 0.05256378173828136,
+            "hill": 1.954245686531067,
+            "hill_gap": 0.034245686531066966
+          },
+          "parameters": {
+            "ic50": 2.9325637817382812,
+            "hill": 1.954245686531067,
+            "ic50_gap": 0.05256378173828136,
+            "hill_gap": 0.034245686531066966
+          },
+          "plausibility": {
+            "all_passed": true,
+            "doses": {
+              "0.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "0.30000001192092896": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "3.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "30.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              }
+            }
+          },
+          "best_epoch": 266.0,
+          "stop_reason": "r2 degraded for 350 epochs",
+          "accepted": true
+        },
+        {
+          "seed": 5204.0,
+          "metrics": {
+            "r2": 0.7369560283238752,
+            "rmse": 0.02784161242677712,
+            "mae": 0.025709405329303825,
+            "ic50": 2.9311413764953613,
+            "ic50_gap": 0.051141376495361435,
+            "hill": 1.9543683528900146,
+            "hill_gap": 0.03436835289001472
+          },
+          "parameters": {
+            "ic50": 2.9311413764953613,
+            "hill": 1.9543683528900146,
+            "ic50_gap": 0.051141376495361435,
+            "hill_gap": 0.03436835289001472
+          },
+          "plausibility": {
+            "all_passed": false,
+            "doses": {
+              "0.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "0.30000001192092896": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "3.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "30.0": {
+                "passed": false,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": false
+                }
+              }
+            }
+          },
+          "best_epoch": 375.0,
+          "stop_reason": null,
+          "accepted": false
+        }
+      ],
+      "summary": {
+        "n_runs": 5.0,
+        "accepted_runs": 4.0,
+        "success_rate": 80.0,
+        "accepted_member_metrics": {
+          "r2": 0.7702740430831909,
+          "rmse": 0.026018680670138662,
+          "mae": 0.02405303716659546,
+          "prediction_std_mean": 0.0015178339090198278,
+          "ic50_mean": 2.932637929916382,
+          "ic50_std": 0.002406459376746026,
+          "hill_mean": 1.9549382030963898,
+          "hill_std": 0.0014898902182411654,
+          "ic50_gap_mean": 0.05263792991638194,
+          "hill_gap_mean": 0.03493820309638984
+        },
+        "best_single_r2": 0.806237680326385,
+        "best_single_entry": {
+          "seed": 5202.0,
+          "metrics": {
+            "r2": 0.806237680326385,
+            "rmse": 0.0238954310638522,
+            "mae": 0.021906763103084648,
+            "ic50": 2.9360883235931396,
+            "ic50_gap": 0.056088323593139755,
+            "hill": 1.9573882818222046,
+            "hill_gap": 0.03738828182220466
+          },
+          "parameters": {
+            "ic50": 2.9360883235931396,
+            "hill": 1.9573882818222046,
+            "ic50_gap": 0.056088323593139755,
+            "hill_gap": 0.03738828182220466
+          },
+          "plausibility": {
+            "all_passed": true,
+            "doses": {
+              "0.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "0.30000001192092896": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "3.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "30.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              }
+            }
+          },
+          "best_epoch": 1399.0,
+          "stop_reason": null,
+          "accepted": true
+        }
+      }
+    },
+    "0.5": {
+      "synthetic_weight": 0.5,
+      "runs": [
+        {
+          "seed": 5300.0,
+          "metrics": {
+            "r2": 0.8017213245887349,
+            "rmse": 0.024172313122296226,
+            "mae": 0.021850749638156974,
+            "ic50": 2.9133174419403076,
+            "ic50_gap": 0.033317441940307724,
+            "hill": 1.9428437948226929,
+            "hill_gap": 0.022843794822692942
+          },
+          "parameters": {
+            "ic50": 2.9133174419403076,
+            "hill": 1.9428437948226929,
+            "ic50_gap": 0.033317441940307724,
+            "hill_gap": 0.022843794822692942
+          },
+          "plausibility": {
+            "all_passed": false,
+            "doses": {
+              "0.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "0.30000001192092896": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "3.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "30.0": {
+                "passed": false,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": false
+                }
+              }
+            }
+          },
+          "best_epoch": 1395.0,
+          "stop_reason": null,
+          "accepted": false
+        },
+        {
+          "seed": 5301.0,
+          "metrics": {
+            "r2": 0.735021257595251,
+            "rmse": 0.027943816721027036,
+            "mae": 0.025950088884906852,
+            "ic50": 2.918842315673828,
+            "ic50_gap": 0.03884231567382823,
+            "hill": 1.9441359043121338,
+            "hill_gap": 0.02413590431213386
+          },
+          "parameters": {
+            "ic50": 2.918842315673828,
+            "hill": 1.9441359043121338,
+            "ic50_gap": 0.03884231567382823,
+            "hill_gap": 0.02413590431213386
+          },
+          "plausibility": {
+            "all_passed": true,
+            "doses": {
+              "0.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "0.30000001192092896": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "3.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "30.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              }
+            }
+          },
+          "best_epoch": 417.0,
+          "stop_reason": "r2 degraded for 350 epochs",
+          "accepted": true
+        },
+        {
+          "seed": 5302.0,
+          "metrics": {
+            "r2": 0.7598018765218844,
+            "rmse": 0.026605107127049,
+            "mae": 0.024616122033672416,
+            "ic50": 2.925938606262207,
+            "ic50_gap": 0.04593860626220714,
+            "hill": 1.9510562419891357,
+            "hill_gap": 0.031056241989135813
+          },
+          "parameters": {
+            "ic50": 2.925938606262207,
+            "hill": 1.9510562419891357,
+            "ic50_gap": 0.04593860626220714,
+            "hill_gap": 0.031056241989135813
+          },
+          "plausibility": {
+            "all_passed": true,
+            "doses": {
+              "0.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "0.30000001192092896": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "3.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "30.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              }
+            }
+          },
+          "best_epoch": 804.0,
+          "stop_reason": null,
+          "accepted": true
+        },
+        {
+          "seed": 5303.0,
+          "metrics": {
+            "r2": 0.7686213973052812,
+            "rmse": 0.026112100217531062,
+            "mae": 0.02412800469644555,
+            "ic50": 2.905529022216797,
+            "ic50_gap": 0.02552902221679698,
+            "hill": 1.9385204315185547,
+            "hill_gap": 0.01852043151855476
+          },
+          "parameters": {
+            "ic50": 2.905529022216797,
+            "hill": 1.9385204315185547,
+            "ic50_gap": 0.02552902221679698,
+            "hill_gap": 0.01852043151855476
+          },
+          "plausibility": {
+            "all_passed": true,
+            "doses": {
+              "0.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "0.30000001192092896": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "3.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "30.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              }
+            }
+          },
+          "best_epoch": 1395.0,
+          "stop_reason": null,
+          "accepted": true
+        },
+        {
+          "seed": 5304.0,
+          "metrics": {
+            "r2": 0.7556583506712697,
+            "rmse": 0.02683360097739119,
+            "mae": 0.024969979908542717,
+            "ic50": 2.9363343715667725,
+            "ic50_gap": 0.05633437156677257,
+            "hill": 1.9572656154632568,
+            "hill_gap": 0.03726561546325691
+          },
+          "parameters": {
+            "ic50": 2.9363343715667725,
+            "hill": 1.9572656154632568,
+            "ic50_gap": 0.05633437156677257,
+            "hill_gap": 0.03726561546325691
+          },
+          "plausibility": {
+            "all_passed": true,
+            "doses": {
+              "0.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "0.30000001192092896": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "3.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "30.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              }
+            }
+          },
+          "best_epoch": 141.0,
+          "stop_reason": "r2 degraded for 350 epochs",
+          "accepted": true
+        }
+      ],
+      "summary": {
+        "n_runs": 5.0,
+        "accepted_runs": 4.0,
+        "success_rate": 80.0,
+        "accepted_member_metrics": {
+          "r2": 0.7550908923149109,
+          "rmse": 0.02686474163181779,
+          "mae": 0.024915993213653564,
+          "prediction_std_mean": 0.0007876863819546998,
+          "ic50_mean": 2.921661078929901,
+          "ic50_std": 0.011200350853594786,
+          "hill_mean": 1.9477445483207703,
+          "hill_std": 0.007066199063973733,
+          "ic50_gap_mean": 0.04166107892990123,
+          "hill_gap_mean": 0.027744548320770335
+        },
+        "best_single_r2": 0.8017213245887349,
+        "best_single_entry": {
+          "seed": 5300.0,
+          "metrics": {
+            "r2": 0.8017213245887349,
+            "rmse": 0.024172313122296226,
+            "mae": 0.021850749638156974,
+            "ic50": 2.9133174419403076,
+            "ic50_gap": 0.033317441940307724,
+            "hill": 1.9428437948226929,
+            "hill_gap": 0.022843794822692942
+          },
+          "parameters": {
+            "ic50": 2.9133174419403076,
+            "hill": 1.9428437948226929,
+            "ic50_gap": 0.033317441940307724,
+            "hill_gap": 0.022843794822692942
+          },
+          "plausibility": {
+            "all_passed": false,
+            "doses": {
+              "0.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "0.30000001192092896": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "3.0": {
+                "passed": true,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": true
+                }
+              },
+              "30.0": {
+                "passed": false,
+                "checks": {
+                  "non_negative": true,
+                  "bounded": true,
+                  "smooth": true,
+                  "steady_state": true,
+                  "suppression": true,
+                  "dose_suppression": false
+                }
+              }
+            }
+          },
+          "best_epoch": 1395.0,
+          "stop_reason": null,
+          "accepted": false
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "best_single_member": {
+    "member": 9.0,
+    "metrics": {
+      "r2": 0.890842794270758,
+      "rmse": 0.017935207756252822,
+      "mae": 0.01072657087095269,
+      "ic50": 2.9039506912231445,
+      "ic50_gap": 0.023950691223144638,
+      "hill": 1.9337890148162842,
+      "hill_gap": 0.01378901481628425
+    },
+    "parameters": {
+      "ic50": 2.9039506912231445,
+      "hill": 1.9337890148162842,
+      "ic50_gap": 0.023950691223144638,
+      "hill_gap": 0.01378901481628425
+    }
+  },
+  "ensemble": {
+    "n_members": 5.0,
+    "metrics": {
+      "r2": 0.8028581738471985,
+      "rmse": 0.024102917668655053,
+      "mae": 0.022216543555259705,
+      "ic50_mean": 2.925094556808472,
+      "ic50_std": 0.012345447454287685,
+      "hill_mean": 1.9499658584594726,
+      "hill_std": 0.008872824720824748,
+      "ic50_gap_mean": 0.045094556808471783,
+      "ic50_gap_std": 0.012345447454287685,
+      "hill_gap_mean": 0.02996585845947273,
+      "hill_gap_std": 0.008872824720824748
+    }
+  },
+  "per_dose_comparison": [
+    {
+      "dose": 0.0,
+      "observed": 1.0,
+      "best_single_prediction": 1.0001219511032104,
+      "ensemble_prediction": 0.9756776690483093,
+      "best_single_abs_error": 0.00012195110321044922,
+      "ensemble_abs_error": 0.024322330951690674
+    },
+    {
+      "dose": 0.3,
+      "observed": 0.9145907473309608,
+      "best_single_prediction": 0.9148460030555725,
+      "ensemble_prediction": 0.9381189346313477,
+      "best_single_abs_error": 0.00025525572461171375,
+      "ensemble_abs_error": 0.02352818730038686
+    },
+    {
+      "dose": 3.0,
+      "observed": 0.8469750889679715,
+      "best_single_prediction": 0.8820643424987793,
+      "ensemble_prediction": 0.8804734945297241,
+      "best_single_abs_error": 0.03508925353080783,
+      "ensemble_abs_error": 0.03349840556175265
+    },
+    {
+      "dose": 30.0,
+      "observed": 0.9145907473309608,
+      "best_single_prediction": 0.90715092420578,
+      "ensemble_prediction": 0.9070734977722168,
+      "best_single_abs_error": 0.007439823125180767,
+      "ensemble_abs_error": 0.007517249558743999
+    }
+  ],
+  "interpretation": "The best single accepted model is reported descriptively only. The ensemble remains the main reported result because it averages across seed-dependent local minima."
+}

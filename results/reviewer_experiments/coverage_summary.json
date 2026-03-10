@@ -1,0 +1,54 @@
+{
+  "reviewer_1": {
+    "other_traditional_ml_models": {
+      "status": "covered_by_experiment",
+      "evidence": "results/reviewer_experiments/traditional_ml_baselines.json"
+    },
+    "ensemble_technique_and_single_model": {
+      "status": "covered_by_experiment",
+      "evidence": "results/reviewer_experiments/single_model_vs_ensemble.json"
+    },
+    "non_parametric_test": {
+      "status": "covered_by_existing_result",
+      "evidence": "results/statistical_analysis/wilcoxon_test_results.json"
+    },
+    "different_cross_validation": {
+      "status": "covered_by_existing_result",
+      "evidence": "results/supplementary_experiments/experiment_2_results.json"
+    }
+  },
+  "reviewer_2": {
+    "parameter_variability_and_uncertainty": {
+      "status": "covered_by_experiment",
+      "evidence": "results/reviewer_experiments/parameter_uncertainty_summary.json"
+    },
+    "synthetic_observations_removed_or_varied": {
+      "status": "covered_by_experiment",
+      "evidence": "results/reviewer_experiments/synthetic_ablation.json"
+    },
+    "loss_component_ablation": {
+      "status": "covered_by_existing_result",
+      "evidence": "results/comprehensive/ablation_study.json"
+    },
+    "overfitting_discussion_control": {
+      "status": "covered_by_existing_result",
+      "evidence": "results/pure_nn_baseline/pure_nn_results.json"
+    }
+  },
+  "generated_files": {
+    "traditional_ml": [
+      "linear_regression",
+      "svr_rbf",
+      "random_forest",
+      "gaussian_process"
+    ],
+    "synthetic_settings": [
+      "0.0",
+      "0.2",
+      "0.3",
+      "0.5"
+    ],
+    "single_model_member": 9.0,
+    "n_parameter_models": 5.0
+  }
+}
