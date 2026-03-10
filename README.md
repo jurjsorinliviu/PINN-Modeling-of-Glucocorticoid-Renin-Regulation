@@ -90,6 +90,15 @@ We developed a **PINN ensemble** that achieves **R² = 0.803 ± 0.015** on exper
 │   │   ├── figures/                  # Pure NN vs PINN comparison
 │   │   ├── tables/                   # Comparison LaTeX tables
 │   │   └── models/                   # Pure NN model checkpoints
+│   ├── reviewer_experiments/         # Reviewer-requested comparisons
+│   │   ├── traditional_ml_baselines.json
+│   │   ├── synthetic_ablation.json
+│   │   ├── single_model_vs_ensemble.json
+│   │   ├── parameter_uncertainty_summary.json
+│   │   ├── coverage_summary.json
+│   │   ├── figures/                  # Reviewer comparison figures
+│   │   ├── tables/                   # Reviewer comparison tables
+│   │   └── models/                   # Synthetic-ablation checkpoints
 │   ├── supplementary_experiments/    # Supplementary ablation studies
 │   │   ├── experiment_1_results.json # Ramp ablation study
 │   │   ├── experiment_2_results.json # Cross-validation analysis
@@ -129,10 +138,11 @@ We developed a **PINN ensemble** that achieves **R² = 0.803 ± 0.015** on exper
 ├── 10_compare_ensembles.py          # Three-way ensemble comparison
 ├── 11_supplementary_experiments.py  # Supplementary experiments [3 studies, ~30-60 min]
 ├── 12_pure_nn_baseline.py           # Pure NN baseline (no physics)
+├── 13_reviewer_requested_experiments.py  # Reviewer-requested baselines and ablations
 ├── regenerate_supplementary_figures_only.py  # Regenerate the supplementary figures without training [~5 sec]
 ├── sobol_analysis_images.py         # Generate Sobol sensitivity analysis visualizations
 ├── wilcoxon_test.py                 # Statistical significance testing
-├── reproduce_manuscript.py          # One-click reproduction script [BETA]
+├── reproduce_manuscript.py          # Full deterministic reproduction wrapper
 │
 ├── requirements.txt                  # Python dependencies
 └── README.md                         # This file
@@ -242,7 +252,7 @@ python regenerate_supplementary_figures_only.py
 **Experiments Included:**
 
 1. **Ramp Ablation**: Constant vs. ramped high-dose weighting (+80% improvement)
-2. **Cross-Validation**: Leave-one-dose-out validation (4 folds, avg test error 0.046)
+2. **Cross-Validation**: Leave-one-dose-out validation (4 folds, avg test error 0.238 after the held-out-dose fix)
 3. **Hyperparameter Sensitivity**: Architecture (3-5 layers) & collocation (256-1024 points)
 
 ### 6. Pure NN Baseline (No Physics)
@@ -260,7 +270,7 @@ python 12_pure_nn_baseline.py
 ### 7. Full Reproduction Pipeline
 
 ```bash
-# Reproduces all experiments from manuscript
+# Reproduces the deterministic manuscript pipeline plus reviewer experiments
 python reproduce_manuscript.py
 ```
 
@@ -633,7 +643,7 @@ If you use this code or methodology in your research, please cite:
   year = {2025},
   publisher = {GitHub},
   url = {https://github.com/jurjsorinliviu/PINN-Modeling-of-Glucocorticoid-Renin-Regulation},
-  note = {Accessed: Oct. 28, 2025}
+  note = {Accessed: March 10, 2026}
 }
 
 @phdthesis{latia2020,
@@ -665,17 +675,16 @@ This project is licensed under the **MIT License** - see [`LICENSE`](LICENSE) fi
 
 ✅ **Active Development** | 📝 **Manuscript in Preparation** | 🔬 **Research Code**
 
-### Latest Updates (October 2025)
+### Final Verified Update (March 2026)
 
-- ✅ **Optimal ensemble identified**: SW=0.3 (n=5, R²=0.803±0.015)
-- ✅ **Three-way comparison**: SW=0.2, 0.3, 0.5 configurations analyzed
-- ✅ **Pure NN baseline**: Validated critical importance of physics constraints (overfitting gap: 0.973 vs 0.01)
-- ✅ **Supplementary experiments**: Ramp ablation (+80%), cross-validation (0.046 test error), hyperparameter sensitivity
-- ✅ **Fast figure regeneration**: New script regenerates all figures in ~5 seconds without retraining
-- ✅ **Statistical validation**: Mann-Whitney U tests with effect sizes and bootstrap confidence intervals
-- ✅ **Comprehensive studies**: Ablation analysis, temporal validation, dose-response extrapolation
-- ✅ **Sensitivity analysis**: Sobol indices revealing weak identifiability (IC₅₀+Hill: 3.2% vs expected >50%)
-- ✅ **Manuscript-ready outputs**: All figures with legends, tables, and LaTeX code generated
+- Final reviewer-requested experiment suite added and saved under `results/reviewer_experiments/`
+- Traditional ML baselines added for 24 h dose-response comparison
+- Synthetic augmentation ablation expanded to `SW=0.0, 0.2, 0.3, 0.5`
+- Best single accepted model versus ensemble summary added
+- Parameter spread summary across accepted `SW=0.3` checkpoints added
+- Supplementary leave-one-dose-out CV regenerated after the held-out-dose evaluation fix
+- Statistical comparison outputs regenerated with Mann-Whitney U tests and bootstrap confidence intervals
+- Comprehensive manuscript-facing reports, tables, and figures regenerated
 
 ### Future Directions
 
