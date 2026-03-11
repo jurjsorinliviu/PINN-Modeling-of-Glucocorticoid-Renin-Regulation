@@ -4,6 +4,7 @@
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-ee4c2c.svg)](https://pytorch.org/)
 [![Status](https://img.shields.io/badge/Status-Active-success.svg)](https://github.com/jurjsorinliviu/PINN-Modeling-of-Glucocorticoid-Renin-Regulation)
+<img width="2191" height="1122" alt="framework_diagram" src="https://github.com/user-attachments/assets/2ee56c45-00e7-4e11-bd88-8f75d6058c26" />
 
 ## Overview
 
