@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Physics-Informed Framework for Sparse Renin Regulation</title>
+<script>
+  window.MathJax = { tex: { inlineMath: [['$','$']] }, svg: { fontCache:'global' } };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+  :root {
+    --c1: #64748b; --c1l: #f7f9fc; --c1m: #e2e8f0;
+    --c2: #64748b; --c2l: #f7f9fc; --c2m: #e2e8f0;
+    --c3: #64748b; --c3l: #f7f9fc; --c3m: #e2e8f0;
+    --c4: #64748b; --c4l: #f7f9fc; --c4m: #e2e8f0;
+    --c5: #64748b; --c5l: #f7f9fc; --c5m: #e2e8f0;
+    --gray: #64748B; --dark: #0F172A; --border: #D9E1EA;
+    --white: #FFFFFF; --bg: #FBFCFD;
+    --neutral-soft: #f8fafc;
+    --neutral-mid: #eef2f7;
+    --neutral-strong: #dbe3ec;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #f2f4f7;
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    padding: 32px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .figure {
+    width: 1520px;
+    margin: 0 auto;
+    background: var(--bg);
+    border-radius: 28px;
+    box-shadow: 0 8px 36px rgba(15,23,42,.08), 0 1px 4px rgba(15,23,42,.04);
+    padding: 32px 32px 28px;
+    border: 1px solid #CBD5E1;
+  }
+
+  /* ── HEADER ── */
+  .hdr {
+    text-align: center;
+    padding-bottom: 18px;
+    border-bottom: 1.5px solid var(--border);
+    margin-bottom: 26px;
+  }
+  .hdr-text h1 {
+    font-size: 24px; font-weight: 800; color: var(--dark); letter-spacing: -.03em; line-height: 1.2;
+  }
+
+  /* ── CANVAS ── */
+  .canvas {
+    position: relative;
+    width: 1456px;
+    height: 675px;
+  }
+
+  /* ── STAGE COLUMN ── */
+  .col {
+    position: absolute; top: 0;
+    border-radius: 20px;
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    box-shadow: 0 2px 12px rgba(15,23,42,.06);
+    overflow: hidden;
+  }
+  .col-hdr {
+    padding: 12px 14px 10px;
+    display: flex; align-items: center; gap: 9px;
+  }
+  .col-hdr-icon {
+    width: 30px; height: 30px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .col-hdr-text {}
+  .col-hdr-text .stage-num {
+    font-size: 9.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; opacity: .75;
+  }
+  .col-hdr-text .stage-name {
+    font-size: 13px; font-weight: 800; letter-spacing: -.02em; line-height: 1.1;
+  }
+  .col-body { padding: 10px 12px 12px; }
+  .col-body.tight {
+    height: calc(100% - 53px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 6px;
+  }
+
+  /* ── CARD ── */
+  .card {
+    border-radius: 14px;
+    border: 1.5px solid var(--border);
+    background: var(--white);
+    padding: 11px 12px 10px;
+    margin-bottom: 6px;
+    box-shadow: 0 1px 6px rgba(15,23,42,.05);
+  }
+  .card-top {
+    display: flex; align-items: flex-start; gap: 9px; margin-bottom: 5px;
+  }
+  .card-ico {
+    width: 32px; height: 32px; border-radius: 9px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .card-title {
+    font-size: 12.5px; font-weight: 800; color: var(--dark); letter-spacing: -.02em; line-height: 1.2;
+  }
+  .card-sub {
+    font-size: 11px; color: var(--gray); line-height: 1.35; font-weight: 500;
+  }
+  .card-math {
+    font-size: 11px; line-height: 1.5; margin-top: 5px; color: var(--dark);
+    background: #F1F5F9; border-radius: 8px; padding: 5px 8px;
+    border: 1px solid #E2E8F0;
+  }
+
+  /* pill */
+  .pills { display:flex; flex-wrap:wrap; gap:4px; margin-top:6px; }
+  .pill {
+    font-size: 10px; font-weight: 700; padding: 2px 8px;
+    border-radius: 20px; border: 1.5px solid currentColor;
+    letter-spacing: .02em;
+  }
+
+  /* divider */
+  .div { height:1px; background: var(--border); margin: 8px 0; }
+
+  /* ── IO DIAGRAM ── */
+  .io-wrap {
+    display: flex; align-items: stretch; gap: 4px;
+    background: #F8FAFC; border-radius: 10px;
+    border: 1px solid var(--border); padding: 8px 6px; margin-top:6px;
+  }
+  .io-col { flex:1; display:flex; flex-direction:column; gap:4px; align-items:center; }
+  .io-label { font-size:9.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--gray); margin-bottom:2px; text-align:center; }
+  .io-chip {
+    width:100%; border-radius:8px; border:1.5px solid currentColor;
+    padding:5px 4px; text-align:center; font-size:10.5px; font-weight:700; line-height:1.2;
+  }
+  .io-arrow { display:flex; align-items:center; padding-top:16px; color:#94A3B8; font-size:18px; font-weight:300; }
+  .io-net {
+    flex:1.4; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    background:linear-gradient(135deg,#EFF6FF,#F5F3FF); border:1.5px solid #C7D7FD;
+    border-radius:10px; padding:6px 4px; text-align:center; gap:2px;
+  }
+  .io-net .net-title { font-size:11px; font-weight:800; color:#3B52B5; }
+  .io-net .net-sub   { font-size:9.5px; color:#64748B; font-weight:500; }
+
+  /* ── TRAINING GRID ── */
+  .train-grid { display:grid; grid-template-columns:1fr 1fr; gap:7px; }
+  .tcard {
+    border-radius:11px; border:1.5px solid var(--border);
+    background:#FAFAFA; padding:9px 9px 8px;
+    box-shadow:0 1px 4px rgba(15,23,42,.04);
+  }
+  .tcard .tc-icon {
+    width:24px; height:24px; border-radius:7px; margin-bottom:5px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .tcard h4 { font-size:11px; font-weight:800; color:var(--dark); letter-spacing:-.01em; margin-bottom:3px; line-height:1.2; }
+  .tcard p  { font-size:10.5px; color:var(--gray); line-height:1.3; font-weight:500; }
+
+  /* ── LOSS BADGE ── */
+  .loss-badge {
+    display:inline-block; font-size:10px; font-weight:700;
+    padding:2px 7px; border-radius:6px; margin-bottom:4px;
+    background:var(--border); color:var(--dark); font-family:monospace;
+    letter-spacing:.02em;
+  }
+
+  /* ── OUTPUT CARDS ── */
+  .out-card {
+    border-radius:13px; padding:10px 11px 9px;
+    margin-bottom:6px; border:1.5px solid;
+    box-shadow:0 2px 8px rgba(15,23,42,.06);
+    display:flex; align-items:center; gap:10px;
+  }
+  .out-card .oc-icon {
+    width:34px; height:34px; border-radius:10px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+  }
+
+  /* manuscript version: remove decorative icons but keep layout/legend */
+  .col-hdr-icon,
+  .card-ico,
+  .tcard .tc-icon,
+  .out-card .oc-icon {
+    display: none;
+  }
+  .out-card .oc-text {}
+  .out-card .oc-title { font-size:12px; font-weight:800; color:var(--dark); letter-spacing:-.01em; line-height:1.2; }
+  .out-card .oc-sub   { font-size:10.5px; color:var(--gray); margin-top:2px; font-weight:500; line-height:1.3; }
+
+  /* ── FOOTER ── */
+  .foot {
+    position:absolute; left:0; right:0; bottom:0; height:68px;
+    background:var(--white); border:1.5px solid var(--border);
+    border-radius:16px; display:flex; align-items:center;
+    padding:0 20px; gap:0;
+  }
+  .foot-item {
+    display:flex; align-items:center; gap:8px;
+    font-size:11px; color:var(--gray); font-weight:500; flex:1;
+    padding: 0 16px;
+  }
+  .foot-item + .foot-item { border-left:1px solid var(--border); }
+  .foot-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+  .foot-dash { width:18px; height:3px; border-radius:2px; flex-shrink:0; }
+  .legend-line {
+    position: relative;
+    width: 30px;
+    height: 12px;
+    flex-shrink: 0;
+  }
+  .legend-line::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 22px;
+    transform: translateY(-50%);
+    border-top: 3px solid currentColor;
+  }
+  .legend-line::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 8px solid currentColor;
+  }
+  .legend-line.thin::before {
+    border-top-width: 2px;
+  }
+  .legend-line.thin::after {
+    border-top-width: 4px;
+    border-bottom-width: 4px;
+    border-left-width: 7px;
+  }
+  .legend-line.dashed::before {
+    border-top-style: dashed;
+  }
+
+  svg.arrows { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; overflow:visible; }
+</style>
+</head>
+<body>
+<div class="figure">
+
+  <!-- HEADER -->
+  <div class="hdr">
+    <div class="hdr-text">
+      <h1>Physics-Informed Framework for Sparse Renin Regulation</h1>
+    </div>
+  </div>
+
+  <div class="canvas">
+
+    <!-- ═══════════════════════════════════════════════ SVG ARROWS ═══ -->
+    <svg class="arrows" viewBox="0 0 1456 675" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="mNavy" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M1 1 L11 6 L1 11 L4 6z" fill="#2B2B2B"/>
+        </marker>
+        <marker id="mTeal" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+          <path d="M1 1 L11 6 L1 11 L4 6z" fill="#5F6F82"/>
+        </marker>
+        <marker id="mBlue" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+          <path d="M1 1 L11 6 L1 11 L4 6z" fill="#5F6F82"/>
+        </marker>
+        <marker id="mAmber" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+          <path d="M1 1 L11 6 L1 11 L4 6z" fill="#7A6A52"/>
+        </marker>
+
+        <!-- glow filter -->
+        <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur stdDeviation="2" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+
+      <!-- ── Main flow arrows (visible between columns) ── -->
+      <!-- C1 → C2 -->
+      <path d="M245,332 L278,332" stroke="#2B2B2B" stroke-width="2.5" fill="none" marker-end="url(#mNavy)" filter="url(#glow)"/>
+      <!-- C2 → C3 -->
+      <path d="M523,332 L556,332" stroke="#2B2B2B" stroke-width="2.5" fill="none" marker-end="url(#mNavy)" filter="url(#glow)"/>
+      <!-- C3 → C4 -->
+      <path d="M850,332 L883,332" stroke="#2B2B2B" stroke-width="2.5" fill="none" marker-end="url(#mNavy)" filter="url(#glow)"/>
+      <!-- C4 → C5 -->
+      <path d="M1180,332 L1213,332" stroke="#2B2B2B" stroke-width="2.5" fill="none" marker-end="url(#mNavy)" filter="url(#glow)"/>
+
+      <!-- ── Cross-stage curved feeds ── -->
+      <!-- Sparse data → PINN (blue arc over top) -->
+      <path d="M200,56 C200,30 620,30 660,56" stroke="#5F6F82" stroke-width="2.5" stroke-dasharray="8,5" fill="none" marker-end="url(#mBlue)"/>
+      <rect x="340" y="14" width="130" height="20" rx="6" fill="#F5F7FA" stroke="#D7DEE6" stroke-width="1.2"/>
+      <text x="405" y="28" font-size="10" fill="#5F6F82" font-weight="700" text-anchor="middle" font-family="Inter,sans-serif">Sparse observations</text>
+
+      <!-- ODE constraints → Training (amber arc) -->
+      <path d="M460,56 C460,14 980,14 1020,56" stroke="#7A6A52" stroke-width="2.5" stroke-dasharray="8,5" fill="none" marker-end="url(#mAmber)"/>
+      <rect x="670" y="2" width="118" height="20" rx="6" fill="#F8F6F2" stroke="#DED7CD" stroke-width="1.2"/>
+      <text x="729" y="16" font-size="10" fill="#7A6A52" font-weight="700" text-anchor="middle" font-family="Inter,sans-serif">ODE constraints</text>
+    </svg>
+
+    <!-- ═══════════════════════════════════ COL 1 — Experimental Data ══ -->
+    <div class="col" style="left:0;width:257px;top:68px;bottom:80px;">
+      <div class="col-hdr" style="background:linear-gradient(135deg,var(--neutral-soft),var(--neutral-mid)); border-bottom:1.5px solid var(--neutral-strong);">
+        <div class="col-hdr-icon" style="background:#334155;">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <rect x="2" y="10" width="3" height="5" rx="1" fill="white"/>
+            <rect x="6.5" y="6" width="3" height="9" rx="1" fill="white" opacity=".8"/>
+            <rect x="11" y="2" width="3" height="13" rx="1" fill="white" opacity=".6"/>
+          </svg>
+        </div>
+        <div class="col-hdr-text">
+          <div class="stage-num" style="color:#111111;">Stage 01</div>
+          <div class="stage-name" style="color:#0f172a;">Experimental Data</div>
+        </div>
+      </div>
+      <div class="col-body tight">
+        <div class="card">
+          <div class="card-top">
+            <div class="card-ico" style="background:#F1F5F9;">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <rect x="3" y="2" width="12" height="14" rx="2" stroke="#3B82F6" stroke-width="1.5" fill="none"/>
+                <line x1="6" y1="6" x2="12" y2="6" stroke="#3B82F6" stroke-width="1.2" stroke-linecap="round"/>
+                <line x1="6" y1="9" x2="12" y2="9" stroke="#3B82F6" stroke-width="1.2" stroke-linecap="round"/>
+                <line x1="6" y1="12" x2="10" y2="12" stroke="#3B82F6" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <div class="card-title">Sparse ELISA Measurements</div>
+              <div class="card-sub">Secreted renin at 24 h</div>
+            </div>
+          </div>
+          <div class="pills">
+            <span class="pill" style="color:#111111;">$N=36$ observations</span>
+            <span class="pill" style="color:#111111;">Single timepoint</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-top">
+            <div class="card-ico" style="background:#F1F5F9;">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <circle cx="9" cy="9" r="6" stroke="#10B981" stroke-width="1.5" fill="none"/>
+                <line x1="9" y1="3" x2="9" y2="15" stroke="#10B981" stroke-width="1.2"/>
+                <line x1="3" y1="9" x2="15" y2="9" stroke="#10B981" stroke-width="1.2"/>
+              </svg>
+            </div>
+            <div>
+              <div class="card-title">Dose Structure</div>
+              <div class="card-sub">4 dexamethasone dose conditions</div>
+            </div>
+          </div>
+          <div class="card-math">$D \in \{0.0,\;0.3,\;3.0,\;30.0\}\ \text{mg/dl}$</div>
+        </div>
+
+        <div class="card">
+          <div class="card-top">
+            <div class="card-ico" style="background:#F1F5F9;">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M9 3L16 15H2L9 3Z" stroke="#EF4444" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+                <line x1="9" y1="8" x2="9" y2="12" stroke="#EF4444" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="9" cy="14" r="0.8" fill="#EF4444"/>
+              </svg>
+            </div>
+            <div>
+              <div class="card-title">Data Limitation</div>
+              <div class="card-sub">High-sparsity inference regime<br>No temporal trajectory</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════ COL 2 — Mechanistic Prior ══ -->
+    <div class="col" style="left:282px;width:253px;top:68px;bottom:80px;">
+      <div class="col-hdr" style="background:linear-gradient(135deg,var(--neutral-soft),var(--neutral-mid)); border-bottom:1.5px solid var(--neutral-strong);">
+        <div class="col-hdr-icon" style="background:#334155;">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <circle cx="8" cy="4" r="2.5" stroke="white" stroke-width="1.5" fill="none"/>
+            <circle cx="3" cy="12" r="2" stroke="white" stroke-width="1.3" fill="none"/>
+            <circle cx="13" cy="12" r="2" stroke="white" stroke-width="1.3" fill="none"/>
+            <line x1="8" y1="6.5" x2="4.2" y2="10.3" stroke="white" stroke-width="1.2"/>
+            <line x1="8" y1="6.5" x2="11.8" y2="10.3" stroke="white" stroke-width="1.2"/>
+          </svg>
+        </div>
+        <div class="col-hdr-text">
+          <div class="stage-num" style="color:#111111;">Stage 02</div>
+          <div class="stage-name" style="color:#0f172a;">Mechanistic Prior</div>
+        </div>
+      </div>
+      <div class="col-body tight">
+        <div class="card">
+          <div class="card-top">
+            <div class="card-ico" style="background:#F1F5F9;">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M9 2C9 2 4 5 4 10C4 13 6.5 15 9 15C11.5 15 14 13 14 10C14 5 9 2 9 2Z" stroke="#10B981" stroke-width="1.4" fill="none"/>
+                <line x1="9" y1="7" x2="9" y2="12" stroke="#10B981" stroke-width="1.2"/>
+                <line x1="6.5" y1="9.5" x2="11.5" y2="9.5" stroke="#10B981" stroke-width="1.2"/>
+              </svg>
+            </div>
+            <div>
+              <div class="card-title">6-State ODE System</div>
+              <div class="card-sub">GR binding, mRNA, protein, and secretion</div>
+            </div>
+          </div>
+          <div class="card-math">$\dot{\mathbf{x}} = f\!\left(\mathbf{x},D;\boldsymbol{\theta}\right),\quad \mathbf{x}\in\mathbb{R}^6$</div>
+        </div>
+
+        <div class="card">
+          <div class="card-top">
+            <div class="card-ico" style="background:#F1F5F9;">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <rect x="3" y="3" width="12" height="12" rx="3" stroke="#10B981" stroke-width="1.4" fill="none"/>
+                <line x1="7" y1="6" x2="11" y2="6" stroke="#10B981" stroke-width="1.2"/>
+                <line x1="6" y1="9" x2="12" y2="9" stroke="#10B981" stroke-width="1.2"/>
+                <line x1="7" y1="12" x2="11" y2="12" stroke="#10B981" stroke-width="1.2"/>
+              </svg>
+            </div>
+            <div>
+              <div class="card-title">Parameters</div>
+              <div class="card-sub">Biochemical parameters</div>
+            </div>
+          </div>
+          <div class="card-math">$|\boldsymbol{\theta}|=11,\quad \theta_i\in\mathbb{R}_{>0}$</div>
+          <div class="pills" style="margin-top:5px;">
+            <span class="pill" style="color:#111111;">Steady-state init.</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-top">
+            <div class="card-ico" style="background:#F1F5F9;">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M4 14 L4 4 L14 4" stroke="#10B981" stroke-width="1.4" stroke-linecap="round"/>
+                <path d="M5 11 Q8 6 14 8" stroke="#10B981" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <div class="card-title">Biological Constraints</div>
+              <div class="card-sub">Positivity, monotonicity, and plausibility bounds on $\boldsymbol{\theta}$</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════ COL 3 — PINN Surrogate ══════ -->
+    <div class="col" style="left:560px;width:302px;top:68px;bottom:80px;">
+      <div class="col-hdr" style="background:linear-gradient(135deg,var(--neutral-soft),var(--neutral-mid)); border-bottom:1.5px solid var(--neutral-strong);">
+        <div class="col-hdr-icon" style="background:#334155;">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <rect x="2" y="5" width="4" height="6" rx="1.5" fill="white"/>
+            <rect x="10" y="5" width="4" height="6" rx="1.5" fill="white" opacity=".8"/>
+            <circle cx="8" cy="8" r="2.5" fill="white" opacity=".9"/>
+            <line x1="6" y1="8" x2="5.5" y2="8" stroke="white" stroke-width="1.2"/>
+            <line x1="10" y1="8" x2="10.5" y2="8" stroke="white" stroke-width="1.2"/>
+          </svg>
+        </div>
+        <div class="col-hdr-text">
+          <div class="stage-num" style="color:#111111;">Stage 03</div>
+          <div class="stage-name" style="color:#0f172a;">PINN / MLP Surrogate</div>
+        </div>
+      </div>
+      <div class="col-body tight">
+
+        <!-- Architecture card -->
+        <div class="card">
+          <div class="card-title" style="margin-bottom:6px;">Neural Surrogate $\mathcal{N}_\phi$</div>
+          <!-- IO diagram -->
+          <div class="io-wrap">
+            <div class="io-col">
+              <div class="io-label">Inputs</div>
+              <div class="io-chip" style="color:#475569; background:#F8FAFC;">$t\in[0,48]\ \text{h}$</div>
+              <div class="io-chip" style="color:#475569; background:#F8FAFC; margin-top:3px;">Dose $D$</div>
+            </div>
+            <div class="io-arrow">›</div>
+            <div class="io-net">
+              <div class="net-title" style="color:#334155;">$\mathcal{N}_\phi(t,D)$</div>
+              <div class="net-sub">Fully connected<br>tanh activations · auto-diff</div>
+            </div>
+            <div class="io-arrow">›</div>
+            <div class="io-col">
+              <div class="io-label">Outputs</div>
+              <div class="io-chip" style="color:#475569; background:#F8FAFC;">$\hat{\mathbf{x}}(t)$<br><span style="font-size:9px;font-weight:500;">All 6 state trajectories</span></div>
+              <div class="io-chip" style="color:#475569; background:#F8FAFC; margin-top:3px;">$\hat{R}_s(t)$<br><span style="font-size:9px;font-weight:500;">Secreted renin</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-top">
+            <div class="card-ico" style="background:#F1F5F9;">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M3 14 L8 7 L11 11 L13 8 L16 12" stroke="#F59E0B" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div>
+              <div class="card-title">Physics Coupling</div>
+              <div class="card-sub">Auto-differentiated derivatives constrained by ODE residuals</div>
+            </div>
+          </div>
+          <div class="card-math">$\left\|\partial_t\hat{\mathbf{x}} - f(\hat{\mathbf{x}},D;\boldsymbol{\theta})\right\|^2 \to 0$</div>
+        </div>
+
+        <div class="card">
+          <div class="card-top">
+            <div class="card-ico" style="background:#F1F5F9;">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <circle cx="9" cy="9" r="6" stroke="#F59E0B" stroke-width="1.4" fill="none"/>
+                <path d="M6 9 L8 11 L12 7" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div>
+              <div class="card-title">Predicted Trajectories</div>
+              <div class="card-sub">All 6 state variables for $t\!\in\![0,48]$ h at each dose $D$</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════ COL 4 — Training ════════════ -->
+    <div class="col" style="left:887px;width:305px;top:68px;bottom:80px;">
+      <div class="col-hdr" style="background:linear-gradient(135deg,var(--neutral-soft),var(--neutral-mid)); border-bottom:1.5px solid var(--neutral-strong);">
+        <div class="col-hdr-icon" style="background:#334155;">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <circle cx="8" cy="8" r="5.5" stroke="white" stroke-width="1.4" fill="none"/>
+            <path d="M5.5 8 L7 10 L10.5 6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="col-hdr-text">
+          <div class="stage-num" style="color:#111111;">Stage 04</div>
+          <div class="stage-name" style="color:#0f172a;">Physics-Informed Training</div>
+        </div>
+      </div>
+      <div class="col-body">
+        <!-- Grouped training objective -->
+        <div class="card" style="margin-bottom:10px;">
+          <div class="card-title" style="margin-bottom:5px;">Grouped Training Objective</div>
+          <div class="card-math" style="font-size:10.5px;">
+            $\mathcal{L}_\mathrm{total} = \mathcal{L}_\mathrm{obs} + \mathcal{L}_\mathrm{mech} + \mathcal{L}_\mathrm{bio}$
+          </div>
+        </div>
+
+        <div class="train-grid">
+          <div class="tcard">
+            <div class="tc-icon" style="background:#F1F5F9;">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <rect x="2" y="2" width="10" height="10" rx="2" stroke="#3B82F6" stroke-width="1.2" fill="none"/>
+                <circle cx="7" cy="7" r="2" fill="#3B82F6"/>
+              </svg>
+            </div>
+            <div class="loss-badge">$\mathcal{L}_\mathrm{obs}$</div>
+            <h4>Observational Terms</h4>
+            <p>Measured data + synthetic augmentation</p>
+          </div>
+          <div class="tcard">
+            <div class="tc-icon" style="background:#F1F5F9;">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M2 11 Q7 2 12 8" stroke="#10B981" stroke-width="1.3" fill="none"/>
+              </svg>
+            </div>
+            <div class="loss-badge">$\mathcal{L}_\mathrm{mech}$</div>
+            <h4>Mechanistic Terms</h4>
+            <p>ODE residuals + initial conditions</p>
+          </div>
+          <div class="tcard">
+            <div class="tc-icon" style="background:#F1F5F9;">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M7 2 L12 12 H2 Z" stroke="#F59E0B" stroke-width="1.2" fill="none"/>
+              </svg>
+            </div>
+            <div class="loss-badge">$\mathcal{L}_\mathrm{bio}$</div>
+            <h4>Biological Regularizers</h4>
+            <p>Positivity, monotonicity, temporal plausibility</p>
+          </div>
+          <div class="tcard">
+            <div class="tc-icon" style="background:#F1F5F9;">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <circle cx="7" cy="7" r="4.5" stroke="#8B5CF6" stroke-width="1.2" fill="none"/>
+                <path d="M5 7 L6.5 8.5 L9 5.5" stroke="#8B5CF6" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h4>Adam Optimizer</h4>
+            <p>Adaptive learning rate + ramped constraint weights</p>
+          </div>
+          <div class="tcard">
+            <div class="tc-icon" style="background:#F1F5F9;">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <circle cx="4" cy="7" r="2" stroke="#EF4444" stroke-width="1.2" fill="none"/>
+                <circle cx="10" cy="7" r="2" stroke="#EF4444" stroke-width="1.2" fill="none"/>
+                <line x1="6" y1="7" x2="8" y2="7" stroke="#EF4444" stroke-width="1.2"/>
+              </svg>
+            </div>
+            <h4>Ensemble Runs</h4>
+            <p>Multiple deterministic training runs</p>
+          </div>
+          <div class="tcard">
+            <div class="tc-icon" style="background:#F1F5F9;">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M2 4 H12 L10 10 H4 Z" stroke="#EF4444" stroke-width="1.2" fill="none"/>
+                <line x1="7" y1="4" x2="7" y2="10" stroke="#EF4444" stroke-width="1"/>
+              </svg>
+            </div>
+            <h4>Model Filtering</h4>
+            <p>Post-hoc plausibility selection of accepted runs</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════ COL 5 — Outputs ═════════════ -->
+    <div class="col" style="left:1217px;width:239px;top:68px;bottom:80px;">
+      <div class="col-hdr" style="background:linear-gradient(135deg,var(--neutral-soft),var(--neutral-mid)); border-bottom:1.5px solid var(--neutral-strong);">
+        <div class="col-hdr-icon" style="background:#334155;">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M2 13 L5 8 L8 10 L11 5 L14 7" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="14" cy="7" r="1.5" fill="white"/>
+          </svg>
+        </div>
+        <div class="col-hdr-text">
+          <div class="stage-num" style="color:#111111;">Stage 05</div>
+          <div class="stage-name" style="color:#0f172a;">Outputs</div>
+        </div>
+      </div>
+      <div class="col-body tight" style="padding:10px 10px 10px;">
+
+        <div class="out-card" style="background:#FFFFFF; border-color:#E2E8F0;">
+            <div class="oc-icon" style="background:#F1F5F9;">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M3 13 L7 8 L10 11 L14 5" stroke="#8B5CF6" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="oc-text">
+            <div class="oc-title">24 h Dose-Response Fit</div>
+            <div class="oc-sub">$\hat{R}_s(24;\,D)$ vs. ELISA data</div>
+          </div>
+        </div>
+
+        <div class="out-card" style="background:#FFFFFF; border-color:#E2E8F0;">
+            <div class="oc-icon" style="background:#F1F5F9;">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <rect x="3" y="3" width="12" height="12" rx="2.5" stroke="#3B82F6" stroke-width="1.5" fill="none"/>
+              <line x1="6" y1="9" x2="12" y2="9" stroke="#3B82F6" stroke-width="1.2"/>
+              <line x1="9" y1="6" x2="9" y2="12" stroke="#3B82F6" stroke-width="1.2"/>
+            </svg>
+          </div>
+          <div class="oc-text">
+            <div class="oc-title">Parameter Estimates</div>
+            <div class="oc-sub">Accepted-ensemble parameter summaries</div>
+          </div>
+        </div>
+
+        <div class="out-card" style="background:#FFFFFF; border-color:#E2E8F0;">
+            <div class="oc-icon" style="background:#F1F5F9;">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M3 14 L6 9 L9 11 L12 6 L16 9" stroke="#10B981" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+              <line x1="3" y1="14" x2="16" y2="14" stroke="#10B981" stroke-width="1" opacity=".4"/>
+            </svg>
+          </div>
+          <div class="oc-text">
+            <div class="oc-title">48 h Trajectories</div>
+            <div class="oc-sub">Inferred $\hat{\mathbf{x}}(t)$ for $t\in[0,48]$ h</div>
+          </div>
+        </div>
+
+        <div class="out-card" style="background:#FFFFFF; border-color:#E2E8F0;">
+            <div class="oc-icon" style="background:#F1F5F9;">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M9 3 Q13 3 14 8 Q15 13 9 15 Q3 13 4 8 Q5 3 9 3Z" stroke="#F59E0B" stroke-width="1.4" fill="none"/>
+              <path d="M6 9 L8 11 L12 7" stroke="#F59E0B" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="oc-text">
+            <div class="oc-title">Ensemble Summary</div>
+            <div class="oc-sub">Mean ± SD across accepted runs</div>
+          </div>
+        </div>
+
+        <div class="out-card" style="background:#FFFFFF; border-color:#E2E8F0;">
+            <div class="oc-icon" style="background:#F1F5F9;">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <rect x="7" y="3" width="4" height="9" rx="2" stroke="#EF4444" stroke-width="1.4" fill="none"/>
+              <line x1="9" y1="13" x2="9" y2="16" stroke="#EF4444" stroke-width="1.4" stroke-linecap="round"/>
+              <line x1="6" y1="9" x2="12" y2="9" stroke="#EF4444" stroke-width="1.2"/>
+            </svg>
+          </div>
+          <div class="oc-text">
+            <div class="oc-title">Run Variability</div>
+            <div class="oc-sub">Run-to-run variability under the assumed model structure</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════ FOOTER ═══════════════════════════════════════════ -->
+    <div class="foot">
+      <div class="foot-item">
+        <div class="legend-line" style="color:#2B2B2B;"></div>
+        <span style="color:#2B2B2B;">Primary pipeline flow</span>
+      </div>
+      <div class="foot-item">
+        <div class="legend-line thin dashed" style="color:#5F6F82;"></div>
+        <span style="color:#5F6F82;">Sparse observations feed the PINN</span>
+      </div>
+      <div class="foot-item">
+        <div class="legend-line thin dashed" style="color:#7A6A52;"></div>
+        <span style="color:#7A6A52;">ODE constraints guide training</span>
+      </div>
+      <div class="foot-item" style="flex:2;">
+        <div class="foot-dash" style="background:#9CA3AF;"></div>
+        <span style="font-style:italic; color:#6B7280;">Inferred parameters and temporal trajectories are model-dependent hypotheses, not definitive biological truth.</span>
+      </div>
+    </div>
+
+  </div><!-- /canvas -->
+</div><!-- /figure -->
+</body>
+</html>
