@@ -49,7 +49,7 @@ def main():
     r2_values = [ode_r2, pure_train_r2, pinn_r2]
     bars = ax1.bar(methods, r2_values, color=colors, alpha=0.78, edgecolor="black", linewidth=2)
     ax1.set_ylabel("R² Score", fontweight="bold", fontsize=12)
-    ax1.set_title("a) Main 24 h Fit Comparison", fontweight="bold", fontsize=13)
+    ax1.set_title("(a) Main 24 h Fit Comparison", fontweight="bold", fontsize=13)
     ax1.axhline(y=0, color="black", linestyle="--", alpha=0.3)
     ax1.set_ylim([-0.5, 1.1])
     ax1.grid(axis="y", alpha=0.3)
@@ -63,7 +63,7 @@ def main():
     bars = ax2.bar(heldout_methods, heldout_values, color=[colors[1], colors[2]],
                    alpha=0.78, edgecolor="black", linewidth=2)
     ax2.set_ylabel("Held-out RMSE", fontweight="bold", fontsize=12)
-    ax2.set_title("b) Strict Leave-One-Dose-Out Error", fontweight="bold", fontsize=13)
+    ax2.set_title("(b) Strict Leave-One-Dose-Out Error", fontweight="bold", fontsize=13)
     ax2.set_ylim([0, max(heldout_values) * 1.25])
     ax2.grid(axis="y", alpha=0.3)
     for bar, val in zip(bars, heldout_values):
@@ -96,7 +96,7 @@ def main():
     bars2 = ax3.bar(x + width / 2, pinn_fold_rmse, width, label="PINN",
                     color=colors[2], alpha=0.78, edgecolor="black", linewidth=2)
     ax3.set_ylabel("Held-out RMSE", fontweight="bold", fontsize=12)
-    ax3.set_title("c) Fold-wise Held-out Error by Dose", fontweight="bold", fontsize=13)
+    ax3.set_title("(c) Fold-wise Held-out Error by Dose", fontweight="bold", fontsize=13)
     ax3.set_xticks(x)
     ax3.set_xticklabels(dose_labels)
     ax3.set_xlabel("Held-out dose (mg/dl)", fontweight="bold")
@@ -112,7 +112,7 @@ def main():
     rmse_values = [ode_rmse, pure_train_rmse, pinn_rmse]
     bars = ax4.bar(methods, rmse_values, color=colors, alpha=0.78, edgecolor="black", linewidth=2)
     ax4.set_ylabel("RMSE (Normalized Units)", fontweight="bold", fontsize=12)
-    ax4.set_title("d) Main 24 h Prediction Error", fontweight="bold", fontsize=13)
+    ax4.set_title("(d) Main 24 h Prediction Error", fontweight="bold", fontsize=13)
     ax4.set_ylim([0, max(rmse_values) * 1.25])
     ax4.grid(axis="y", alpha=0.3)
     for bar, val in zip(bars, rmse_values):
