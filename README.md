@@ -648,22 +648,18 @@ This is a **sparse data scenario** — only 4 data points per measurement type, 
 If you use this code or methodology in your research, please cite:
 
 ```bibtex
-@software{jurj2025pinn,
-  author = {Jurj, Sorin Liviu},
-  title = {PINN-Modeling-of-Glucocorticoid-Renin-Regulation},
-  year = {2025},
-  publisher = {GitHub},
-  url = {https://github.com/jurjsorinliviu/PINN-Modeling-of-Glucocorticoid-Renin-Regulation},
-  note = {Accessed: March 10, 2026}
-}
-
-@phdthesis{latia2020,
-  author = {Latia, Larissa},
-  title = {Regulation des Renin-Gens durch Dexamethason},
-  school = {Heinrich-Heine-Universität Düsseldorf},
-  year = {2020},
-  address = {Düsseldorf, Germany},
-  url = {https://docserv.uni-duesseldorf.de/servlets/DerivateServlet/Derivate-56964/Latia%2C%20Larissa_finale%20Fassung-1.pdf}
+@Article{aimed1020011,
+AUTHOR = {Jurj, Sorin Liviu},
+TITLE = {Modeling Glucocorticoid-Induced Renin Regulation from Sparse Data Using Physics-Informed Neural Networks},
+JOURNAL = {AI in Medicine},
+VOLUME = {1},
+YEAR = {2026},
+NUMBER = {2},
+ARTICLE-NUMBER = {11},
+URL = {https://www.mdpi.com/3042-6707/1/2/11},
+ISSN = {3042-6707},
+ABSTRACT = {Glucocorticoid-induced hypertension affects over 30% of treated patients, yet its underlying mechanisms remain unclear, particularly how glucocorticoids regulate renin within the renin-angiotensin-aldosterone system (RAAS). Modeling these dynamics is difficult because only four dose-response measurements are available at a single 24-h timepoint (36 observations total), while the system depends on roughly eleven biochemical parameters spanning minutes-long receptor interactions to days-long protein secretion. Classical parameter estimation becomes unreliable in this extremely underdetermined setting, and purely data-driven methods offer limited biological interpretability. In this paper, we introduce a physics-informed neural network (PINN) framework that integrates ELISA measurements from As4.1 juxtaglomerular cells, ordinary differential equations describing glucocorticoid receptor signaling and renin transcription, and automatic differentiation to enforce mechanistic constraints. By systematically tuning synthetic-data weights (SW in {0.2, 0.3, 0.5}), we identify an intermediate value of SW = 0.3 that provides the best overall balance between predictive accuracy, accepted ensemble size, and biologically plausible parameter estimates among the tested configurations. The framework uses adaptive constraint scheduling with a plateau ramp to reduce premature convergence and introduces calibrated plausibility thresholds reflecting experimental noise. The accepted PINN ensemble (n = 5, 50% success rate) achieved R2 = 0.803, compared with 0.759 for the SW = 0.5 baseline and −0.220 for the ODE-only baseline, with RMSE = 0.024. Key learned parameters (IC50 = 2.925 ± 0.012 mg/dL, Hill = 1.950 ± 0.009) are biologically plausible within the model assumptions, and the best single accepted model attained R2 = 0.891. Information criteria favored the PINN over the ODE model, with improvements of approximately 77× (AIC) and 5.9× (BIC). Despite training on a single timepoint, the PINN also infers full 48-h trajectories and reproduces non-monotonic dose-response behavior. This work presents, to our knowledge, the first PINN framework for glucocorticoid-mediated renin regulation and should be interpreted as a proof-of-concept approach for integrating sparse biomedical data with mechanistic constraints. The inferred parameters and temporal dynamics are best viewed as model-dependent, hypothesis-generating estimates rather than validated biological quantities.},
+DOI = {10.3390/aimed1020011}
 }
 ```
 
