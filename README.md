@@ -680,7 +680,7 @@ This project is licensed under the **MIT License** - see [`LICENSE`](LICENSE) fi
 
 ## Project Status
 
-✅ **Active Development** | 📝 **Manuscript in Preparation** | 🔬 **Research Code**
+✅ **Active Development** | 📝 **Manuscript published** | 🔬 **Research Code**
 
 ### Final Verified Update (March 2026)
 
